@@ -13,6 +13,7 @@ public class Main extends Application {
 	public final int WIDTH = 720, HEIGHT = 720;
 	
 	public final Renderer renderer;
+	public final Loader loader;
 	
 	public Main() {
 		renderer = new Renderer();
