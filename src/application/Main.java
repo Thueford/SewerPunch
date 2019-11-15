@@ -15,7 +15,8 @@ public class Main extends Application {
 	public final Renderer renderer;
 	
 	public Main() {
-		renderer = new Renderer(getClass().getResource("img"));
+		renderer = new Renderer();
+		loader = new Loader(getClass().getResource("img"));
 	}
 	
 	@Override
