@@ -5,8 +5,6 @@ import application.Main;
 import application.Point;
 import darstellung.Loader;
 import sounds.SoundLoader;
-import java.util.ArrayList;
-import java.util.Random;
 
 public class Player extends application.Entity {
 	private static final String src_img = "";

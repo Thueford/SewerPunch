@@ -23,7 +23,7 @@ public class Main extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.setOnCloseRequest(e -> {
 				Platform.exit();
-				game.loop.terminate();
+				try{ game.loop.terminate(); }catch(Exception err) {}
 			});
 			primaryStage.show();
 		} catch (Exception e) {

@@ -1,7 +1,5 @@
 package entities;
 
-import java.util.Random;
-
 import application.Entity;
 import application.Main;
 import application.Point;

@@ -7,30 +7,29 @@ import javax.imageio.ImageIO;
 
 public class Sprite {
 	private static BufferedImage spriteSheet;
-    private static final int TILE_SIZE = 32;
-    
-    public static BufferedImage loadSprite(String file) {
+	private static final int TILE_SIZE = 32;
 
-        BufferedImage sprite = null;
+	public static BufferedImage loadSprite(String file) {
 
-        try {
-        	//jenachdem entweder "." oder ".."
-            sprite = ImageIO.read(new File("../res/" + file + ".png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+		BufferedImage sprite = null;
 
-        return sprite;
-    }
-    
-    public static BufferedImage getSprite(int xGrid, int yGrid) {
+		try {
+			// jenachdem entweder "." oder ".."
+			sprite = ImageIO.read(new File("../res/" + file + ".png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
-        if (spriteSheet == null) {
-            spriteSheet = loadSprite("AnimationSpriteSheet");
-        }
+		return sprite;
+	}
 
-        return spriteSheet.getSubimage(xGrid * TILE_SIZE, yGrid * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-    }
-    
-    
+	public static BufferedImage getSprite(int xGrid, int yGrid) {
+
+		if (spriteSheet == null) {
+			spriteSheet = loadSprite("AnimationSpriteSheet");
+		}
+
+		return spriteSheet.getSubimage(xGrid * TILE_SIZE, yGrid * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+	}
+
 }

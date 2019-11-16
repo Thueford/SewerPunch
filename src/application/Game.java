@@ -18,7 +18,7 @@ public class Game {
 
 	public final Renderer renderer;
 	public final Loader loader;
-	public final List<Entity> entities = new ArrayList<Entity>();
+	private final List<Entity> entities = new ArrayList<Entity>();
 	public final int resource = 50;
 	public Gameloop loop;
 	public Random ran = new Random();
@@ -52,47 +52,55 @@ public class Game {
 		loop = new Gameloop();
 		loop.start();
 
-		// test
-		new Spawner().spawn(0);
-		//renderer.render();
-		entities.get(0).sndSpawn.startSound();
 	}
 
 	public void MainThreadFunctions() {
 		Main.game.renderer.render();
-		//SoundHandler.play(Soundlist);
+		// SoundHandler.play(Soundlist);
 	}
-	
+
 	public class SpawnManagement {
-		
-		private int wave = 1, wavestate = 0; //wave increases
+
+		private int wave = 1, wavestate = 0; // wave increases
 		Spawner spawner;
-		
-		public SpawnManagement() { spawner = new Spawner(); }
-		
-		public void spawn(){
-			
-			if(wavestate == 10) { //10 means last Wave of Stage - spawns big Wave, resets wavestate, increments wave
-				spawner.spawnWave(wave+1);
+
+		public SpawnManagement() {
+			spawner = new Spawner();
+		}
+
+		public void spawn() {
+
+			if (wavestate == 10) { // 10 means last Wave of Stage - spawns big Wave, resets wavestate, increments
+									// wave
+
+				System.out.println("Ult wave");
+				spawner.spawnWave(wave + 1);
 				wave++;
 				wavestate = 0;
+
 				return;
 			}
-			// in a 0.7 Chance spawns 2^wave*wavestate single enemys, otherwise spawns a wave
-			if((int)(Math.random() * 10) >= 7) {
-				spawner.spawnNotWave((int)Math.pow(2, wave*wavestate));
-			}else {
-				spawner.spawnWave((int) ( 1+wave*0.5 ));
+			// in a 0.7 Chance spawns 2^wave*wavestate single enemys, otherwise spawns a
+			// wave
+			if ((int) (Math.random() * 10) <= 7) {
+				System.out.println("single spawns");
+
+				spawner.spawnNotWave((int) Math.pow(2, wave * wavestate));
+			} else {
+				System.out.println("wave");
+
+				spawner.spawnWave((int) (1 + wave * 0.5));
 			}
+			wavestate++;
 		}
-		
+
 	}
-	
+
 	/**
 	 * move all entities
 	 */
 	public void move(long dtime) {
-		for (Entity obj : Main.game.entities) {
+		for (Entity obj : Main.game.getEntities()) {
 			obj.move(dtime);
 		}
 	}
@@ -105,12 +113,25 @@ public class Game {
 	}
 
 	public Entity addEntity(Entity e) {
-		entities.add(e);
+		synchronized (entities) {
+			entities.add(e);
+		}
 		return e;
 	}
 
 	public void Over() {
 		// TODO show game over screen
-		
+	}
+
+	public List<Entity> getEntities() {
+
+		List<Entity> tmp = new ArrayList<Entity>();
+
+		synchronized (entities) {
+			for (Entity e : entities) {
+				tmp.add(e);
+			}
+		}
+		return tmp;
 	}
 }

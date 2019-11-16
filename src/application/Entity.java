@@ -1,9 +1,7 @@
 package application;
 
-import darstellung.Loader;
 import javafx.scene.image.Image;
 import sounds.Sound;
-import sounds.SoundLoader;
 
 public abstract class Entity extends Rectangle {
 
@@ -22,8 +20,6 @@ public abstract class Entity extends Rectangle {
 		this.x = x;
 		this.y = y;
 
-		this.width = width;
-		this.height = height;
 		this.speed = getInitSpeed();
 		this.HP = getInitHP();
 
@@ -45,11 +41,11 @@ public abstract class Entity extends Rectangle {
 	public void setSpeed(Point speed) {
 		this.speed = speed;
 	}
-	
+
 	public void stopWalking() {
-		this.speed.set(0,0);
+		this.speed.set(0, 0);
 	}
-	
+
 	public void startWalking() {
 		this.speed.set(this.getInitSpeed());
 	}
@@ -60,19 +56,22 @@ public abstract class Entity extends Rectangle {
 
 	/**
 	 * move entity in current frame
+	 * 
 	 * @param dtime
 	 */
 	public void move(long dtime) {
 		move(speed.x * dtime, speed.y * dtime);
 	}
-	
+
 	/**
 	 * apply damage and check 4 death
+	 * 
 	 * @param damage
 	 */
 	public void reduceHP(int damage) {
 		HP -= damage;
-		if(damage <= 0) die();
+		if (damage <= 0)
+			die();
 	}
 
 	/**
@@ -82,27 +81,37 @@ public abstract class Entity extends Rectangle {
 		dead = true;
 		onDie();
 	}
-	
+
 	/**
 	 * Called when entity was moved
 	 */
-	public void onMove() {}
+	public void onMove() {
+	}
+
 	/**
 	 * Called when entity collided with another
+	 * 
 	 * @param e collided entity
 	 */
-	public void onCollide(Entity e) {}
+	public void onCollide(Entity e) {
+	}
+
 	/**
 	 * Called when collision ended
 	 */
-	public void onUncollide() {}
+	public void onUncollide() {
+	}
+
 	/**
 	 * triggers an attack
 	 */
-	public void attack() {}
+	public void attack() {
+	}
+
 	/**
 	 * called when entity died
 	 */
-	public void onDie() {}
+	public void onDie() {
+	}
 
 }

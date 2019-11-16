@@ -4,8 +4,6 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-import javafx.scene.media.*;
-
 public class SoundLoader {
 	private static Map<String, Sound> assets = new HashMap<String, Sound>();
 
@@ -20,7 +18,7 @@ public class SoundLoader {
 		if (audioClip == null) {
 			audioClip = new Sound(src);
 			assets.put(src, audioClip);
-			
+
 		}
 		return audioClip;
 	}
