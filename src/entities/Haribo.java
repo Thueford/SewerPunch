@@ -56,7 +56,7 @@ public class Haribo extends application.Entity{
 
 	@Override
 	public void attack() {
-		// TODO Auto-generated method stub
+		//macht nix, Haribos haben keine Attacken
 		
 	}
 
@@ -72,11 +72,6 @@ public class Haribo extends application.Entity{
 		
 	}
 
-	@Override
-	public void spawn() {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	
 }

@@ -68,9 +68,4 @@ public class Player extends application.Entity{
 		
 	}
 
-	@Override
-	public void spawn() {
-		// TODO Auto-generated method stub
-		
-	}
 }
