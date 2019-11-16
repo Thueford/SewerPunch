@@ -24,6 +24,7 @@ public class Game {
 	public Game() {
 		renderer = new Renderer();
 		loader = new Loader(getClass().getResource("img"));
+		entities.add(new entities.Haribo(1,1));
 	}
 	
 	public void start() {
@@ -43,7 +44,7 @@ public class Game {
 		
 		loop = new Gameloop();
 		loop.start();
-		
+
 	}
 	
 	public void move() {
