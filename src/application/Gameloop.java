@@ -1,6 +1,7 @@
 package application;
 
 import javafx.application.Platform;
+import entities.Player;
 
 public class Gameloop extends Thread{
 	
@@ -31,6 +32,7 @@ public class Gameloop extends Thread{
 			//move Entities, move nanobots
 			for(Entity obj : Main.game.entities) {
 				//obj.move(dtime/);
+				((Player) obj).animation.update();
 			}
 			
 			//check for Collisions

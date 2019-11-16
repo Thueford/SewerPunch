@@ -44,6 +44,12 @@ public class Keyboard {
 		            	}
             		}
 	            	
+	            	switch (event.getCode()) {
+	            	case A: 
+	            		animation = walkLeft;
+	            		animation.start();
+	            	}
+	            	/*
 	            	if (checked == false) {
 	            		switch (event.getCode().ordinal()) {
 	            		case cr1: 
@@ -79,7 +85,7 @@ public class Keyboard {
 	            		} 
 	            		
 	            	}
-	            	
+	            	//*/
 	            	//System.out.println(point[0]);
 	            	//System.out.println(point[1]);
 	            	Point p = new Point(point[0], point[1]);

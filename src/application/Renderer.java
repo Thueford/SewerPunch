@@ -1,6 +1,9 @@
 package application;
 
+import entities.Player;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 
 public class Renderer {
 	
@@ -23,6 +26,11 @@ public class Renderer {
 		for(Entity e : Main.game.entities) {
 			if(e.visible)
 				ctx.drawImage(e.img, xCoordToPixel(e.x), yCoordToPixel(e.y));
+				//Image img = ((Player)e).animation.getSprite().getScaledInstance(-1, -1, Image);
+				//ctx.drawImage(, 2, 2, null);
+				Image image = SwingFXUtils.toFXImage(((Player)e).animation.getSprite(), null);
+				ctx.drawImage(image, 2, 2);
+
 		}
 	}
 	

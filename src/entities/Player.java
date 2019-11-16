@@ -1,10 +1,14 @@
 package entities;
 
+import java.awt.image.BufferedImage;
+
+import application.Animation;
 import application.Point;
+import application.Sprite;
 import darstellung.Loader;
 import sounds.SoundLoader;
 
-public class Player extends application.Entity{
+public class Player extends application.Entity {
 	private static final String src_img = "";
 	private static final String src_dieanim = "";
 	
@@ -15,8 +19,22 @@ public class Player extends application.Entity{
 	private static final int HP_init = 1;
 	private static final Point size_init = new Point(1,1);
 	
+	// Images for each animation
+	private BufferedImage[] walkingLeft = {Sprite.getSprite(0, 1), Sprite.getSprite(2, 1)}; // Gets the upper left images of my sprite sheet
+	private BufferedImage[] walkingRight = {Sprite.getSprite(0, 2), Sprite.getSprite(2, 2)};
+	private BufferedImage[] standing = {Sprite.getSprite(1, 0)};
+
+	// These are animation states
+	private Animation walkLeft = new Animation(walkingLeft, 10);
+	private Animation walkRight = new Animation(walkingRight, 10);
+	private Animation standing1 = new Animation(standing, 10);
+
+	// This is the actual animation
+	public Animation animation = standing1;
+	
 	public Player(String src, int x, int y, int width, int height) {
 		super(x, y);
+		
 	}
 
 	@Override

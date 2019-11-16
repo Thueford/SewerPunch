@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import darstellung.Loader;
+import entities.Player;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -45,9 +46,9 @@ public class Game {
 		loop.start();
 		
 		// test
-		new entities.Haribo(1,1);
-		renderer.render();
-		entities.get(0).sndSpawn.startSound();
+		//new Player(1,1);
+		//renderer.render();
+		//entities.get(0).sndSpawn.startSound();
 	}
 	
 	public void move() {
