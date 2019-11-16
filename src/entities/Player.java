@@ -45,12 +45,6 @@ public class Player extends application.Entity{
 	}
 
 	@Override
-	public void move() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void attack() {
 		// TODO Auto-generated method stub
 		
@@ -69,7 +63,7 @@ public class Player extends application.Entity{
 	}
 
 	@Override
-	public void spawn() {
+	public void move(long dtime) {
 		// TODO Auto-generated method stub
 		
 	}
