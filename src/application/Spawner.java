@@ -1,5 +1,7 @@
 package application;
 
+import entities.Haribo;
+
 public class Spawner {
 		//wahrscheinlichkeiten für spawn in feldern
 		private double[] arr = new double[10];
@@ -42,7 +44,7 @@ public class Spawner {
 		//feld ist die x Koordinate
 		public void spawn(int feld) {
 			Main.game.entities.add(new entities.Haribo(feld, 1));
-			Main.game.entities.get(Main.game.entities.size()-1).sn
+			//Main.game.entities.get(Main.game.entities.size()-1).sndSpawn.startSound();
 		}
 		
 		public void resetSpawnStuff() {

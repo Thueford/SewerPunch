@@ -7,32 +7,35 @@ import sounds.SoundLoader;
 
 public abstract class Entity extends Rectangle {
 	
-	public final String src_img;
-	public final Image img;
-	public final Sound sound;
-
+	// game vars
+	public boolean visible = true;
 	public Point speed;
 	public int HP;
-	
-	public Entity(String src_img, String src_sound, String src_dieanim, int x, int y) {
+
+	// assets
+	public Image img;
+	public Sound sndSpawn, sndDie;
+
+	public Entity(int x, int y) {
 		super(x, y, 1, 1);
 
 		this.x = x;
 		this.y = y;
+		
+		Main.game.entities.add(this);
 		
 		this.width = width;
 		this.height = height;
 		this.speed = getInitSpeed();
 		this.HP = getInitHP();
 		
-		this.src_img = src_img;
-		this.img = Loader.LoadImage(src_img);
-		this.sound = SoundLoader.LoadSound(src_sound);
+		LoadAssets();
 	}
 
 	public abstract int getInitHP();
 	public abstract Point getInitSpeed();
 	public abstract Point getInitSize();
+	public abstract void LoadAssets();
 	
 	public Point getSpeed() {
 		return speed;
@@ -50,7 +53,8 @@ public abstract class Entity extends Rectangle {
 	public void die() {
 		onDie();
 	}
-	
+
+	public abstract void spawn();
 	public abstract void move();
 	public abstract void attack();
 	
