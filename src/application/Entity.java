@@ -54,7 +54,7 @@ public abstract class Entity extends Rectangle {
 		onDie();
 	}
 
-	public abstract void spawn();
+	
 	public abstract void move();
 	public abstract void attack();
 	
