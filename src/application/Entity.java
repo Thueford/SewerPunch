@@ -14,7 +14,7 @@ public class Entity extends Rectangle {
 	private static double speed;
 	private static int HP;
 	
-	public Entity(String src_img, String src_sound, int x, int y, int width, int height, double speed, int HP) {
+	public Entity(String src_img, String src_sound, String src_dieanim, int x, int y, int width, int height, double speed, int HP) {
 		super(x, y, width, height);
 		
 		this.x = x;
