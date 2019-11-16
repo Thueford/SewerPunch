@@ -45,6 +45,15 @@ public abstract class Entity extends Rectangle {
 	public void setSpeed(Point speed) {
 		this.speed = speed;
 	}
+	
+	public void stopEntity() {
+		this.speed.x = 0;
+		this.speed.y = 0;
+	}
+	public void startEntity() {
+		this.speed.x = this.getInitSpeed().x;
+		this.speed.y = this.getInitSpeed().y;
+	}
 
 	public boolean isDead() {
 		return this.HP <= 0;
@@ -62,4 +71,5 @@ public abstract class Entity extends Rectangle {
 	public abstract void onDie();
 
 	public abstract void onCollide();
+	public abstract void onUncollide();
 }

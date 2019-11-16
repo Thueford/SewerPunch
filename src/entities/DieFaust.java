@@ -16,8 +16,8 @@ public class DieFaust extends application.Entity {
 	private static final String[] src_sndSpawn = {"./res/tone.wav"};
 	private static final String[] src_sndDie = {"./res/tone.wav"};
 
-	private static final Point speed_init = new Point(0, 2);
-	private static final int HP_init = 1;
+	private static final Point speed_init = new Point(4, 0);
+	private static final int HP_init = 10;
 	private static final Point size_init = new Point(1, 1);
 
 	public DieFaust(int x, int y) {
@@ -67,6 +67,10 @@ public class DieFaust extends application.Entity {
 			// TODO Auto-generated method stub
 			
 		}
+	@Override
+	public void onUncollide() {
+		
+	}
 
 	@Override
 	public void move(long dtime) {
