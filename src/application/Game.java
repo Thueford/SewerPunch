@@ -35,11 +35,14 @@ public class Game {
 		root.getChildren().add(canvas);
 		
 		renderer.setContext(ctx);
+		loop = new Gameloop();
 		
-		Main.primaryStage.setScene(new Scene(root,Main.HEIGHT, Main.WIDTH));
+		Scene scene = new Scene(root,Main.HEIGHT, Main.WIDTH);
+		new Keyboard(scene);
+		Main.primaryStage.setScene(scene);
 		Main.primaryStage.show();
 		
-		loop = new Gameloop();
+		
 		
 	}
 	
