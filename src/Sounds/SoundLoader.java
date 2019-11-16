@@ -15,7 +15,7 @@ public class SoundLoader {
 		SoundLoader.res_sound = res_sound;
 	}
 	
-	public static Sound LoadImage(String src) {
+	public static Sound LoadSound(String src) {
 		Sound audioClip = assets.get(src);
 		if(audioClip == null) {
 			audioClip = new Sound(src);

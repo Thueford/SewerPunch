@@ -1,14 +1,20 @@
 package application;
 
 import darstellung.Loader;
+import Sounds.Sound;
+import Sounds.SoundLoader;
 import javafx.scene.image.Image;
 
 public class Entity extends Rectangle {
 	
-	public final String src;
+	public final String src_img;
 	public final Image img;
+	public final Sound sound;
 	
-	public Entity(String src, int x, int y, int width, int height) {
+	private static double speed;
+	private static int HP;
+	
+	public Entity(String src_img, String src_sound, int x, int y, int width, int height, double speed, int HP) {
 		super(x, y, width, height);
 		
 		this.x = x;
@@ -16,11 +22,25 @@ public class Entity extends Rectangle {
 		
 		this.width = width;
 		this.height = height;
+		this.speed = speed;
+		this.HP = HP;
 		
-		this.src = src;
-		this.img = Loader.LoadImage(src);
+		this.src_img = src_img;
+		this.img = Loader.LoadImage(src_img);
+		this.sound = SoundLoader.LoadSound(src_sound);
 	}
 	
+	public static double getSpeed() {
+		return speed;
+	}
+	public static void setSpeed(double speed) {
+		Entity.speed = speed;
+	}
+
+	public boolean isDead() {
+		return this.HP<=0;
+	}
+
 	//Entitäten töten
 	public void die() {
 		
