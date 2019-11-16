@@ -74,27 +74,28 @@ public class Game {
 		}
 
 		public void spawn() {
+			
+			System.out.println("\n");
 
 			if (wavestate == 10) { // 10 means last Wave of Stage - spawns big Wave, resets wavestate, increments
 									// wave
 
 				System.out.println("Ult wave");
-				spawner.spawnWave(wave + 1);
+				spawner.spawnWave(1 + (int)(wave * 0.5 ));
 				wave++;
 				wavestate = 0;
 
 				return;
 			}
-			// in a 0.7 Chance spawns 2^wave*wavestate single enemys, otherwise spawns a
-			// wave
+			// in a 0.7 Chance spawns 2^wave*wavestate single enemys, otherwise spawns a wave
 			if ((int) (Math.random() * 10) <= 7) {
 				System.out.println("single spawns");
 
-				spawner.spawnNotWave((int) Math.pow(2, wave * wavestate));
+				spawner.spawnNotWave( (wave + (int)(wavestate * Math.random()) )% (wave*5 -1) );
 			} else {
 				System.out.println("wave");
 
-				spawner.spawnWave((int) (1 + wave * 0.5));
+				spawner.spawnWave(1 + (int)(wave * 0.25));
 			}
 			wavestate++;
 		}
