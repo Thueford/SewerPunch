@@ -1,5 +1,7 @@
 package application;
 
+import entities.Haribo;
+
 public class Spawner {
 		//wahrscheinlichkeiten für spawn in feldern
 		private double[] arr = new double[10];
@@ -41,7 +43,7 @@ public class Spawner {
 		//erzeugt instanzen der klasse enemy
 		//feld ist die x Koordinate
 		public void spawn(int feld) {
-			Enemy e = new Enemy("res/img/enemy.png", feld, 1, 1, 1);
+			Haribo e = new Haribo("res/img/enemy.png", feld, 1, 1, 1);
 		}
 		
 		public void resetSpawnStuff() {
