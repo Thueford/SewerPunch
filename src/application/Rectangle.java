@@ -43,8 +43,8 @@ public class Rectangle {
 	}
 	
 	//vergleicht ob sich 2 Rechtecke entsprechen
-	public static boolean equals(Rectangle r1, Rectangle r2) {
-		return (r1.x == r2.x && r1.y == r2.y && r1.width == r2.width && r1.height == r2.height);
+	public boolean equals(Rectangle r) {
+		return x == r.x && y == r.y && width == r.width && height == r.height;
 	}
 	
 	//prüft ob wenigstens ein eckpunkt von 2 Rechtecken sich entspricht
@@ -52,4 +52,8 @@ public class Rectangle {
 		return r1.x == r2.x && r1.y == r2.y && r1.width == r2.width && r1.height == r2.height;
 	}
 	
+	public boolean collides(Rectangle r) {
+		return x < r.x + r.width && x + width < r.x &&
+				y < r.y + r.height && y + width < r.y;
+	}
 }

@@ -49,8 +49,7 @@ public class Point {
 	
 	//überprüft ob sich 2 punkte entsprechen
 	public boolean equals(Point p) {
-		return (x == p.x && y == p.y);
+		return x == p.x && y == p.y;
 	}
-	
 }
 		
