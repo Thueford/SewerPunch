@@ -31,8 +31,8 @@ public class Keyboard {
 				boolean checked = false;
 
 				int[] point = { 99, 99 };
-				for (int y = 0; y < 3; y++) {
-					for (int x = 0; x < 9; x++) {
+				for (int y = 0; y < 4; y++) {
+					for (int x = 0; x < 10; x++) {
 						if (field[y][x] == event.getCode().ordinal()) {
 							point[0] = x;
 							point[1] = y;
@@ -42,44 +42,66 @@ public class Keyboard {
 				}
 
 				if (checked == false) {
-					switch (event.getCode().ordinal()) {
-					case cr1:
+					switch (event.getCode()) {
+					case CIRCUMFLEX:
 						point[0] = -1;
 						point[1] = 0;
 						checked = true;
-					case cr2:
+						System.out.println("cr1");
+						break;
+						
+					case TAB:
 						point[0] = -1;
 						point[1] = 1;
 						checked = true;
-					case cr3:
+						System.out.println("cr2");
+						break;
+						
+					case CAPS:
 						point[0] = -1;
 						point[1] = 2;
 						checked = true;
-					case cr4:
+						System.out.println("cr3");
+						break;
+						
+					case SHIFT:
 						point[0] = -1;
 						point[1] = 3;
 						checked = true;
-					case enter:
+						System.out.println("cr4");
+						break;
+						
+					case ENTER:
 						// fill ressources
 						checked = true;
-					case pause:
+						break;
+						
+					case SPACE:
 						// pause
+						Main.game.loop.pause();
 						checked = true;
-					case strg:
+						break;
+						
+					case CONTROL:
 						// strg
 						checked = true;
+						break;
+						
 
 					default:
 						// fill ressources idk do nothing
-						System.out.println("default");
+						//System.out.println("default");
 						checked = true;
 					}
 
 				}
 
-				// System.out.println(point[0]);
+				 
 				// System.out.println(point[1]);
 				Point p = new Point(point[0], point[1]);
+				System.out.println(p.x);
+				System.out.println(p.y);
+				
 
 			}
 		});
