@@ -24,7 +24,6 @@ public class Game {
 	public Game() {
 		renderer = new Renderer();
 		loader = new Loader(getClass().getResource("img"));
-		entities.add(new entities.Haribo(1,1));
 	}
 	
 	public void start() {
@@ -36,14 +35,19 @@ public class Game {
 		root.getChildren().add(canvas);
 		
 		renderer.setContext(ctx);
-		loop = new Gameloop();
 		
 		Scene scene = new Scene(root,Main.HEIGHT, Main.WIDTH);
 		new Keyboard(scene);
 		Main.primaryStage.setScene(scene);
 		Main.primaryStage.show();
 		
+		loop = new Gameloop();
+		loop.start();
+		
+		// test
+		new entities.Haribo(1,1);
 		renderer.render();
+		entities.get(0).sndSpawn.startSound();
 	}
 	
 	public void move() {
