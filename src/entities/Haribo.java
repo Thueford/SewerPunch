@@ -6,7 +6,7 @@ package entities;
 
 import application.Entity;
 import application.Main;
-import application.Point;
+import application.Vector;
 import darstellung.Loader;
 import sounds.SoundLoader;
 
@@ -19,8 +19,8 @@ public class Haribo extends application.Entity {
 	private static final String[] src_sndDie = { "./res/tone.wav" };
 
 	private static final int HP_init = 1;
-	private static final Point speed_init = new Point(0, 2);
-	private static final Point size_init = new Point(1, 1);
+	private static final Vector speed_init = new Vector(0, 2);
+	private static final Vector size_init = new Vector(1, 1);
 
 	public Haribo(int x, int y) {
 		super(x, y);
@@ -35,19 +35,16 @@ public class Haribo extends application.Entity {
 
 	@Override
 	public int getInitHP() {
-		// TODO Auto-generated method stub
 		return HP_init;
 	}
 
 	@Override
-	public Point getInitSpeed() {
-		// TODO Auto-generated method stub
+	public Vector getInitSpeed() {
 		return speed_init;
 	}
 
 	@Override
-	public Point getInitSize() {
-		// TODO Auto-generated method stub
+	public Vector getInitSize() {
 		return size_init;
 	}
 
@@ -66,7 +63,6 @@ public class Haribo extends application.Entity {
 
 	@Override
 	public void onDie() {
-		// TODO Auto-generated method stub
 		Main.game.Over();
 	}
 }

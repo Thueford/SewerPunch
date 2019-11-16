@@ -79,7 +79,7 @@ public class Keyboard {
 
 				// System.out.println(point[0]);
 				// System.out.println(point[1]);
-				Point p = new Point(point[0], point[1]);
+				Vector p = new Vector(point[0], point[1]);
 
 			}
 		});

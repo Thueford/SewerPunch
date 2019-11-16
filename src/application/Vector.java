@@ -1,40 +1,40 @@
 package application;
 
-public class Point {
+public class Vector {
 	public double x;
 	public double y;
 
 	// Konstruktor
-	public Point(double x, double y) {
+	public Vector(double x, double y) {
 		this.x = x;
 		this.y = y;
 	}
 
-	public Point() {
+	public Vector() {
 		this.x = 0;
 		this.y = 0;
 	}
 
 	// versetzt den Punkt an die gegebenen Koordinaten
-	public Point set(double newx, double newy) {
+	public Vector set(double newx, double newy) {
 		this.x = newx;
 		this.y = newy;
 		return this;
 	}
 
-	public Point set(Point p) {
+	public Vector set(Vector p) {
 		set(p.x, p.y);
 		return this;
 	}
 
 	// verschiebt den Punkt um die gegebenen werte
-	public Point add(double addx, double addy) {
+	public Vector add(double addx, double addy) {
 		this.x += addx;
 		this.y += addy;
 		return this;
 	}
 
-	public Point add(Point p) {
+	public Vector add(Vector p) {
 		return add(p.x, p.y);
 	}
 
@@ -59,7 +59,7 @@ public class Point {
 	}
 
 	// überprüft ob sich 2 punkte entsprechen
-	public boolean equals(Point p) {
+	public boolean equals(Vector p) {
 		return x == p.x && y == p.y;
 	}
 }

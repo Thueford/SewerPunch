@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 
 import application.Animation;
 import application.Main;
-import application.Point;
+import application.Vector;
 import application.Sprite;
 import darstellung.Loader;
 import javafx.embed.swing.SwingFXUtils;
@@ -19,8 +19,8 @@ public class Player extends application.Entity {
 
 	private static final int HP_init = 1;
 
-	private static final Point speed_init = new Point(0, 0);
-	private static final Point size_init = new Point(1, 1);
+	private static final Vector speed_init = new Vector(0, 0);
+	private static final Vector size_init = new Vector(1, 1);
 
 	private static String src_anim = "AnimationSpriteSheet";
 
@@ -60,12 +60,12 @@ public class Player extends application.Entity {
 	}
 
 	@Override
-	public Point getInitSpeed() {
+	public Vector getInitSpeed() {
 		return speed_init;
 	}
 
 	@Override
-	public Point getInitSize() {
+	public Vector getInitSize() {
 		return size_init;
 	}
 
