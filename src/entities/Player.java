@@ -6,21 +6,19 @@ import sounds.SoundLoader;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Player extends application.Entity{
+public class Player extends application.Entity {
 	private static final String src_img = "";
 	private static final String src_dieanim = "";
 	
 	private static final String[] src_sndSpawn = {"./res/tone.wav"};
 	private static final String[] src_sndDie = {"./res/tone.wav"};
-	
+
 	private static final Point speed_init = new Point(0, 0);
 	private static final int HP_init = 1;
-	private static final Point size_init = new Point(1,1);
-	
+	private static final Point size_init = new Point(1, 1);
+
 	public Player(String src, int x, int y, int width, int height) {
 		super(x, y);
-		
-		
 	}
 
 	@Override
@@ -30,7 +28,7 @@ public class Player extends application.Entity{
 		this.sndSpawn = SoundLoader.LoadSound(src_sndSpawn[x.nextInt(src_sndSpawn.length)]);
 		this.sndDie = SoundLoader.LoadSound(src_sndSpawn[x.nextInt(src_sndDie.length)]);
 	}
-	
+
 	@Override
 	public int getInitHP() {
 		// TODO Auto-generated method stub
@@ -50,12 +48,6 @@ public class Player extends application.Entity{
 	}
 
 	@Override
-	public void move() {
-		// TODO Auto-generated method stub
-		this.move(this.x + speed.x, this.y + speed.y);
-	}
-
-	@Override
 	public void attack() {
 		// hat keine
 		
@@ -64,11 +56,12 @@ public class Player extends application.Entity{
 	@Override
 	public void onDie() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void onCollide() {
+
 		this.HP = 0;
 		
 	}
@@ -77,4 +70,9 @@ public class Player extends application.Entity{
 		
 	}
 
+	@Override
+	public void move(long dtime) {
+		// TODO Auto-generated method stub
+		
+	}
 }
