@@ -72,9 +72,13 @@ public class Haribo extends application.Entity{
 	@Override
 	public void onCollide() {
 		// TODO Auto-generated method stub
-		
+		this.stopEntity();
 	}
-
+	
+	@Override
+	public void onUncollide() {
+		this.startEntity();
+	}
 	
 	
 }

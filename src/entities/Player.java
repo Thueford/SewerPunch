@@ -57,7 +57,7 @@ public class Player extends application.Entity{
 
 	@Override
 	public void attack() {
-		// TODO Auto-generated method stub
+		// hat keine
 		
 	}
 
@@ -69,7 +69,11 @@ public class Player extends application.Entity{
 
 	@Override
 	public void onCollide() {
-		// TODO Auto-generated method stub
+		this.HP = 0;
+		
+	}
+	@Override
+	public void onUncollide() {
 		
 	}
 
