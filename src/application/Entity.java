@@ -1,9 +1,9 @@
 package application;
 
 import darstellung.Loader;
+import javafx.scene.image.Image;
 import Sounds.Sound;
 import Sounds.SoundLoader;
-import javafx.scene.image.Image;
 
 public abstract class Entity extends Rectangle {
 	
@@ -16,7 +16,7 @@ public abstract class Entity extends Rectangle {
 	
 	public Entity(String src_img, String src_sound, String src_dieanim, int x, int y) {
 		super(x, y, 1, 1);
-		
+
 		this.x = x;
 		this.y = y;
 		
@@ -34,10 +34,11 @@ public abstract class Entity extends Rectangle {
 	public abstract Point getInitSpeed();
 	public abstract Point getInitSize();
 	
-	public static double getSpeed() {
+	public Point getSpeed() {
 		return speed;
 	}
-	public static void setSpeed(double speed) {
+	
+	public void setSpeed(Point speed) {
 		this.speed = speed;
 	}
 

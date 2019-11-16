@@ -1,4 +1,4 @@
-package Sounds;
+package sounds;
 
 import java.net.URL;
 import java.util.HashMap;
