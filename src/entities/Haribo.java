@@ -10,7 +10,7 @@ import darstellung.Loader;
 import sounds.SoundLoader;
 
 public class Haribo extends application.Entity{
-	private static final String src_img = "./res/haribo.jpeg";
+	private static final String src_img = "./res/Gegner_Feuer_V3.2.png";
 	private static final String src_dieanim = "";
 	
 	private static final String[] src_sndSpawn = {"./res/tone.wav"};	
