@@ -4,10 +4,10 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Animation {
+public class Spritesheet {
 
 	private int frameCount; // Counts ticks for change
-	private int frameDelay; // frame delay 1-12 (You will have to play around with this)
+	private int frameDelay; // frame delay 1-12
 	private int currentFrame; // animations current frame
 	private int animationDirection; // animation direction (i.e counting forward or backward)
 	private int totalFrames; // total amount of frames for your animation
@@ -16,7 +16,7 @@ public class Animation {
 
 	private List<Frame> frames = new ArrayList<Frame>(); // Arraylist of frames
 
-	public Animation(BufferedImage[] frames, int frameDelay) {
+	public Spritesheet(BufferedImage[] frames, int frameDelay) {
 		this.frameDelay = frameDelay;
 		this.stopped = true;
 
@@ -33,25 +33,29 @@ public class Animation {
 	}
 
 	public void start() {
-		if (!stopped)
+		if (!stopped) {
 			return;
+		}
 
-		if (frames.size() == 0)
+		if (frames.size() == 0) {
 			return;
+		}
 
 		stopped = false;
 	}
 
 	public void stop() {
-		if (frames.size() == 0)
+		if (frames.size() == 0) {
 			return;
+		}
 
 		stopped = true;
 	}
 
 	public void restart() {
-		if (frames.size() == 0)
+		if (frames.size() == 0) {
 			return;
+		}
 
 		stopped = false;
 		currentFrame = 0;
@@ -78,7 +82,6 @@ public class Animation {
 	}
 
 	public void update() {
-
 		if (!stopped) {
 			frameCount++;
 
@@ -92,9 +95,7 @@ public class Animation {
 					currentFrame = totalFrames - 1;
 				}
 			}
-
 		}
 
 	}
-
 }
