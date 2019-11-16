@@ -9,7 +9,7 @@ public class Renderer {
 	public static final Point 
 		OFFSET = new Point(1,0),
 		SPRITE_SIZE = new Point(60, 72),
-		GRID_SIZE = new Point(10, 10);
+		GRID_SIZE = new Point(10, 10).add(OFFSET);
 	
 	public Renderer() {
 		
@@ -29,7 +29,7 @@ public class Renderer {
 		return new Point();
 	}
 	
-	public static int xCoordToPixel(int x) {
-		return 0; //(x + OFFSET.x)
+	public static double xCoordToPixel(double x) {
+		return Main.WIDTH * (x + OFFSET.x) / GRID_SIZE.x;
 	}
 }
