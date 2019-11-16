@@ -1,0 +1,38 @@
+
+/*VBox stylen*/
+VBox {
+	-fx-spacing: 20px;
+	-fx-alignment:center ;
+}
+Button,Button:focused{
+	-fx-min-width: 400px;
+	-fx-min-height: 60px;
+	
+	/* Schrift */
+	-fx-font-family: serif;
+	-fx-font-weight: bold;
+	-fx-font-size: 15px;
+		
+	/*ueberschreiben des Standard-Javafx css "Modena" */
+	-fx-border-width:1px;
+	-fx-border-color:black;
+	-fx-border-radius: 10px;
+	-fx-background-color: white;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+	-fx-padding: 0;
+}
+Button:hover{
+	-fx-border-width:2px;
+	-fx-border-color:black,goldenrod;
+	-fx-border-insets:1px,0px;
+}
+.bottomButton{
+	-fx-min-width: 100px;
+	-fx-min-height: 30px;
+	
+	-fx-border-width: 0;
+	-fx-font-size: 10px;
+	
+	-fx-background-color: transparent;
+}

@@ -1,5 +1,6 @@
 package application;
 
+import darstellung.Loader;
 import javafx.scene.image.Image;
 
 public class Entity extends Rectangle {
@@ -19,5 +20,10 @@ public class Entity extends Rectangle {
 		
 		this.src = src;
 		this.img = Loader.LoadImage(src);
+	}
+	
+	//Entitäten töten
+	public void die() {
+		
 	}
 }
