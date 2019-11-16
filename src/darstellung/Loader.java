@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
+import application.Main;
 import javafx.scene.image.Image;
 
 /**
@@ -34,7 +35,7 @@ public class Loader {
 	 * @return javafx Image
 	 */
 	public static Image LoadImage(String src) {
-		Image img = assets.get(src);
+		Image img = assets.get(Main.rootPath+src);
 		if (img == null) {
 			img = new Image(new File(src).toURI().toString());
 			assets.put(src, img);

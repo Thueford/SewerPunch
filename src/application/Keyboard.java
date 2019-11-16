@@ -74,7 +74,6 @@ public class Keyboard {
 						System.out.println("default");
 						checked = true;
 					}
-
 				}
 
 				// System.out.println(point[0]);

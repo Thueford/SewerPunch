@@ -1,5 +1,11 @@
 package application;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+
 import darstellung.MainMenu;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -12,10 +18,12 @@ public class Main extends Application {
 	public static final int WIDTH = 720, HEIGHT = 720;
 	public static Stage primaryStage;
 	public static Game game;
+	public static String rootPath;
 
 	@Override
 	public void start(Stage primaryStage) {
 		try {
+			rootPath = getRoot();
 			Main.primaryStage = primaryStage;
 
 			final BorderPane root = new MainMenu();
@@ -38,4 +46,9 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
+	
+	private String getRoot() throws IOException, URISyntaxException {
+	    URL u = getClass().getProtectionDomain().getCodeSource().getLocation();
+	    return new File(u.toURI()).getAbsolutePath();
+	  }
 }

@@ -6,7 +6,7 @@ import sounds.Sound;
 public abstract class Entity extends Rectangle {
 
 	// game vars
-	public boolean visible = true, dead = false;
+	public boolean visible = true, dead = false, collided = false;
 	public Vector speed;
 	public int HP;
 
@@ -103,6 +103,7 @@ public abstract class Entity extends Rectangle {
 	 * @param e collided entity
 	 */
 	public void onCollide(Entity e) {
+		collided = true;
 	}
 
 	/**
