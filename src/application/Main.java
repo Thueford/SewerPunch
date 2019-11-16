@@ -18,7 +18,7 @@ public class Main extends Application {
 	public static final int WIDTH = 720, HEIGHT = 720;
 	public static Stage primaryStage;
 	public static Game game;
-	public static String rootPath;
+	public static URI rootPath;
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -48,8 +48,8 @@ public class Main extends Application {
 		launch(args);
 	}
 	
-	private String getRoot() throws IOException, URISyntaxException {
+	private URI getRoot() throws IOException, URISyntaxException {
 	    URL u = getClass().getProtectionDomain().getCodeSource().getLocation();
-	    return new File(u.toURI()).getAbsolutePath();
+	    return new File(u.toURI()).getParentFile().toURI();
 	  }
 }
