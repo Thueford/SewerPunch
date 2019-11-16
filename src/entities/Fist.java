@@ -8,11 +8,11 @@ import sounds.SoundLoader;
 
 public class Fist extends application.Entity {
 
-	private static final String src_img = "../res/haribo.jpeg";
+	private static final String src_img = "./res/haribo.jpeg";
 	private static final String src_dieanim = "";
 
-	private static final String[] src_sndSpawn = { "../res/tone.wav" };
-	private static final String[] src_sndDie = { "../res/tone.wav" };
+	private static final String[] src_sndSpawn = { "./res/tone.wav" };
+	private static final String[] src_sndDie = { "./res/tone.wav" };
 
 	private static final int HP_init = 100;
 	private static final Point speed_init = new Point(4, 0);
