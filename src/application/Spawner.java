@@ -27,7 +27,7 @@ public class Spawner {
 	// spawnt eine welle, vermutlich gleichmäßig verteilt
 	public void spawnWave(int numOfWave) {
 		// ändere rechnung sonst laggs
-		int numOfEnemy = 10 * numOfWave;
+		int numOfEnemy = 5 * numOfWave;
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < numOfEnemy / 10; j++) {
 				spawn(i);

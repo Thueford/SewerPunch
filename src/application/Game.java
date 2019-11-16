@@ -70,14 +70,17 @@ public class Game {
 		
 		public void spawn(){
 			
-			if(wavestate == 10) {
+			if(wavestate == 10) { //10 means last Wave of Stage - spawns big Wave, resets wavestate, increments wave
 				spawner.spawnWave(wave+1);
+				wave++;
+				wavestate = 0;
 				return;
 			}
+			// in a 0.7 Chance spawns 2^wave*wavestate single enemys, otherwise spawns a wave
 			if((int)(Math.random() * 10) >= 7) {
 				spawner.spawnNotWave((int)Math.pow(2, wave*wavestate));
 			}else {
-				spawner.spawnWave((int) (1+wave*0.5));
+				spawner.spawnWave((int) ( 1+wave*0.5 ));
 			}
 		}
 		
