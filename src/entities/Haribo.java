@@ -1,4 +1,7 @@
 package entities;
+/**
+ * Die Klasse der mutierten Haribo-Bären, unserem Tier mit 'h' und dem einfachsten Gegner im Spiel
+ */
 
 import application.Point;
 import darstellung.Loader;
