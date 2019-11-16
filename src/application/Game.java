@@ -2,12 +2,10 @@ package application;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
+import java.util.Random;
 
 import darstellung.Loader;
-import javafx.application.Platform;
+import entities.Player;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -24,6 +22,7 @@ public class Game {
 	private final List<Entity> entities = new ArrayList<Entity>();
 	public final int resource = 50;
 	public Gameloop loop;
+	public Random ran = new Random();
 
 	/**
 	 * Create renderer and loader instances
@@ -54,46 +53,54 @@ public class Game {
 		loop = new Gameloop();
 		loop.start();
 
+		// test
+		Main.game.addEntity(new Player(1, 1));
+		// renderer.render();
+		// entities.get(0).sndSpawn.startSound();
 	}
 
 	public void MainThreadFunctions() {
 		Main.game.renderer.render();
-		//SoundHandler.play(Soundlist);
+		// SoundHandler.play(Soundlist);
 	}
-	
+
 	public class SpawnManagement {
-		
-		private int wave = 1, wavestate = 0; //wave increases
+
+		private int wave = 1, wavestate = 0; // wave increases
 		Spawner spawner;
-		
-		public SpawnManagement() { spawner = new Spawner(); }
-		
-		public void spawn(){		
-			
-			if(wavestate == 10) { //10 means last Wave of Stage - spawns big Wave, resets wavestate, increments wave
-				
+
+		public SpawnManagement() {
+			spawner = new Spawner();
+		}
+
+		public void spawn() {
+
+			if (wavestate == 10) { // 10 means last Wave of Stage - spawns big Wave, resets wavestate, increments
+									// wave
+
 				System.out.println("Ult wave");
-				spawner.spawnWave(wave+1);
+				spawner.spawnWave(wave + 1);
 				wave++;
 				wavestate = 0;
 
 				return;
 			}
-			// in a 0.7 Chance spawns 2^wave*wavestate single enemys, otherwise spawns a wave
-			if((int)(Math.random() * 10) <= 7) {
+			// in a 0.7 Chance spawns 2^wave*wavestate single enemys, otherwise spawns a
+			// wave
+			if ((int) (Math.random() * 10) <= 7) {
 				System.out.println("single spawns");
-				
-				spawner.spawnNotWave((int)Math.pow(2, wave*wavestate));
-			}else {
+
+				spawner.spawnNotWave((int) Math.pow(2, wave * wavestate));
+			} else {
 				System.out.println("wave");
-				
-				spawner.spawnWave((int) ( 1+wave*0.5 ));
+
+				spawner.spawnWave((int) (1 + wave * 0.5));
 			}
 			wavestate++;
 		}
-		
+
 	}
-	
+
 	/**
 	 * move all entities
 	 */
@@ -111,21 +118,24 @@ public class Game {
 	}
 
 	public Entity addEntity(Entity e) {
-		synchronized(entities) {
+		synchronized (entities) {
 			entities.add(e);
 		}
 		return e;
 	}
-	
+
+	public void Over() {
+		// TODO show game over screen
+	}
+
 	public List<Entity> getEntities() {
-		
+
 		List<Entity> tmp = new ArrayList<Entity>();
-		
-		synchronized(entities) {
-			for(Entity e : entities) {
+
+		synchronized (entities) {
+			for (Entity e : entities)
 				tmp.add(e);
-			}
-		}	
-		return tmp;	
+		}
+		return tmp;
 	}
 }

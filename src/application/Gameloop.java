@@ -2,19 +2,20 @@ package application;
 
 import application.Game.SpawnManagement;
 import javafx.application.Platform;
+import entities.Player;
 
 public class Gameloop extends Thread {
 
 	private boolean run = true, pause = false;
-	private Timer globalT, paintT; //the two different timer-Objects
-	private long wait = 0, framelength = 20000000; //wait is temp-variable , framelenght determines length of one frame
+	private Timer globalT, paintT; // the two different timer-Objects
+	private long wait = 0, framelength = 20000000; // wait is temp-variable , framelenght determines length of one frame
 	private int lastspawn = 120;
-	
+
 	SpawnManagement spmanager;
-	
+
 	/**
-	 * The Gamecycle, operating in a different Thread then the JavaFX Main Thread. Calls Renderer on JavaFX Main
-	 * Thread to invoke the painting of Ingame-Objects
+	 * The Gamecycle, operating in a different Thread then the JavaFX Main Thread.
+	 * Calls Renderer on JavaFX Main Thread to invoke the painting of Ingame-Objects
 	 */
 	public Gameloop() {
 		globalT = new Timer();
@@ -28,34 +29,34 @@ public class Gameloop extends Thread {
 
 		while (run) {
 
-			if (pause) {
+			if (pause)
 				continue;
-			}
-			
+
 			globalT.newltime();
-			long dtime = globalT.newdtime();		
+			long dtime = globalT.newdtime();
 
 			// move Entities, move nanobots
 			Main.game.move(dtime);
-			
-			
-			if(lastspawn >= 120) { //every 120 frames, a new Span is initialized
+
+			if (lastspawn >= 120) { // every 120 frames, a new Span is initialized
 				spmanager.spawn();
 				lastspawn = 0;
 			}
-			
+
 			// Collision detection
 			Main.game.collide();
 
 			// Paint changes on Canvas -> Only run this once every frame
-			if (System.nanoTime() >= paintT.time + wait) { // if wait + time exceeds nanoTime, the next Frame can be painted
+			if (System.nanoTime() >= paintT.time + wait) { // if wait + time exceeds nanoTime, the next Frame can be
+															// painted
 				paintT.newltime();
 
-				Platform.runLater(() -> Main.game.renderer.render());
+				Platform.runLater(() -> Main.game.MainThreadFunctions());
 
-				// calculates wait time, saves the timestamp of the time of calculation in 'time'
+				// calculates wait time, saves the timestamp of the time of calculation in
+				// 'time'
 				wait = framelength - (paintT.newtime() - paintT.ltime);
-				
+
 				lastspawn++;
 			}
 		}

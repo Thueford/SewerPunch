@@ -1,15 +1,18 @@
 package application;
 
+import entities.Player;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 
 public class Renderer {
 
 	public GraphicsContext ctx = null;
 
-	public static final Point
-		OFFSET_TL = new Point(1, 0.5),
+	public static final Point 
+		OFFSET_TL = new Point(1, 0.5), 
 		OFFSET_BR = new Point(1, 0.5),
-		SPRITE_SIZE = new Point(60, 72),
+		SPRITE_SIZE = new Point(60, 72), 
 		GRID_SIZE = new Point(10, 10);
 
 	public Renderer() {
@@ -21,10 +24,12 @@ public class Renderer {
 	}
 
 	public void render() {
+		ctx.clearRect(0, 0, Main.WIDTH, Main.HEIGHT);
 		for (Entity e : Main.game.getEntities()) {
-			if (e.visible)
+			if (e.visible) {
+				e.onAnimate();
 				ctx.drawImage(e.img, xCoordToPixel(e.x), yCoordToPixel(e.y));
-
+			}
 		}
 	}
 
