@@ -24,12 +24,14 @@ public class sound {
 	}
 	public void setVolume(int volume) {
 		this.volume = volume;
+		audioClip.setVolume(this.volume);
 	}
 	public double getSpeed() {
 		return speed;
 	}
 	public void setSpeed(int speed) {
 		this.speed = speed;
+		audioClip.setRate(this.speed);
 	}
 	public String getSrc() {
 		return src;
@@ -39,13 +41,14 @@ public class sound {
 	}
 	public void setPriority(int priority) {
 		this.priority = priority;
+		audioClip.setPriority(this.priority);
 	}
 
 	/**s
 	 * tartet das spielen des sounds
 	 */
 	public void startSound() {
-		audioClip.play(this.volume);
+		audioClip.play();
 	}
 	/**
 	 * stoppt das spielen des sounds
