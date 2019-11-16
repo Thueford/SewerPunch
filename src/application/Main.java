@@ -2,6 +2,7 @@ package application;
 
 import darstellung.MainMenu;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -21,7 +22,7 @@ public class Main extends Application {
 			final BorderPane root = new MainMenu();
 			final Scene scene = new Scene(root, WIDTH, HEIGHT);
 			primaryStage.setScene(scene);
-			
+			primaryStage.setOnCloseRequest(e -> {Platform.exit(); game.loop.terminate();} );
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
