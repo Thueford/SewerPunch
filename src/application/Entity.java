@@ -7,7 +7,7 @@ public abstract class Entity extends Rectangle {
 
 	// game vars
 	public boolean visible = true, dead = false;
-	public Point speed;
+	public Vector speed;
 	public int HP;
 
 	// assets
@@ -28,20 +28,20 @@ public abstract class Entity extends Rectangle {
 
 	public abstract int getInitHP();
 
-	public abstract Point getInitSpeed();
+	public abstract Vector getInitSpeed();
 
-	public abstract Point getInitSize();
+	public abstract Vector getInitSize();
 
 	/**
 	 * Called once on game load Load all relevat assets
 	 */
 	public abstract void LoadAssets();
 
-	public Point getSpeed() {
+	public Vector getSpeed() {
 		return speed;
 	}
 
-	public void setSpeed(Point speed) {
+	public void setSpeed(Vector speed) {
 		this.speed = speed;
 	}
 

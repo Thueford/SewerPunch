@@ -9,11 +9,11 @@ public class Renderer {
 
 	public GraphicsContext ctx = null;
 
-	public static final Point 
-		OFFSET_TL = new Point(1, 0.5), 
-		OFFSET_BR = new Point(1, 0.5),
-		SPRITE_SIZE = new Point(60, 72), 
-		GRID_SIZE = new Point(10, 10);
+	public static final Vector 
+		OFFSET_TL = new Vector(1, 0.5), 
+		OFFSET_BR = new Vector(1, 0.5),
+		SPRITE_SIZE = new Vector(60, 72), 
+		GRID_SIZE = new Vector(10, 10);
 
 	public Renderer() {
 
@@ -33,8 +33,8 @@ public class Renderer {
 		}
 	}
 
-	public static Point toPixelCoord(Point gridCoord) {
-		return new Point(xCoordToPixel(gridCoord.x), yCoordToPixel(gridCoord.y));
+	public static Vector toPixelCoord(Vector gridCoord) {
+		return new Vector(xCoordToPixel(gridCoord.x), yCoordToPixel(gridCoord.y));
 	}
 
 	public static double xCoordToPixel(double x) {

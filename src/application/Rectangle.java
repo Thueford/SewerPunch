@@ -5,7 +5,7 @@ public class Rectangle {
 	public double x, y, width, height;
 
 	// Konstruktor
-	public Rectangle(Point p, Point size) {
+	public Rectangle(Vector p, Vector size) {
 		this.x = p.x;
 		this.y = p.y;
 		this.width = size.x;
@@ -20,10 +20,10 @@ public class Rectangle {
 	}
 
 	// rückgabe der eckpunkte
-	public Point[] getEcken() {
-		Point[] points = new Point[2];
-		points[0] = new Point(x, y);
-		points[1] = new Point(x + width, y + height);
+	public Vector[] getEcken() {
+		Vector[] points = new Vector[2];
+		points[0] = new Vector(x, y);
+		points[1] = new Vector(x + width, y + height);
 		return points;
 	}
 
@@ -35,13 +35,13 @@ public class Rectangle {
 		return this.y;
 	}
 
-	public void move(Point p) {
+	public void move(Vector p) {
 		move(p.x, p.y);
 	}
 
 	// versetzen des startpunktes
 	public void move(double x, double y) {
-		Point p1 = new Point(x, y);
+		Vector p1 = new Vector(x, y);
 	}
 
 	// gibt eigenschaften des Rechteckes als String aus
