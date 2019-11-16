@@ -21,15 +21,19 @@ public class Renderer {
 	
 	public void render() {
 		for(Entity e : Main.game.entities) {
-			ctx.drawImage(e.img, e.x, e.y);
+			ctx.drawImage(e.img, xCoordToPixel(e.x), yCoordToPixel(e.y));
 		}
 	}
 	
 	public static Point toPixelCoord(Point gridCoord) {
-		return new Point();
+		return new Point(xCoordToPixel(gridCoord.x), yCoordToPixel(gridCoord.y));
 	}
 	
 	public static double xCoordToPixel(double x) {
 		return Main.WIDTH * (x + OFFSET.x) / GRID_SIZE.x;
+	}
+	
+	public static double yCoordToPixel(double y) {
+		return Main.HEIGHT * (y + OFFSET.y) / GRID_SIZE.y;
 	}
 }
