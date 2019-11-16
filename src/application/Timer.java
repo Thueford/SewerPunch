@@ -2,7 +2,7 @@ package application;
 
 public class Timer {
 	
-	private long starttime; //of Timer.class
+	public long starttime; //of Timer.class
 	public long ltime; //time from when was last measured
 	public long dtime; //delta-time - time spent between now and last call
 	public long time;

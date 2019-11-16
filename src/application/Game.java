@@ -18,6 +18,8 @@ public class Game {
 	public final Renderer renderer;
 	public final Loader loader;
 	public final List<Entity> entities = new ArrayList<Entity>();
+	public final int resource = 50;
+	public Gameloop loop;
 	
 	public Game() {
 		renderer = new Renderer();
@@ -34,8 +36,11 @@ public class Game {
 		root.getChildren().add(canvas);
 		
 		renderer.setContext(ctx);
+		loop = new Gameloop();
 		
-		Main.primaryStage.setScene(new Scene(root,Main.HEIGHT, Main.WIDTH));
+		Scene scene = new Scene(root,Main.HEIGHT, Main.WIDTH);
+		new Keyboard(scene);
+		Main.primaryStage.setScene(scene);
 		Main.primaryStage.show();
 		
 		renderer.render();
