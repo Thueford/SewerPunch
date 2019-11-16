@@ -1,11 +1,6 @@
 package application;
 
 public class Spawner {
-	//breite des spielfeldes
-		private static final int breite = 600;
-		//höhe einer reihe
-		private static final int hoeheFeld = 60;
-		
 		//wahrscheinlichkeiten für spawn in feldern
 		private double[] arr = new double[10];
 		
@@ -44,8 +39,9 @@ public class Spawner {
 		}
 		
 		//erzeugt instanzen der klasse enemy
+		//feld ist die x Koordinate
 		public void spawn(int feld) {
-			Enemy e = new Enemy("res/img/enemy.png", 1, 1, 1, 1);
+			Enemy e = new Enemy("res/img/enemy.png", feld, 1, 1, 1);
 		}
 		
 		public void resetSpawnStuff() {
