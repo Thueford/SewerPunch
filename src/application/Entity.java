@@ -6,8 +6,7 @@ import javafx.scene.image.Image;
 public class Entity extends Rectangle {
 	
 	public final String src;
-	
-	private final Image img;
+	public final Image img;
 	
 	public Entity(String src, int x, int y, int width, int height) {
 		super(x, y, width, height);

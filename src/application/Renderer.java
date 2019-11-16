@@ -6,7 +6,10 @@ public class Renderer {
 	
 	public GraphicsContext ctx = null;
 	
-	private int OX = 1, OY = 0, X = 60, Y = 72, WIDTH = 10, HEIGHT = 10;
+	public static final Point 
+		OFFSET = new Point(1,0),
+		SPRITE_SIZE = new Point(60, 72),
+		GRID_SIZE = new Point(10, 10);
 	
 	public Renderer() {
 		
@@ -17,6 +20,8 @@ public class Renderer {
 	}
 	
 	public void render() {
-		
+		for(Entity e : Main.game.entities) {
+			
+		}
 	}
 }

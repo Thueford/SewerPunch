@@ -1,5 +1,6 @@
 package darstellung;
 
+import application.Main;
 import javafx.application.Platform;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
@@ -14,8 +15,6 @@ public class MainMenu extends BorderPane {
 	 * BorderPane, fertig gestylt als Hauptmenu
 	 */
 	public MainMenu() {
-		
-		
 		this.setBottom(bottomButtons());
 		this.setCenter(ButtonList());
 		this.getStylesheets().add(getClass().getResource("mainmenu.css").toExternalForm());
@@ -30,7 +29,8 @@ public class MainMenu extends BorderPane {
 		Button start = new Button("Start");
 		Button verlassen = new Button("Ende");
 		
-		start.setOnAction(e -> new application.Game().start());
+		Main.game = new application.Game();
+		start.setOnAction(e -> Main.game.start());
 		verlassen.setOnAction(e -> Platform.exit());
 		
 		liste.getChildren().addAll(start,verlassen);
