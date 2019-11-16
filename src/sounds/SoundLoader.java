@@ -20,6 +20,7 @@ public class SoundLoader {
 		if (audioClip == null) {
 			audioClip = new Sound(src);
 			assets.put(src, audioClip);
+			
 		}
 		return audioClip;
 	}

@@ -41,15 +41,17 @@ public class Spawner {
 		}
 	}
 
-	// erzeugt instanzen der klasse enemy
-	// feld ist die x Koordinate
+	
+	//erzeugt instanzen der klasse Entity/Haribo
+	//feld ist die x Koordinate
 	public void spawn(int feld) {
-		Haribo e = new Haribo(1, 1);
+		Main.game.entities.add(new entities.Haribo(feld, 1));
+		//Main.game.entities.get(Main.game.entities.size()-1).sndSpawn.startSound();
 	}
-
+	
 	public void resetSpawnStuff() {
-		for (int i = 0; i < 10; i++) {
-			arr[i] = i;
+		for(int i = 0; i<10; i++) {
+			arr[i]=i;
 		}
 	}
 }

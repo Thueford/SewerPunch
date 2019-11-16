@@ -56,7 +56,7 @@ public abstract class Entity extends Rectangle {
 	}
 
 	public abstract void move(long dtime);
-
+	
 	public abstract void attack();
 
 	public abstract void onDie();
