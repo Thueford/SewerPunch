@@ -51,7 +51,7 @@ public class Haribo extends application.Entity{
 	@Override
 	public void move() {
 		// TODO Auto-generated method stub
-		
+		this.move(this.x + speed.x, this.y + speed.y);
 	}
 
 	@Override

@@ -27,6 +27,13 @@ public class Rectangle {
 		return points;
 	}
 	
+	public double getX() {
+		return this.x;
+	}
+	public double getY() {
+		return this.y;
+	}
+	
 	//versetzen des startpunktes
 	public void move(Point p) {
 		move(p.x, p.y);
