@@ -41,7 +41,7 @@ public class Spawner {
 		//erzeugt instanzen der klasse enemy
 		//feld ist die x Koordinate
 		public void spawn(int feld) {
-			
+			Entity e = new entities.Haribo(feld, 1);
 		}
 		
 		public void resetSpawnStuff() {
