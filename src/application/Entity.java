@@ -1,9 +1,9 @@
 package application;
 
 import darstellung.Loader;
-import Sounds.Sound;
-import Sounds.SoundLoader;
 import javafx.scene.image.Image;
+import sounds.Sound;
+import sounds.SoundLoader;
 
 public class Entity extends Rectangle {
 	
