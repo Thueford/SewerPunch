@@ -32,8 +32,8 @@ public class MainMenu extends BorderPane {
 		Button start = new Button("Start");
 		Button verlassen = new Button("Ende");
 
-		Main.game = new application.Game();
-		start.setOnAction(e -> Main.game.start());
+		
+		start.setOnAction(e -> new Story());
 		verlassen.setOnAction(e -> Platform.exit());
 
 		liste.getChildren().addAll(start, verlassen);

@@ -99,15 +99,11 @@ public class Keyboard {
 
 				 
 				// System.out.println(point[1]);
-				Point p = new Point(point[0], point[1]);
+				Vector p = new Vector(point[0], point[1]);
 				if (point[0] != 99 && point[1] != 99) {
 					Fist f = new Fist(point[0], point[1]);
 					Main.game.addEntity(f);
 				}
-				//System.out.println(p.x);
-				//System.out.println(p.y);
-				
-
 			}
 		});
 	}
