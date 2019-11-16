@@ -1,5 +1,6 @@
 package application;
 
+import darstellung.Loader;
 import javafx.scene.image.Image;
 
 public class Entity {
