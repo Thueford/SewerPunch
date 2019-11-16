@@ -2,7 +2,7 @@ package application;
 
 import javafx.scene.image.Image;
 
-public class Entity {
+public class Entity extends Rectangle {
 	
 	public int x, y, width, height;
 	
