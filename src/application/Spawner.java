@@ -39,7 +39,7 @@ public class Spawner {
 	//erzeugt instanzen der klasse Entity/Haribo
 	//feld ist die x Koordinate
 	public void spawn(int feld) {
-		Main.game.entities.add(new entities.Haribo(feld, 1));
+		Main.game.addEntity(new entities.Haribo(feld, 1));
 		//Main.game.entities.get(Main.game.entities.size()-1).sndSpawn.startSound();
 	}
 	
