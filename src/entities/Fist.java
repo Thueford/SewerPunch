@@ -8,11 +8,11 @@ import sounds.SoundLoader;
 
 public class Fist extends application.Entity {
 
-	private static final String src_img = "./res/haribo.jpeg";
+	private static final String src_img = "../res/haribo.jpeg";
 	private static final String src_dieanim = "";
 
-	private static final String[] src_sndSpawn = { "./res/tone.wav" };
-	private static final String[] src_sndDie = { "./res/tone.wav" };
+	private static final String[] src_sndSpawn = { "../res/tone.wav" };
+	private static final String[] src_sndDie = { "../res/tone.wav" };
 
 	private static final int HP_init = 100;
 	private static final Point speed_init = new Point(4, 0);
@@ -20,6 +20,7 @@ public class Fist extends application.Entity {
 
 	public Fist(int x, int y) {
 		super(x, y);
+		decrease_bots(x+1);
 	}
 
 	@Override
@@ -46,12 +47,21 @@ public class Fist extends application.Entity {
 		// TODO Auto-generated method stub
 		return size_init;
 	}
+	
+	@Override
+	public void move(long dtime) {	
+		super.move(dtime);
+		
+	}
 
 	@Override
 	public void onCollide(Entity e) {
 		// TODO Auto-generated method stub
 		if (e instanceof Player)
 			e.reduceHP(1);
+	}
+	public void decrease_bots(int anz) {
+		Main.game.bots -= anz;
 	}
 
 	@Override

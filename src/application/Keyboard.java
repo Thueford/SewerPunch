@@ -1,5 +1,6 @@
 package application;
 
+import entities.Fist;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.Scene;
@@ -44,28 +45,28 @@ public class Keyboard {
 				if (checked == false) {
 					switch (event.getCode()) {
 					case CIRCUMFLEX:
-						point[0] = -1;
+						point[0] = 9;
 						point[1] = 0;
 						checked = true;
 						System.out.println("cr1");
 						break;
 						
 					case TAB:
-						point[0] = -1;
+						point[0] = 9;
 						point[1] = 1;
 						checked = true;
 						System.out.println("cr2");
 						break;
 						
 					case CAPS:
-						point[0] = -1;
+						point[0] = 9;
 						point[1] = 2;
 						checked = true;
 						System.out.println("cr3");
 						break;
 						
 					case SHIFT:
-						point[0] = -1;
+						point[0] = 9;
 						point[1] = 3;
 						checked = true;
 						System.out.println("cr4");
@@ -99,8 +100,12 @@ public class Keyboard {
 				 
 				// System.out.println(point[1]);
 				Point p = new Point(point[0], point[1]);
-				System.out.println(p.x);
-				System.out.println(p.y);
+				if (point[0] != 99 && point[1] != 99) {
+					Fist f = new Fist(point[0], point[1]);
+					Main.game.addEntity(f);
+				}
+				//System.out.println(p.x);
+				//System.out.println(p.y);
 				
 
 			}

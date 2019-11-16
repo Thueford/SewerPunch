@@ -23,6 +23,7 @@ public class Game {
 	public final int resource = 50;
 	public Gameloop loop;
 	public Random ran = new Random();
+	public double bots = 50;
 
 	/**
 	 * Create renderer and loader instances
