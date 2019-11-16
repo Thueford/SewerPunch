@@ -20,4 +20,9 @@ public class Entity {
 		this.src = src;
 		this.img = Loader.LoadImage(src);
 	}
+	
+	//Entitäten töten
+	public void die() {
+		
+	}
 }
