@@ -17,14 +17,25 @@ public class Point {
 	}
 	
 	//versetzt den Punkt an die gegebenen Koordinaten
-	public void set(double newx, double newy) {
+	public Point set(double newx, double newy) {
 		this.x = newx;
 		this.y = newy;
+		return this;
 	}
+	public Point set(Point p) {
+		set(p.x, p.y);
+		return this;
+	}
+	
 	//verschiebt den Punkt um die gegebenen werte 
-	public void add(double addx, double addy) {
+	public Point add(double addx, double addy) {
 		this.x+=addx;
 		this.y+=addy;
+		return this;
+	}
+
+	public Point add(Point p) {
+		return add(p.x, p.y);
 	}
 	
 	//Rückgabe des Punktes als String
