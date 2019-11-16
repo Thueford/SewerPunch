@@ -1,7 +1,6 @@
 package application;
 
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 
 public class Renderer {
 
@@ -22,7 +21,7 @@ public class Renderer {
 	}
 
 	public void render() {
-		for (Entity e : Main.game.entities) {
+		for (Entity e : Main.game.getEntities()) {
 			if (e.visible)
 				ctx.drawImage(e.img, xCoordToPixel(e.x), yCoordToPixel(e.y));
 

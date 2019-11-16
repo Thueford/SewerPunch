@@ -8,7 +8,7 @@ public class Gameloop extends Thread {
 	private boolean run = true, pause = false;
 	private Timer globalT, paintT; //the two different timer-Objects
 	private long wait = 0, framelength = 20000000; //wait is temp-variable , framelenght determines length of one frame
-	private int lastspawn = 0;
+	private int lastspawn = 120;
 	
 	SpawnManagement spmanager;
 	
@@ -31,14 +31,13 @@ public class Gameloop extends Thread {
 			if (pause) {
 				continue;
 			}
-
+			
 			globalT.newltime();
 			long dtime = globalT.newdtime();		
 
-			// System.out.println(dtime);
-
 			// move Entities, move nanobots
 			Main.game.move(dtime);
+			
 			
 			if(lastspawn >= 120) { //every 120 frames, a new Span is initialized
 				spmanager.spawn();
@@ -48,16 +47,13 @@ public class Gameloop extends Thread {
 			// Collision detection
 			Main.game.collide();
 
-			// check for Collisions
-
 			// Paint changes on Canvas -> Only run this once every frame
 			if (System.nanoTime() >= paintT.time + wait) { // if wait + time exceeds nanoTime, the next Frame can be painted
 				paintT.newltime();
 
 				Platform.runLater(() -> Main.game.renderer.render());
 
-				// calculates wait time, saves the timestamp of the time of calculation in
-				// 'time'
+				// calculates wait time, saves the timestamp of the time of calculation in 'time'
 				wait = framelength - (paintT.newtime() - paintT.ltime);
 				
 				lastspawn++;
