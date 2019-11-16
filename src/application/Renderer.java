@@ -21,7 +21,15 @@ public class Renderer {
 	
 	public void render() {
 		for(Entity e : Main.game.entities) {
-			
+			ctx.drawImage(e.img, e.x, e.y);
 		}
+	}
+	
+	public static Point toPixelCoord(Point gridCoord) {
+		return new Point();
+	}
+	
+	public static int xCoordToPixel(int x) {
+		return 0; //(x + OFFSET.x)
 	}
 }
