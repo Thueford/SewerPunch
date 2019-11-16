@@ -21,7 +21,8 @@ public class Renderer {
 	
 	public void render() {
 		for(Entity e : Main.game.entities) {
-			ctx.drawImage(e.img, xCoordToPixel(e.x), yCoordToPixel(e.y));
+			if(e.visible)
+				ctx.drawImage(e.img, xCoordToPixel(e.x), yCoordToPixel(e.y));
 		}
 	}
 	

@@ -8,6 +8,7 @@ import sounds.SoundLoader;
 public abstract class Entity extends Rectangle {
 	
 	// game vars
+	public boolean visible = true;
 	public Point speed;
 	public int HP;
 
@@ -21,10 +22,13 @@ public abstract class Entity extends Rectangle {
 		this.x = x;
 		this.y = y;
 		
+		Main.game.entities.add(this);
+		
 		this.width = width;
 		this.height = height;
 		this.speed = getInitSpeed();
 		this.HP = getInitHP();
+		
 		LoadAssets();
 	}
 
