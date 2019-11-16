@@ -10,7 +10,7 @@ public class Renderer {
 	public GraphicsContext ctx = null;
 	
 	public static final Point 
-		OFFSET = new Point(1,0),
+		OFFSET = new Point(10,0),
 		SPRITE_SIZE = new Point(60, 72),
 		GRID_SIZE = new Point(10, 10).add(OFFSET);
 	
@@ -23,13 +23,10 @@ public class Renderer {
 	}
 	
 	public void render() {
+		ctx.clearRect(0, 0, Main.WIDTH, Main.HEIGHT);
 		for(Entity e : Main.game.entities) {
 			if(e.visible)
 				ctx.drawImage(e.img, xCoordToPixel(e.x), yCoordToPixel(e.y));
-				//Image img = ((Player)e).animation.getSprite().getScaledInstance(-1, -1, Image);
-				//ctx.drawImage(, 2, 2, null);
-				Image image = SwingFXUtils.toFXImage(((Player)e).animation.getSprite(), null);
-				ctx.drawImage(image, 2, 2);
 
 		}
 	}

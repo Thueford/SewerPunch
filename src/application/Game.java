@@ -46,7 +46,7 @@ public class Game {
 		loop.start();
 		
 		// test
-		//new Player(1,1);
+		new Player(1,1);
 		//renderer.render();
 		//entities.get(0).sndSpawn.startSound();
 	}

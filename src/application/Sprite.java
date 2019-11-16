@@ -16,7 +16,7 @@ public class Sprite {
         BufferedImage sprite = null;
 
         try {
-            sprite = ImageIO.read(new File("res/" + file + ".png"));
+            sprite = ImageIO.read(new File("../res/" + file + ".png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -24,10 +24,10 @@ public class Sprite {
         return sprite;
     }
 
-    public static BufferedImage getSprite(int xGrid, int yGrid) {
+    public static BufferedImage getSprite(int xGrid, int yGrid, String file) {
 
         if (spriteSheet == null) {
-            spriteSheet = loadSprite("AnimationSpriteSheet");
+            spriteSheet = loadSprite(file);
         }
 
         return spriteSheet.getSubimage(xGrid * TILE_SIZE, yGrid * TILE_SIZE, TILE_SIZE, TILE_SIZE);

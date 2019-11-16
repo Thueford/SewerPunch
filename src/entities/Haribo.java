@@ -49,7 +49,7 @@ public class Haribo extends application.Entity{
 	}
 
 	@Override
-	public void move() {
+	public void move(long dtime) {
 		// TODO Auto-generated method stub
 		
 	}

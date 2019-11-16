@@ -31,8 +31,9 @@ public class Gameloop extends Thread{
 			
 			//move Entities, move nanobots
 			for(Entity obj : Main.game.entities) {
-				//obj.move(dtime/);
-				((Player) obj).animation.update();
+				obj.move(dtime);
+				obj.onAnimate();
+				
 			}
 			
 			//check for Collisions

@@ -53,9 +53,10 @@ public abstract class Entity extends Rectangle {
 	public void die() {
 		onDie();
 	}
-
 	
-	public abstract void move();
+	public void onAnimate() {};
+
+	public abstract void move(long dtime);
 	public abstract void attack();
 	
 	public abstract void onDie();

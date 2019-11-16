@@ -6,6 +6,7 @@ import application.Animation;
 import application.Point;
 import application.Sprite;
 import darstellung.Loader;
+import javafx.embed.swing.SwingFXUtils;
 import sounds.SoundLoader;
 
 public class Player extends application.Entity {
@@ -19,29 +20,40 @@ public class Player extends application.Entity {
 	private static final int HP_init = 1;
 	private static final Point size_init = new Point(1,1);
 	
+	private static String src_anim = "AnimationSpriteSheet";
+	
 	// Images for each animation
-	private BufferedImage[] walkingLeft = {Sprite.getSprite(0, 1), Sprite.getSprite(2, 1)}; // Gets the upper left images of my sprite sheet
-	private BufferedImage[] walkingRight = {Sprite.getSprite(0, 2), Sprite.getSprite(2, 2)};
-	private BufferedImage[] standing = {Sprite.getSprite(1, 0)};
-
+	
+	private static BufferedImage[] anim1 = {
+			Sprite.getSprite(0, 1, src_anim), 
+			Sprite.getSprite(2, 1, src_anim)}; // Gets the upper left images of my sprite sheet
+	//private static BufferedImage[] walkingRight = {Sprite.getSprite(0, 2), Sprite.getSprite(2, 2)};
+	private static BufferedImage[] standartanim = {Sprite.getSprite(1, 0, src_anim)};
+	
 	// These are animation states
-	private Animation walkLeft = new Animation(walkingLeft, 10);
-	private Animation walkRight = new Animation(walkingRight, 10);
-	private Animation standing1 = new Animation(standing, 10);
+	private static Animation anim = new Animation(anim1, 12);
+	//private static Animation walkRight = new Animation(walkingRight, 10);
+	private static Animation standart_anim = new Animation(standartanim, 10);
+	
+	@Override
+	public void onAnimate() {
+		// TODO Auto-generated method stub
+		animation.update();
+		img = SwingFXUtils.toFXImage(animation.getSprite(), null);
+	}
 
 	// This is the actual animation
-	public Animation animation = standing1;
+	public Animation animation = standart_anim;
 	
-	public Player(String src, int x, int y, int width, int height) {
+	public Player(int x, int y) {
 		super(x, y);
-		
 	}
 
 	@Override
 	public void LoadAssets() {
-		this.img = Loader.LoadImage(src_img);
-		this.sndSpawn = SoundLoader.LoadSound(src_sndSpawn);
-		this.sndDie = SoundLoader.LoadSound(src_sndDie);
+		//this.img = Loader.LoadImage(src_img);
+		//this.sndSpawn = SoundLoader.LoadSound(src_sndSpawn);
+		//this.sndDie = SoundLoader.LoadSound(src_sndDie);
 	}
 	
 	@Override
@@ -63,7 +75,14 @@ public class Player extends application.Entity {
 	}
 
 	@Override
-	public void move() {
+	public void move(long dtime) {
+		//while (anim_counter<100) {
+		animation = anim;
+		animation.start();
+		//System.out.println(walkLeft);
+		//}
+		
+	    
 		// TODO Auto-generated method stub
 		
 	}
