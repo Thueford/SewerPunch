@@ -41,7 +41,7 @@ public class Spawner {
 		//erzeugt instanzen der klasse enemy
 		//feld ist die x Koordinate
 		public void spawn(int feld) {
-			Enemy e = new Enemy("res/img/enemy.png", feld, 1, 1, 1);
+			
 		}
 		
 		public void resetSpawnStuff() {

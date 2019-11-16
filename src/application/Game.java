@@ -22,6 +22,7 @@ public class Game {
 	public Game() {
 		renderer = new Renderer();
 		loader = new Loader(getClass().getResource("img"));
+		entities.add(new entities.Haribo(1,1));
 	}
 	
 	public void start() {
@@ -36,6 +37,8 @@ public class Game {
 		
 		Main.primaryStage.setScene(new Scene(root,Main.HEIGHT, Main.WIDTH));
 		Main.primaryStage.show();
+		
+		renderer.render();
 	}
 	
 	public void move() {

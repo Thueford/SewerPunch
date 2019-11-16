@@ -1,6 +1,8 @@
 package darstellung;
 
 import java.net.URL;
+import java.io.File;
+import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,7 +36,7 @@ public class Loader {
 	public static Image LoadImage(String src) {
 		Image img = assets.get(src);
 		if(img == null) {
-			img = new Image(src);
+			img = new Image(new File(src).toURI().toString());
 			assets.put(src, img);
 		}
 		return img;

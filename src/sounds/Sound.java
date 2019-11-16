@@ -12,11 +12,12 @@ public class Sound {
 	private AudioClip audioClip;
 	
 	public Sound(String src) {
-		this.setVolume(0.3);
+		
 		this.src = src;
 		audioClip = new AudioClip(new File(src).toURI().toString());
-		audioClip.setCycleCount(100);
-		audioClip.setPriority(priority);
+		audioClip.setCycleCount(1);
+		this.setPriority(0);
+		this.setVolume(0.3);
 	}
 	
 	public double getVolume() {
