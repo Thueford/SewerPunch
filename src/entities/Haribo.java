@@ -3,7 +3,6 @@ package entities;
  * Die Klasse der mutierten Haribo-Bären, unserem Tier mit 'h' und dem einfachsten Gegner im Spiel
  */
 
-import java.util.ArrayList;
 import java.util.Random;
 
 import application.Point;
