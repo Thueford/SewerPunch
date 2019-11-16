@@ -1,5 +1,8 @@
 package application;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import darstellung.Loader;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -14,11 +17,11 @@ public class Game {
 	
 	public final Renderer renderer;
 	public final Loader loader;
+	public final List<Entity> entities = new ArrayList<Entity>();
 	
 	public Game() {
 		renderer = new Renderer();
 		loader = new Loader(getClass().getResource("img"));
-		
 	}
 	
 	public void start() {
@@ -33,7 +36,13 @@ public class Game {
 		
 		Main.primaryStage.setScene(new Scene(root,Main.HEIGHT, Main.WIDTH));
 		Main.primaryStage.show();
+	}
+	
+	public void move() {
 		
 	}
-
+	
+	public void collide() {
+		
+	}
 }

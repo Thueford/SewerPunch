@@ -1,7 +1,8 @@
 package Sounds;
 
 import javafx.scene.media.*;
-import java.net.URL;
+
+import java.io.File;
 
 public class sound {
 	private double volume;			//default: 0.3      possible: 0.0 to 1.0		0- mute, 1-extremely loud
@@ -13,9 +14,8 @@ public class sound {
 	public sound(String src, double volume) {
 		this.volume = volume;
 		this.src = src;
-		final URL resource = getClass().getResource(src);
-		audioClip = new AudioClip(resource.toExternalForm());
-		audioClip.setCycleCount(1);
+		audioClip = new AudioClip(new File(src).toURI().toString());
+		audioClip.setCycleCount(100);
 		audioClip.setPriority(priority);
 	}
 	
@@ -41,11 +41,15 @@ public class sound {
 		this.priority = priority;
 	}
 
-	//startet das spielen des sounds
+	/**s
+	 * tartet das spielen des sounds
+	 */
 	public void startSound() {
 		audioClip.play(this.volume);
 	}
-	//stoppt das spielen des sounds
+	/**
+	 * stoppt das spielen des sounds
+	 */
 	public void stopSound() {
 		audioClip.stop();
 	}

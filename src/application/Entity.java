@@ -3,15 +3,14 @@ package application;
 import darstellung.Loader;
 import javafx.scene.image.Image;
 
-public class Entity {
-	
-	public int x, y, width, height;
+public class Entity extends Rectangle {
 	
 	public final String src;
-	
-	private final Image img;
+	public final Image img;
 	
 	public Entity(String src, int x, int y, int width, int height) {
+		super(x, y, width, height);
+		
 		this.x = x;
 		this.y = y;
 		

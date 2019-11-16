@@ -2,76 +2,54 @@ package application;
 
 
 public class Point {
-	private double xCoord;
-	private double yCoord;
+	public double x;
+	public double y;
 	
 	//Konstruktor
-	public Point(double xCoord, double yCoord) {
-		this.xCoord = xCoord;
-		this.yCoord = yCoord;
+	public Point(double x, double y) {
+		this.x = x;
+		this.y = y;
 	}
 	
 	public Point() {
-		this.xCoord = 0;
-		this.yCoord = 0;
-	}
-	
-	//getter
-	public double getxCoord() {
-		return xCoord;
-	}
-
-	public double getyCoord() {
-		return yCoord;
+		this.x = 0;
+		this.y = 0;
 	}
 	
 	//versetzt den Punkt an die gegebenen Koordinaten
-	public void versetzen(double newx, double newy) {
-		this.xCoord = newx;
-		this.yCoord = newy;
+	public void set(double newx, double newy) {
+		this.x = newx;
+		this.y = newy;
 	}
 	//verschiebt den Punkt um die gegebenen werte 
-	public void verschieben(double addx, double addy) {
-		this.xCoord+=addx;
-		this.yCoord+=addy;
-	}
-	
-	//spiegelt den punkt an der x achse
-	public void spiegelnX() {
-		this.yCoord -= 2 * this.yCoord; 
-	}
-	//spiegelt den Punkt an der y achse
-	public void spiegelnY() {
-		this.xCoord -= 2 * this.xCoord; 
+	public void add(double addx, double addy) {
+		this.x+=addx;
+		this.y+=addy;
 	}
 	
 	//Rückgabe des Punktes als String
 	public String toString() {
-		return '(' + Double.toString(this.xCoord) + ';' + Double.toString(this.yCoord) + ')';
+		return "Point(" + this.x + ',' + this.y + ')';
 	}
 	
 	//bestimmt den abstand zum Koordinatenursprung
-	public static double abstandZumUrsprung(double x, double y) {
+	public double length() {
 		return Math.sqrt((x * x) + (y * y));
 	}
+
+	//Winkel für Polarkoordinaten
+	public double angle() {
+		return Math.asin(x / length());
+	}
 	
 	//Winkel für Polarkoordinaten
-	public static double Winkel(double x, double y) {
-		return Math.toDegrees(Math.asin(x / abstandZumUrsprung(x, y)));
+	public double angleDeg(double x, double y) {
+		return Math.toDegrees(angle());
 	}
 	
-	//bestimmt den abstand zum Koordinatenursprung
-	public static double abstandZumUrsprung(Point p) {
-		return Math.sqrt((p.xCoord * p.xCoord) + (p.yCoord * p.yCoord));
-	}
-	//Winkel für Polarkoordinaten
-	public static double Winkel(Point p) {
-		return Math.toDegrees(Math.asin(p.xCoord / abstandZumUrsprung(p.xCoord, p.yCoord)));
-	}
 	//überprüft ob sich 2 punkte entsprechen
-	public static boolean equals(Point p1, Point p2) {
-		return ((p1.xCoord == p2.xCoord) && (p1.yCoord == p2.yCoord));
+	public boolean equals(Point p) {
+		return x == p.x && y == p.y;
 	}
-	
 }
 		
