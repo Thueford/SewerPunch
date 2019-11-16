@@ -43,7 +43,7 @@ public class Spawner {
 		//erzeugt instanzen der klasse enemy
 		//feld ist die x Koordinate
 		public void spawn(int feld) {
-			Haribo e = new Haribo("res/img/enemy.png", feld, 1, 1, 1);
+			Haribo e = new Haribo(1, 1);
 		}
 		
 		public void resetSpawnStuff() {

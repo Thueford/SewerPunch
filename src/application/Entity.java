@@ -12,7 +12,7 @@ public abstract class Entity extends Rectangle {
 	public int HP;
 
 	// assets
-	public final Image img;
+	public Image img;
 	public Sound sndSpawn, sndDie;
 
 	public Entity(int x, int y) {
@@ -26,9 +26,6 @@ public abstract class Entity extends Rectangle {
 		this.speed = getInitSpeed();
 		this.HP = getInitHP();
 		LoadAssets();
-		
-		this.img = Loader.LoadImage(src_img);
-		this.sndSpawn = SoundLoader.LoadSound(sndSpawn);
 	}
 
 	public abstract int getInitHP();
