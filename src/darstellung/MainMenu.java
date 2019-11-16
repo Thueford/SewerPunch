@@ -12,7 +12,7 @@ import javafx.scene.layout.VBox;
 public class MainMenu extends BorderPane {
 	
 	/**
-	 * BorderPane, fertig gestylt als Hauptmenu
+	 * A Borderpane, designed to be the MainMenu, linked to a stylesheet
 	 */
 	public MainMenu() {
 		this.setBottom(bottomButtons());
@@ -21,8 +21,8 @@ public class MainMenu extends BorderPane {
 		
 	}
 	/**
-	 * Gibt eine VBox mit allen benötigten Buttons fuer das Hauptmenu zurueck
-	 * @return
+	 * Returns an VBox Object with all the buttons needed for main menu functionality
+	 * @return VBox
 	 */
 	private VBox ButtonList() {
 		VBox liste = new VBox();
@@ -39,7 +39,8 @@ public class MainMenu extends BorderPane {
 	}
 	
 	/**
-	 * Gibt AGB + Impressum Button in einer HBox zurueck
+	 * Returns an HBox Object with two Buttons and a Region as Expander 
+	 * @return HBox
 	 */
 	private HBox bottomButtons() {
 		Button agb = new Button("AGB");
@@ -49,7 +50,7 @@ public class MainMenu extends BorderPane {
 		impressum.getStyleClass().add("bottomButton");
 		//impressum.setOnAction(e -> impressum());
 		
-		Region expander = new Region(); //soll die Buttons nach rechts und links schieben
+		Region expander = new Region(); //presses the button to the sides
 		HBox.setHgrow(expander, Priority.ALWAYS);
 		
 		HBox unten = new HBox();
