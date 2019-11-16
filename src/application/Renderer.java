@@ -7,8 +7,11 @@ public class Renderer {
 
 	public GraphicsContext ctx = null;
 
-	public static final Point OFFSET = new Point(1, 0), SPRITE_SIZE = new Point(60, 72),
-			GRID_SIZE = new Point(10, 10).add(OFFSET);
+	public static final Point
+		OFFSET_TL = new Point(1, 0.5),
+		OFFSET_BR = new Point(1, 0.5),
+		SPRITE_SIZE = new Point(60, 72),
+		GRID_SIZE = new Point(10, 10);
 
 	public Renderer() {
 
@@ -31,10 +34,10 @@ public class Renderer {
 	}
 
 	public static double xCoordToPixel(double x) {
-		return Main.WIDTH * (x + OFFSET.x) / GRID_SIZE.x;
+		return Main.WIDTH * (x + OFFSET_TL.x) / (GRID_SIZE.x - OFFSET_BR.x);
 	}
 
 	public static double yCoordToPixel(double y) {
-		return Main.HEIGHT * (y + OFFSET.y) / GRID_SIZE.y;
+		return Main.HEIGHT * (y + OFFSET_TL.y) / (GRID_SIZE.y - OFFSET_BR.y);
 	}
 }
