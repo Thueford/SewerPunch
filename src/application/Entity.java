@@ -6,9 +6,9 @@ import sounds.Sound;
 import sounds.SoundLoader;
 
 public abstract class Entity extends Rectangle {
-	
+
 	// game vars
-	public boolean visible = true;
+	public boolean visible = true, dead = false;
 	public Point speed;
 	public int HP;
 
@@ -21,26 +21,27 @@ public abstract class Entity extends Rectangle {
 
 		this.x = x;
 		this.y = y;
-		
-		Main.game.entities.add(this);
-		
+
 		this.width = width;
 		this.height = height;
 		this.speed = getInitSpeed();
 		this.HP = getInitHP();
-		
+
 		LoadAssets();
 	}
 
 	public abstract int getInitHP();
+
 	public abstract Point getInitSpeed();
+
 	public abstract Point getInitSize();
+
 	public abstract void LoadAssets();
-	
+
 	public Point getSpeed() {
 		return speed;
 	}
-	
+
 	public void setSpeed(Point speed) {
 		this.speed = speed;
 	}
@@ -49,15 +50,16 @@ public abstract class Entity extends Rectangle {
 		return this.HP <= 0;
 	}
 
-	//Entitäten töten
+	// Entitäten töten
 	public void die() {
 		onDie();
 	}
 
+	public abstract void move(long dtime);
 	
-	public abstract void move();
 	public abstract void attack();
-	
+
 	public abstract void onDie();
+
 	public abstract void onCollide();
 }

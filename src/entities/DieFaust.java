@@ -48,13 +48,7 @@ public class DieFaust extends application.Entity {
 		public Point getInitSize() {
 			// TODO Auto-generated method stub
 			return size_init;
-		}
-
-	@Override
-		public void move() {
-			// TODO Auto-generated method stub
-			this.move(this.x + speed.x, this.y + speed.y);
-		}
+	}
 
 	@Override
 		public void attack() {
@@ -73,5 +67,11 @@ public class DieFaust extends application.Entity {
 			// TODO Auto-generated method stub
 			
 		}
+
+	@Override
+	public void move(long dtime) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

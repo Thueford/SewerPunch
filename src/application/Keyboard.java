@@ -1,4 +1,7 @@
 package application;
+import java.awt.image.BufferedImage;
+
+
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.*;
@@ -27,9 +30,11 @@ public class Keyboard {
 	public Keyboard (Scene scene) {
 		//System.out.println(KeyCode.A.ordinal());
 		
+		
 		scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
 	            @Override
 	            public void handle(KeyEvent event) {
+	            		
 	            	System.out.println(event.getCode().ordinal());
 	            	boolean checked = false;
 	            	
@@ -43,6 +48,11 @@ public class Keyboard {
 		            		}
 		            	}
             		}
+	            	
+	            	switch (event.getCode()) {
+	            	case A: 
+	            		
+	            	}
 	            	
 	            	if (checked == false) {
 	            		switch (event.getCode().ordinal()) {
@@ -79,7 +89,7 @@ public class Keyboard {
 	            		} 
 	            		
 	            	}
-	            	
+	            	//*/
 	            	//System.out.println(point[0]);
 	            	//System.out.println(point[1]);
 	            	Point p = new Point(point[0], point[1]);

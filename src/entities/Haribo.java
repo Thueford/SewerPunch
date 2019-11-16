@@ -1,4 +1,5 @@
 package entities;
+
 /**
  * Die Klasse der mutierten Haribo-Bären, unserem Tier mit 'h' und dem einfachsten Gegner im Spiel
  */
@@ -10,6 +11,7 @@ import darstellung.Loader;
 import sounds.SoundLoader;
 
 public class Haribo extends application.Entity{
+	
 	private static final String src_img = "./res/Gegner_Feuer_V3.2.png";
 	private static final String src_dieanim = "";
 	
@@ -18,9 +20,8 @@ public class Haribo extends application.Entity{
 	
 	private static final Point speed_init = new Point(0, 2);
 	private static final int HP_init = 1;
-	private static final Point size_init = new Point(1,1);
-	
-	
+	private static final Point size_init = new Point(1, 1);
+
 	public Haribo(int x, int y) {
 		super(x, y);
 	}
@@ -52,7 +53,7 @@ public class Haribo extends application.Entity{
 	}
 
 	@Override
-	public void move() {
+	public void move(long dtime) {
 		// TODO Auto-generated method stub
 		this.move(this.x + speed.x, this.y + speed.y);
 	}
@@ -60,21 +61,17 @@ public class Haribo extends application.Entity{
 	@Override
 	public void attack() {
 		//macht nix, Haribos haben keine Attacken
-		
 	}
 
 	@Override
 	public void onDie() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void onCollide() {
 		// TODO Auto-generated method stub
-		
-	}
 
-	
-	
+	}
 }
