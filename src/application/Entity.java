@@ -46,30 +46,63 @@ public abstract class Entity extends Rectangle {
 		this.speed = speed;
 	}
 	
-	public void stopEntity() {
-		this.speed.x = 0;
-		this.speed.y = 0;
+	public void stopWalking() {
+		this.speed.set(0,0);
 	}
-	public void startEntity() {
-		this.speed.x = this.getInitSpeed().x;
-		this.speed.y = this.getInitSpeed().y;
+	
+	public void startWalking() {
+		this.speed.set(this.getInitSpeed());
 	}
 
 	public boolean isDead() {
 		return this.HP <= 0;
 	}
 
-	// Entitäten töten
-	public void die() {
-		onDie();
+	/**
+	 * move entity in current frame
+	 * @param dtime
+	 */
+	public void move(long dtime) {
+		move(speed.x * dtime, speed.y * dtime);
+	}
+	
+	/**
+	 * apply damage and check 4 death
+	 * @param damage
+	 */
+	public void reduceHP(int damage) {
+		HP -= damage;
+		if(damage <= 0) die();
 	}
 
-	public abstract void move(long dtime);
+	/**
+	 * kill entity
+	 */
+	public void die() {
+		dead = true;
+		onDie();
+	}
 	
-	public abstract void attack();
+	/**
+	 * Called when entity was moved
+	 */
+	public void onMove() {}
+	/**
+	 * Called when entity collided with another
+	 * @param e collided entity
+	 */
+	public void onCollide(Entity e) {}
+	/**
+	 * Called when collision ended
+	 */
+	public void onUncollide() {}
+	/**
+	 * triggers an attack
+	 */
+	public void attack() {}
+	/**
+	 * called when entity died
+	 */
+	public void onDie() {}
 
-	public abstract void onDie();
-
-	public abstract void onCollide();
-	public abstract void onUncollide();
 }

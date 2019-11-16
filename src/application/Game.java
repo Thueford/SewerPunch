@@ -2,6 +2,7 @@ package application;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import darstellung.Loader;
 import javafx.scene.Scene;
@@ -20,6 +21,7 @@ public class Game {
 	public final List<Entity> entities = new ArrayList<Entity>();
 	public final int resource = 50;
 	public Gameloop loop;
+	public Random ran = new Random();
 
 	/**
 	 * Create renderer and loader instances
@@ -105,5 +107,10 @@ public class Game {
 	public Entity addEntity(Entity e) {
 		entities.add(e);
 		return e;
+	}
+
+	public void Over() {
+		// TODO show game over screen
+		
 	}
 }

@@ -1,9 +1,5 @@
 package entities;
 
-/**
- * Die Klasse der mutierten Haribo-Bären, unserem Tier mit 'h' und dem einfachsten Gegner im Spiel
- */
-
 import java.util.Random;
 
 import application.Entity;
@@ -12,19 +8,19 @@ import application.Point;
 import darstellung.Loader;
 import sounds.SoundLoader;
 
-public class Haribo extends application.Entity {
-	
-	private static final String src_img = "./res/Gegner_Feuer_V3.2.png";
-	private static final String src_dieanim = "";
-	
-	private static final String[] src_sndSpawn = {"./res/tone.wav"};	
-	private static final String[] src_sndDie = {"./res/tone.wav"};
+public class Fist extends application.Entity {
 
-	private static final int HP_init = 1;
-	private static final Point speed_init = new Point(0, 2);
+	private static final String src_img = "./res/haribo.jpeg";
+	private static final String src_dieanim = "";
+
+	private static final String[] src_sndSpawn = { "./res/tone.wav" };
+	private static final String[] src_sndDie = { "./res/tone.wav" };
+
+	private static final int HP_init = 100;
+	private static final Point speed_init = new Point(4, 0);
 	private static final Point size_init = new Point(1, 1);
 
-	public Haribo(int x, int y) {
+	public Fist(int x, int y) {
 		super(x, y);
 	}
 
@@ -55,20 +51,12 @@ public class Haribo extends application.Entity {
 
 	@Override
 	public void onCollide(Entity e) {
-		if(e instanceof Fist) {
-			stopWalking();
-			reduceHP(1);
-		}
+		// TODO Auto-generated method stub
+		if(e instanceof Player) e.reduceHP(1);
 	}
-	
+
 	@Override
 	public void onUncollide() {
-		this.startWalking();
-	}
-	
-	@Override
-	public void onDie() {
-		// TODO Auto-generated method stub
-		Main.game.Over();
+
 	}
 }
