@@ -12,7 +12,7 @@ public class sound {
 	private AudioClip audioClip;
 	
 	public sound(String src, double volume) {
-		this.volume = volume;
+		this.setVolume(volume);
 		this.src = src;
 		audioClip = new AudioClip(new File(src).toURI().toString());
 		audioClip.setCycleCount(100);
@@ -22,7 +22,7 @@ public class sound {
 	public double getVolume() {
 		return volume;
 	}
-	public void setVolume(int volume) {
+	public void setVolume(double volume) {
 		this.volume = volume;
 		audioClip.setVolume(this.volume);
 	}
