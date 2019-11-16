@@ -29,6 +29,7 @@ public class Main extends Application {
 			final BorderPane root = new MainMenu();
 			final Scene scene = new Scene(root, WIDTH, HEIGHT);
 			primaryStage.setScene(scene);
+			primaryStage.setResizable(false);
 
 			primaryStage.setOnCloseRequest(e -> {
 				Platform.exit();

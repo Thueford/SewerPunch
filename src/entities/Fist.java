@@ -20,6 +20,7 @@ public class Fist extends application.Entity {
 
 	public Fist(int x, int y) {
 		super(x, y);
+		decrease_bots(x+1);
 	}
 
 	@Override
@@ -43,11 +44,20 @@ public class Fist extends application.Entity {
 	public Vector getInitSize() {
 		return size_init;
 	}
+	
+	@Override
+	public void move(long dtime) {	
+		super.move(dtime);
+		
+	}
 
 	@Override
 	public void onCollide(Entity e) {
 		if (e instanceof Haribo)
 			e.reduceHP(1);
+	}
+	public void decrease_bots(int anz) {
+		Main.game.bots -= anz;
 	}
 
 	@Override
