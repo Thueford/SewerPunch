@@ -181,7 +181,7 @@ public class Game {
 				Main.game.removeEntity(a);
 			}
 			if ((a.y >= 9) && (a instanceof entities.Haribo || a instanceof entities.Garbage) && !a.isDead()) {
-				Platform.runLater( () -> new MainMenu() );
+				//Platform.runLater( () -> new MainMenu() );
 			}
 			
 			if(a.collided && !coll) {
