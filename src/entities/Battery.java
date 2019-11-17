@@ -1,15 +1,16 @@
 package entities;
 
 import application.Entity;
+import application.Fistmanagement;
 import application.Main;
 import application.Vector;
 import javafx.scene.image.Image;
 
 public class Battery extends Entity{
 	
-	private static final String[] src_img = {"battery/Batterie_V3f0.png", "battery/Batterie_V3f1.png", "battery/Batterie_V3f2.png", "battery/Batterie_V3f3.png", "battery/Batterie_V3f4.png", "battery/Batterie_V3f5.png", 
-											 "battery/Batterie_V3f6.png", "battery/Batterie_V3f7.png", "battery/Batterie_V3f8.png", "battery/Batterie_V3f9.png", "battery/Batterie_V3f10.png",
-											 "battery/Batterie_V3f11.png", "battery/Batterie_V3f12.png", "battery/Batterie_V3f13.png", "battery/Batterie_V3f14.png", "battery/Batterie_V3f15.png"};
+	private static final String[] src_img = {"battery/Batterie_V3f0_.png", "battery/Batterie_V3f1_.png", "battery/Batterie_V3f2_.png", "battery/Batterie_V3f3_.png", "battery/Batterie_V3f4_.png", "battery/Batterie_V3f5_.png", 
+											 "battery/Batterie_V3f6_.png", "battery/Batterie_V3f7_.png", "battery/Batterie_V3f8_.png", "battery/Batterie_V3f9_.png", "battery/Batterie_V3f10_.png",
+											 "battery/Batterie_V3f11_.png", "battery/Batterie_V3f12_.png", "battery/Batterie_V3f13_.png", "battery/Batterie_V3f14_.png", "battery/Batterie_V3f15_.png"};
 	private Image[] images = new Image[] {};
 	private double fill;
 	private static final double bots = 50;
@@ -20,7 +21,7 @@ public class Battery extends Entity{
 	private static final Vector speed_init = new Vector(0, 0);
 	private static final Vector size_init = new Vector(1, 1);
 
-	public Battery(int x, int y, double fill) {
+	public Battery(double x, double y, double fill) {
 		super(x, y);
 		this.LoadImages();
 		this.fill = fill;
@@ -28,38 +29,31 @@ public class Battery extends Entity{
 
 	@Override
 	public int getInitHP() {
-		// TODO Auto-generated method stub
 		return HP_init;
 	}
 
 	@Override
 	public Vector getInitSpeed() {
-		// TODO Auto-generated method stub
 		return speed_init;
 	}
 
 	@Override
 	public Vector getInitSize() {
-		// TODO Auto-generated method stub
 		return size_init;
 	}
 
 	@Override
 	public boolean isCollidable() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public int getDrawingOrder() {
-		// TODO Auto-generated method stub
 		return drawingOrder;
 	}
 
 	@Override
 	public void LoadAssets() {
-		
-		
 		
 	}
 	
@@ -68,8 +62,9 @@ public class Battery extends Entity{
 			images[i] = Main.game.loader.LoadImage(src_img[i]);
 		}
 	}
+	
 	public void update() {
-		this.img = Main.game.loader.LoadImage(src_img[(int) (this.fill/src_img.length)]);
+		this.img = Main.game.loader.LoadImage(src_img[(int) (src_img.length * this.fill / Fistmanagement.resource_max)]);
 	}
 
 }
