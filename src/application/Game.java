@@ -239,6 +239,7 @@ public class Game {
 			}
 		}
 	}
+
 	
 	public void fillPockets() {
 		application.Fistmanagement.resource = this.resource;

@@ -63,17 +63,11 @@ public class Haribo extends application.Entity {
 	public Haribo(int x, int y) {
 		super(x, y);
 		
-<<<<<<< HEAD
-		animation = anim;
-		animation.start();
-		double HariboSpeed = ((Main.game.ran.nextDouble()*10)/2);
-		this.speed.y = HariboSpeed;
-=======
 		this.animation = anim;
 		this.animation.start();
 		
 		this.speed.y = Main.game.ran.nextDouble()*3 + 2;
->>>>>>> branch 'master' of git@git.hs-mittweida.de:afeilke1/bigoof.git
+
 	}
 
 	@Override
