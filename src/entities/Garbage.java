@@ -16,7 +16,8 @@ public class Garbage extends application.Entity{
 	private static final Vector speed_init = new Vector(0, 0.5);
 	private static final Vector size_init = new Vector(1, 1);
 	
-	private static final boolean collidable = true;
+	private boolean collidable = true;
+	private static final int drawingOrder = 0;
 
 	public Garbage(int x, int y) {
 		super(x, y);
@@ -30,7 +31,7 @@ public class Garbage extends application.Entity{
 	}
 	
 	@Override
-	public boolean getCollidable() {
+	public boolean isCollidable() {
 		return collidable;
 	}
 
@@ -47,6 +48,11 @@ public class Garbage extends application.Entity{
 	@Override
 	public Vector getInitSize() {
 		return size_init;
+	}
+	
+	@Override
+	public int getDrawingOrder() {
+		return drawingOrder;
 	}
 
 	@Override

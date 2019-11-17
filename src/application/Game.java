@@ -158,7 +158,7 @@ public class Game {
 
 		for (Entity a : Main.game.getEntities()) {
 			for (Entity b : Main.game.getEntities()) {
-				if (a != b && a.getCollidable() && b.getCollidable() && a.collides(b)) {
+				if (a != b && a.isCollidable() && b.isCollidable() && a.collides(b)) {
 					a.onCollide(b);
 					b.onCollide(a);
 				}
