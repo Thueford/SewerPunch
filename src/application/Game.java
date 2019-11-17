@@ -199,6 +199,7 @@ public class Game {
 		// test
 		Player p = new Player(4, 7);
 		Main.game.addEntity(p);
+		
 		Main.game.addEntity(new darstellung.Background(0, 0));
 		Main.game.addEntity(new darstellung.Background(0, -11));
 		
@@ -223,8 +224,10 @@ public class Game {
 
 		List<Entity> tmp = this.getEntities();
 		for(int i = 0; i<tmp.size();i++) {
-			tmp.get(i).dead=true;
-			tmp.get(i).die();
+			if(tmp.get(i) instanceof entities.Haribo) {
+				tmp.get(i).dead=true;
+				tmp.get(i).die();
+			}
 		}
 	}
 }
