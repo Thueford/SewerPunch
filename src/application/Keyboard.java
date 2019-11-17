@@ -23,12 +23,11 @@ public class Keyboard {
 	// int [] Keys = {cr1, cr2, cr3, cr4, enter, pause};
 
 	public Keyboard(Scene scene) {
-		// System.out.println(KeyCode.A.ordinal());
 
 		scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
 			public void handle(KeyEvent event) {
-				//System.out.println(event.getCode().ordinal());
+				System.out.println(event.getCode().ordinal());
 				boolean checked = false;
 
 				int[] point = { 99, 99 };
@@ -76,7 +75,6 @@ public class Keyboard {
 					case ENTER:
 						// fill ressources
 						checked = true;
-						Main.game.fillPockets();
 						break;
 						
 					case SPACE:
@@ -111,7 +109,7 @@ public class Keyboard {
 				scene.setOnKeyReleased(k ->{
 					
 					if(event.getCode() == k.getCode()) {
-						
+						System.out.println(k.getCode().ordinal());
 						Fistmanagement.fistBack(point[1]);
 					}
 					
