@@ -44,5 +44,12 @@ public class Timer {
 		dtime = time - ltime;
 		return dtime;
 	}
-
+	
+	public double getTimeSeconds() {
+		return time / 1e9;
+	}
+	
+	public double getDTimeSeconds() {
+		return dtime / 1e9;
+	}
 }

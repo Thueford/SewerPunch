@@ -20,7 +20,7 @@ public class Renderer {
 		this.ctx = ctx;
 	}
 
-	public void render(long time, long dtime) {
+	public void render(double time, double dtime) {
 		ctx.clearRect(0, 0, Main.WIDTH, Main.HEIGHT);
 		for (Entity e : Main.game.getEntities()) {
 			if (e.visible) {
