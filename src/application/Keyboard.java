@@ -111,6 +111,7 @@ public class Keyboard {
 				scene.setOnKeyReleased(k ->{
 					
 					if(event.getCode() == k.getCode()) {
+						
 						Fistmanagement.fistBack(point[1]);
 					}
 					

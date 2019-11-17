@@ -1,11 +1,12 @@
 package application;
 
+import darstellung.Ressource;
 import entities.FistL;
 import entities.FistR;
 
 public class Fistmanagement {
-
-	public static double resource = 50;
+	
+	public static Ressource resource = new Ressource();
 
 	private static boolean[] fistfromleft = new boolean[] {true, true, true, true}; //determines, if fist spawns from left or not
 	public static boolean[] occupied = new boolean[] {false, false, false, false}; //blocks line for inputs
@@ -16,9 +17,9 @@ public class Fistmanagement {
 		
 		if(occupied[y]) { return; }
 		
-		if(resource <= 10) {return; }
+		if(resource.getRes() <= 10) {return; }
 		
-		resource -= 10;
+		resource.setRes(fistfromleft[y]?x:10-x); //determines cost of action
 		
 		if(fistfromleft[y]) {
 			FistL f = new FistL(-9,5+y,x-9);
@@ -34,22 +35,15 @@ public class Fistmanagement {
 	}
 
 	public static void fistBack(int y) {
-		if(occupied[y]) { return;}
+		if(!occupied[y]) { return;}
 		
 		if(fistfromleft[y]) {
-			fists[y].setSpeed(new Vector(-2,0));
-			resource += 10;
+			fists[y].speed.set(new Vector(-2,0));
+			resource.genRes(10);
 		}else {
-			fists[y].setSpeed(new Vector(2,0));;
-			resource += 10;
+			fists[y].speed.set(new Vector(2,0));
+			resource.genRes(10);
 		}
-	}
-
-	public static void update() {
-		
-		resource = resource < 0 ? 0 : resource;
-		resource = resource > 50 ? 50 : resource;
-		
 	}
 
 	/**

@@ -1,5 +1,8 @@
 package darstellung;
 
+import application.Entity;
+import application.Main;
+
 public class Ressource {
 	private double res;
 	
@@ -25,5 +28,12 @@ public class Ressource {
 	
 	public void showRes () {
 		
+		for (Entity obj : Main.game.getEntities()) {
+			if (obj instanceof entities.Battery) {
+				Main.game.removeEntity(obj);
+			}
+		}
+		Main.game.addEntity(new entities.Battery(650, 400, res));
+
 	}
 }
