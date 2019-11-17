@@ -58,7 +58,7 @@ public class Haribo extends application.Entity {
 		super.onCollide(e);
 		if (e instanceof Fist) {
 			this.stopWalking();
-			this.speed.x=4;
+			this.speed.x=e.speed.x;
 			this.speed.y=0;
 			reduceHP(1);
 		}

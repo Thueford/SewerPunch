@@ -23,6 +23,7 @@ public class Game {
 	public final Renderer renderer;
 	public Loader loader;
 	private final List<Entity> entities = new ArrayList<Entity>();
+	private static final Rectangle[] border = {new Rectangle(0,0,50,720), new Rectangle(670,0,60,720)};
 	public final int resource = 50;
 	public Gameloop loop;
 	public Random ran = new Random();
@@ -128,7 +129,7 @@ public class Game {
 	 * collision detection between all entities
 	 */
 	public void collide() {
-
+		
 		for (Entity a : Main.game.getEntities()) {
 			for (Entity b : Main.game.getEntities()) {
 				if(a != b && a.getCollidable() && b.getCollidable() && a.collides(b)) {
@@ -136,7 +137,13 @@ public class Game {
 					b.onCollide(a);
 				}
 			}
-			// TODO: border collision
+			
+			for (Rectangle b : border) {
+				if(a.collides(b) && a instanceof entities.Haribo) {
+					a.dead=true;
+					a.die();
+				}
+			}
 		}
 	}
 
@@ -170,6 +177,7 @@ public class Game {
 	
 	public void killAllEntities() {
 		for(int i = 0; i<this.entities.size();i++) {
+			this.entities.get(i).dead=true;
 			this.entities.get(i).die();
 		}
 	}
