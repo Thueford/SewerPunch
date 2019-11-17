@@ -11,6 +11,7 @@ public class Background extends Entity{
 	private static final String src_dieanim = "";
 
 	private static final int HP_init = 1;
+	private static final int drawingOrder = -100;
 	private static final Vector speed_init = new Vector(0, 0.5);
 	private static final Vector size_init = new Vector(1, 1);
 
@@ -22,11 +23,11 @@ public class Background extends Entity{
 
 	@Override
 	public void LoadAssets() {
-		this.img = Main.game.loader.LoadImage(src_img[Main.game.ran.nextInt(src_img.length)]);
+		this.img = Main.game.loader.LoadImage(src_img[Main.game.ran.nextInt(src_img.length+1)]);
 	}
 
 	@Override
-	public boolean getCollidable() {
+	public boolean isCollidable() {
 		return collidable;
 	}
 	
@@ -43,6 +44,11 @@ public class Background extends Entity{
 	@Override
 	public Vector getInitSize() {
 		return size_init;
+	}
+	
+	@Override
+	public int getDrawingOrder() {
+		return drawingOrder;
 	}
 
 	@Override
@@ -64,7 +70,7 @@ public class Background extends Entity{
 	public void onAnimate(double time, double dtime) {
 		super.onAnimate(time, dtime);
 		if(this.y > 9) {
-			this.y = -10;
+			this.y = -11;
 			this.LoadAssets();
 		}
 	}

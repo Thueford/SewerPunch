@@ -1,16 +1,15 @@
 package application;
 
+import java.util.List;
+
 import javafx.scene.canvas.GraphicsContext;
 
 public class Renderer {
 
 	public GraphicsContext ctx = null;
 
-	public static final Vector 
-		OFFSET_TL = new Vector(1, 0.5), 
-		OFFSET_BR = new Vector(1, 0.5),
-		SPRITE_SIZE = new Vector(60, 72), 
-		GRID_SIZE = new Vector(10, 10);
+	public static final Vector OFFSET_TL = new Vector(1, 0.5), OFFSET_BR = new Vector(1, 0.5),
+			SPRITE_SIZE = new Vector(60, 72), GRID_SIZE = new Vector(10, 10);
 
 	public Renderer() {
 
@@ -22,7 +21,12 @@ public class Renderer {
 
 	public void render(double time, double dtime) {
 		ctx.clearRect(0, 0, Main.WIDTH, Main.HEIGHT);
-		for (Entity e : Main.game.getEntities()) {
+		List<Entity> tmp = Main.game.getEntities();
+		tmp.sort((Entity a, Entity b) -> {
+			return a.getDrawingOrder() > b.getDrawingOrder() ? 1 : -1;
+		});
+
+		for (Entity e : tmp) {
 			if (e.visible) {
 				e.onAnimate(time, dtime);
 				ctx.drawImage(e.img, xCoordToPixel(e.x), yCoordToPixel(e.y));

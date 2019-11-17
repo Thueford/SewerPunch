@@ -6,7 +6,7 @@ import entities.Player;
 
 public class Gameloop extends Thread {
 
-	private boolean run = true, pause = false;
+	private boolean run = true; public boolean pause = false;
 	private Timer globalT, paintT; // the two different timer-Objects
 	private long fps = 60; // wait is temp-variable , framelenght determines length of one frame
 	private double lastSpawnTime = 0, lastRenderTime = 0;
@@ -29,8 +29,10 @@ public class Gameloop extends Thread {
 
 		while (run) {
 
-			if (pause)
+			if (pause) {
+				//Platform.runLater(() -> Main.game.soundtrack.stopSound() );
 				continue;
+			}
 
 			globalT.step();
 
