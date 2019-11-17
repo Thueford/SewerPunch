@@ -5,7 +5,7 @@ import entities.FistR;
 
 public class Fistmanagement {
 	
-	private static double resource = 50;
+	public static double resource = 50;
 	private static boolean[] fistfromleft = new boolean[] {false, false, false, false}; //determines, if fist spawns from left or not
 	private static boolean[] occupied = new boolean[] {false, false, false, false};
 	

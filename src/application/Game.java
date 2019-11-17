@@ -33,7 +33,7 @@ public class Game {
 	private Sound atmosphere;
 	public Sound soundtrack;
 	private Sound emp;
-	
+	private Sound fillsnd;
 	/**
 	 * Create renderer and loader instances
 	 */
@@ -209,6 +209,7 @@ public class Game {
 		soundtrack.setVolume(0.7);
 		soundtrack.setPriority(95);
 		emp = loader.LoadSound("emp.wav");
+		fillsnd = loader.LoadSound("refill.wav");
 		// entities.get(0).sndSpawn.startSound();
 	}
 
@@ -227,5 +228,10 @@ public class Game {
 				tmp.get(i).die();
 			}
 		}
+	}
+	
+	public void fillPockets() {
+		application.Fistmanagement.resource = this.resource;
+		fillsnd.startSound();
 	}
 }

@@ -17,7 +17,7 @@ public class Sound {
 		audioClip = new AudioClip(new File(src).toURI().toString());
 		audioClip.setCycleCount(1);
 		this.setPriority(0);
-		this.setVolume(0.3);
+		this.setVolume(0.5);
 	}
 
 	public double getVolume() {
