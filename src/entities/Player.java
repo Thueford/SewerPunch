@@ -3,6 +3,7 @@ package entities;
 import java.awt.image.BufferedImage;
 
 import application.Animation;
+import application.Entity;
 import application.Main;
 import application.Vector;
 import application.Sprite;
@@ -90,5 +91,14 @@ public class Player extends application.Entity {
 	@Override
 	public void move(double dtime) {
 		
+	}
+	
+	@Override
+	public void onCollide(Entity e) {
+		super.onCollide(e);
+		if (e instanceof Haribo || e instanceof Garbage) {
+			this.stopWalking();
+			reduceHP(1);
+		}
 	}
 }

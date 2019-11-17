@@ -65,6 +65,8 @@ public class Haribo extends application.Entity {
 		
 		animation = anim;
 		animation.start();
+		double HariboSpeed = ((Main.game.ran.nextDouble()*10)/2);
+		this.speed.y = HariboSpeed;
 	}
 
 	@Override
