@@ -25,7 +25,8 @@ public class FistR extends application.Entity {
 
 	public FistR(int x, int y, int range) {
 		super(x, y);
-		
+		System.out.println("Fist right");
+
 		this.range = range;
 	}
 
@@ -65,6 +66,7 @@ public class FistR extends application.Entity {
 	public void move(double dtime) {
 		//if on target tile 'range', dont move, unless speed is inverted
 		if(this.getX() <= range && this.getSpeed().x < 0) return;
+		if(this.getX() > 10) Main.game.removeEntity(this);
 		super.move(dtime);
 		
 	}

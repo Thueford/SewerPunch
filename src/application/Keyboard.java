@@ -28,7 +28,7 @@ public class Keyboard {
 		scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
 			public void handle(KeyEvent event) {
-				System.out.println(event.getCode().ordinal());
+				//System.out.println(event.getCode().ordinal());
 				boolean checked = false;
 
 				int[] point = { 99, 99 };
@@ -49,28 +49,28 @@ public class Keyboard {
 						point[0] = 9;
 						point[1] = 0;
 						checked = true;
-						System.out.println("cr1");
+						Fistmanagement.changeSide(0);
 						break;
 						
 					case TAB:
 						point[0] = 9;
 						point[1] = 1;
 						checked = true;
-						System.out.println("cr2");
+						Fistmanagement.changeSide(1);
 						break;
 						
 					case CAPS:
 						point[0] = 9;
 						point[1] = 2;
 						checked = true;
-						System.out.println("cr3");
+						Fistmanagement.changeSide(2);
 						break;
 						
 					case SHIFT:
 						point[0] = 9;
 						point[1] = 3;
 						checked = true;
-						System.out.println("cr4");
+						Fistmanagement.changeSide(3);
 						break;
 						
 					case ENTER:

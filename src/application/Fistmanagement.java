@@ -7,12 +7,10 @@ public class Fistmanagement {
 	
 	public static double resource = 50;
 	private static boolean[] fistfromleft = new boolean[] {false, false, false, false}; //determines, if fist spawns from left or not
-	private static boolean[] occupied = new boolean[] {false, false, false, false};
+	private static boolean[] occupied = new boolean[] {false, false, false, false}; //blocks line for inputs
 	private static Entity[] fists = new Entity[4];
 	
 	public static void fistOut(int y, int x) { //y = line of fist, x = range of fist
-		
-		System.out.println("Out");
 		
 		if(occupied[y]) { return; }
 		
@@ -20,14 +18,15 @@ public class Fistmanagement {
 		
 		resource -= 10;
 		
-		if(fistfromleft[y]) {
-			FistL f = new FistL(y,0,x);
+		if(!fistfromleft[y]) {
+			FistL f = new FistL(0,5,x);
 			Main.game.addEntity(f);
 			fists[y] = f;
 			occupied[y] = true; //set line occupied
 		}else {
-			FistR f = new FistR(y,11,x);
+			FistR f = new FistR(9,y,x);
 			Main.game.addEntity(f);
+			fists[y] = f;
 			occupied[y] = true; //set line occupied
 		}
 		
@@ -36,8 +35,18 @@ public class Fistmanagement {
 	}
 	
 	public static void fistBack(int y) {
-		System.out.println("Back");
 		if(!occupied[y]) { return;}
+		
+		if(!fistfromleft[y]) {
+			fists[y].setSpeed(new Vector(-2,0));
+			fists[y] = null;
+			occupied[y] = false; //set line free
+		}else {
+			fists[y].setSpeed(new Vector(2,0));;
+			fists[y] = null;
+			occupied[y] = false; //set line free
+		}
+		
 		
 		
 	}
@@ -50,11 +59,12 @@ public class Fistmanagement {
 	}
 
 	/**
-	 * Changes direction of spawn, line 1 is the highest one
+	 * Changes direction of spawn, line 0 is the one at the top
 	 * @param line
 	 */
 	public static void changeSide(int line) {
-		fistfromleft[line+1] = fistfromleft[line+1]?false:true;
+		if(occupied[line]) { return; }
+		fistfromleft[line] = fistfromleft[line]?false:true;
 	}
 	
 	public static void showResource() {
