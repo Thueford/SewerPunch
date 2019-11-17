@@ -179,6 +179,9 @@ public class Game {
 			if ((a.y > 10 ) && (a instanceof entities.Haribo || a instanceof entities.Garbage)){
 				Main.game.removeEntity(a);
 			}
+			if ((a.y >= 9) && (a instanceof entities.Haribo || a instanceof entities.Garbage) && !a.isDead()) {
+
+			}
 			
 			if(a.collided && !coll) {
 				a.onUncollide();
