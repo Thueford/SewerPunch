@@ -28,7 +28,7 @@ public class Fist extends application.Entity {
 	public void LoadAssets() {
 		this.img = Main.game.loader.LoadImage(src_img);
 		this.sndSpawn = Main.game.loader.LoadSound(src_sndSpawn[Main.game.ran.nextInt(src_sndSpawn.length)]);
-		this.sndDie = Main.game.loader.LoadSound(src_sndSpawn[Main.game.ran.nextInt(src_sndDie.length)]);
+		this.sndDie = Main.game.loader.LoadSound(src_sndDie[Main.game.ran.nextInt(src_sndDie.length)]);
 	}
 	
 	@Override
