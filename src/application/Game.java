@@ -208,11 +208,10 @@ public class Game {
 
 	public void init() {
 		// test
-		Player p = new Player(4, 7);
-		Main.game.addEntity(p);
+		Main.game.addEntity(new Player(4, 9));
 		
-		Main.game.addEntity(new darstellung.Background(6, 5));
-		Main.game.addEntity(new darstellung.Background(-3, 4));
+		Main.game.addEntity(new darstellung.Background(-1, 0));
+		Main.game.addEntity(new darstellung.Background(-1, -10));
 		
 		atmosphere = loader.LoadSound("atmosphere.wav");
 		atmosphere.setVolume(0.3);

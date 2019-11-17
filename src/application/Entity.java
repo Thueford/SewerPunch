@@ -16,9 +16,7 @@ public abstract class Entity extends Rectangle {
 
 	public Entity(double x, double y) {
 		super(x, y, 1, 1);
-
-		this.x = x;
-		this.y = y;
+		
 		this.width = getInitSize().x;
 		this.height = getInitSize().y;
 
