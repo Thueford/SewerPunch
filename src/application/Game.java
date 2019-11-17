@@ -32,6 +32,7 @@ public class Game {
 	
 	private Sound atmosphere;
 	private Sound soundtrack;
+	private Sound emp;
 	
 	/**
 	 * Create renderer and loader instances
@@ -206,12 +207,14 @@ public class Game {
 		soundtrack = loader.LoadSound("soundtrack.wav");
 		soundtrack.setVolume(0.3);
 		soundtrack.setPriority(95);
+		emp = loader.LoadSound("emp.wav");
 		// renderer.render();
 		// entities.get(0).sndSpawn.startSound();
 	}
 
 	// biochemischer emp
 	public void bcemp() {
+		emp.startSound();
 		this.killAllEntities();
 	}
 
