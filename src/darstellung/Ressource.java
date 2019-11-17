@@ -19,6 +19,7 @@ public class Ressource {
 	}
 	
 	public void genRes (double add) {
+		Main.game.fillsnd.startSound();
 		res += add;
 	}
 	

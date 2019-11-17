@@ -12,13 +12,11 @@ public abstract class Entity extends Rectangle {
 
 	// assets
 	public Image img;
-	public Sound sndSpawn, sndDie;
+	public Sound sndSpawn, sndDie, sndHit;
 
 	public Entity(double x, double y) {
 		super(x, y, 1, 1);
-
-		this.x = x;
-		this.y = y;
+		
 		this.width = getInitSize().x;
 		this.height = getInitSize().y;
 
@@ -109,7 +107,6 @@ public abstract class Entity extends Rectangle {
 	 * @param e collided entity
 	 */
 	public void onCollide(Entity e) {
-		this.collided = true;
 	}
 
 	/**

@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Random;
 
 import darstellung.Loader;
+import darstellung.Ressource;
 import entities.Haribo;
 import entities.Player;
 import sounds.Sound;
@@ -30,11 +31,12 @@ public class Game {
 	public final int resource = 50;
 	public Gameloop loop;
 	public Random ran = new Random();
+	public Ressource bots = new Ressource();
 	
 	private Sound atmosphere;
 	public Sound soundtrack;
 	private Sound emp;
-	private Sound fillsnd;
+	public Sound fillsnd;
 	private Sound alert;
 	/**
 	 * Create renderer and loader instances
@@ -108,6 +110,7 @@ public class Game {
 
 				case 10: {
 					alert.startSound();
+//					while (alert.isPlaying()) {}
 					wavestate++;
 				}
 				case 11: {
@@ -155,10 +158,12 @@ public class Game {
 	public void collide() {
 
 		for (Entity a : Main.game.getEntities()) {
+			boolean coll = false;
 			for (Entity b : Main.game.getEntities()) {
 				if (a != b && a.isCollidable() && b.isCollidable() && a.collides(b)) {
-					a.onCollide(b);
-					b.onCollide(a);
+					a.collided = true;
+					if(!a.collided) a.onCollide(b);
+					coll = true;
 				}
 			}
 
@@ -167,7 +172,11 @@ public class Game {
 				a.dead = true;
 				a.die();
 			}
-			//}
+			
+			if(a.collided && !coll) {
+				a.onUncollide();
+				a.collided = false;
+			}
 		}
 	}
 
@@ -203,11 +212,10 @@ public class Game {
 
 	public void init() {
 		// test
-		Player p = new Player(4, 7);
-		Main.game.addEntity(p);
+		Main.game.addEntity(new Player(4, 9));
 		
-		Main.game.addEntity(new darstellung.Background(6, 5));
-		Main.game.addEntity(new darstellung.Background(-3, 4));
+		Main.game.addEntity(new darstellung.Background(-1, 0));
+		Main.game.addEntity(new darstellung.Background(-1, -10));
 		
 		atmosphere = loader.LoadSound("atmosphere.wav");
 		atmosphere.setVolume(0.3);
@@ -218,7 +226,10 @@ public class Game {
 		emp = loader.LoadSound("emp.wav");
 		fillsnd = loader.LoadSound("refill.wav");
 		alert = loader.LoadSound("alert.wav");
+		//alert.setSpeed(8);
 		// entities.get(0).sndSpawn.startSound();
+		
+		bots.setRes(50);
 		
 		Main.game.addEntity(new entities.Battery(-1.0, 4.5, resource));
 	}
@@ -238,11 +249,5 @@ public class Game {
 				tmp.get(i).die();
 			}
 		}
-	}
-
-	
-	public void fillPockets() {
-		application.Fistmanagement.resource.setRes(this.resource);
-		fillsnd.startSound();
 	}
 }

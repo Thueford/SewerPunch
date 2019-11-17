@@ -74,6 +74,7 @@ public class Keyboard {
 						
 					case ENTER:
 						// fill ressources
+						Main.game.bots.genRes(50);
 						checked = true;
 						break;
 						
@@ -85,6 +86,7 @@ public class Keyboard {
 						
 					case CONTROL:
 						// strg
+						Main.game.bcemp();
 						checked = true;
 						break;
 						
