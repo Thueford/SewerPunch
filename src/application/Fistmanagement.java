@@ -7,7 +7,7 @@ import sounds.Sound;
 
 public class Fistmanagement {
 	
-	public static Ressource resource = new Ressource();
+	public static Ressource resource = Main.game.bots;
 	private static Sound imp_action;
 
 	private static boolean[] fistfromleft = new boolean[] {true, true, true, true}; //determines, if fist spawns from left or not
