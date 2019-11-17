@@ -1,17 +1,8 @@
 package application;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-
 import darstellung.MainMenu;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.stage.Stage;
-import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 
 public class Main extends Application {
 
@@ -21,27 +12,11 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
-		try {
+
 			Main.primaryStage = primaryStage;
-
-			final BorderPane root = new MainMenu();
-			final Scene scene = new Scene(root, WIDTH, HEIGHT);
-			primaryStage.setScene(scene);
-			primaryStage.setResizable(false);
-
-			primaryStage.setOnCloseRequest(e -> {
-				Platform.exit();
-				try {
-					game.loop.terminate();
-				} catch (Exception err) {
-				}
-			});
-			primaryStage.show();
-			
 			Main.game = new Game();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+			
+			new MainMenu();
 	}
 
 	public static void main(String[] args) {

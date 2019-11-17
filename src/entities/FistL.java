@@ -15,7 +15,7 @@ public class FistL extends application.Entity {
 	private static final String[] src_sndweg = { "faustweg1.wav", "faustweg2.wav", "faustweg3.wav" };
 
 	private static final int HP_init = 100;
-	private static final Vector speed_init = new Vector(40, 0);
+	private static final Vector speed_init = new Vector(50, 0);
 	private static final Vector size_init = new Vector(10, 1);
 	
 	private boolean collidable = true;
