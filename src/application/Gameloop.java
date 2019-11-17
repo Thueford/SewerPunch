@@ -50,7 +50,7 @@ public class Gameloop extends Thread {
 			// if wait + time exceeds nanoTime, the next Frame can be painted
 			if (System.nanoTime() >= paintT.time + wait) {
 				paintT.newltime();
-				Platform.runLater(() -> Main.game.MainThreadFunctions(globalT.time, globalT.dtime));
+				Platform.runLater(() -> Main.game.MainThreadFunctions(globalT.getTimeSeconds(), globalT.getDTimeSeconds()));
 
 				// calculates wait time, saves the timestamp of the time of calculation in 'time'
 				wait = framelength - (paintT.newtime() - paintT.ltime);

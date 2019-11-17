@@ -90,7 +90,7 @@ public abstract class Entity extends Rectangle {
 	/**
 	 * Called every time the sprite is drawn
 	 */
-	public void onAnimate(long time, long dtime) {
+	public void onAnimate(double time, double dtime) {
 	}
 
 	/**

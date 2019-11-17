@@ -74,7 +74,7 @@ public class Player extends application.Entity {
 	}
 
 	@Override
-	public void onAnimate() {
+	public void onAnimate(double time, double dtime) {
 		animation.update();
 		img = SwingFXUtils.toFXImage(animation.getSprite(), null);
 	}
