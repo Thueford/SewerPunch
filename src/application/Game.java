@@ -22,8 +22,9 @@ public class Game {
 
 	public final Renderer renderer;
 	public Loader loader;
-	protected final List<Entity> entities = new ArrayList<Entity>();
-	private static final Rectangle[] border = {new Rectangle(0,0,50,720), new Rectangle(670,0,60,720)};
+
+	private final List<Entity> entities = new ArrayList<Entity>();
+	private static final Rectangle[] border = { new Rectangle(0, 0, 50, 720), new Rectangle(670, 0, 60, 720) };
 	public final int resource = 50;
 	public Gameloop loop;
 	public Random ran = new Random();
@@ -34,7 +35,7 @@ public class Game {
 	 */
 	public Game() {
 		renderer = new Renderer();
-		
+
 		URL res = null;
 		try {
 			res = getClass().getResource("/");
@@ -63,10 +64,10 @@ public class Game {
 		new Keyboard(scene);
 		Main.primaryStage.setScene(scene);
 		Main.primaryStage.show();
-		
-		this.init();
 
 		loop = new Gameloop();
+
+		init();
 		loop.start();
 	}
 
@@ -85,43 +86,44 @@ public class Game {
 		}
 
 		public void spawn() {
-			
+
 			System.out.println("\n");
 
-			if(wavestate >= 10) {
-				switch(wavestate) { 
-					
-					case 10 : {
-						//AlertSound();
-						wavestate++;	
-					}
-					case 11 : {
-						System.out.println("Ult wave");
-						spawner.spawnWave(1 + (int)(wave * 0.5 ));
-						wavestate++;
+			if (wavestate >= 10) {
+				switch (wavestate) {
+
+				case 10: {
+					// AlertSound();
+					wavestate++;
+				}
+				case 11: {
+					System.out.println("Ult wave");
+					spawner.spawnWave(1 + (int) (wave * 0.5));
+					wavestate++;
+					return;
+				}
+				case 12: {
+					for (Entity obj : getEntities()) {
+						if (obj instanceof entities.Haribo)
+							return;
+						wave++;
+						wavestate = 0;
 						return;
 					}
-					case 12 : {
-						for(Entity obj: getEntities()) {
-							if(obj instanceof entities.Haribo) return;
-							wave++;
-							wavestate = 0;
-							return;							
-						}
-					}
 				}
-			}	
+				}
+			}
 
-			
-			// in a 0.7 Chance spawns 2^wave*wavestate single enemys, otherwise spawns a wave
+			// in a 0.7 Chance spawns 2^wave*wavestate single enemys, otherwise spawns a
+			// wave
 			if ((int) (Math.random() * 10) <= 7) {
 				System.out.println("single spawns");
 
-				spawner.spawnNotWave( (wave + (int)(wavestate * Math.random()) )% (wave*5 -1) );
+				spawner.spawnNotWave((wave + (int) (wavestate * Math.random())) % (wave * 5 - 1));
 			} else {
 				System.out.println("wave");
 
-				spawner.spawnWave(1 + (int)(wave * 0.25));
+				spawner.spawnWave(1 + (int) (wave * 0.25));
 			}
 			wavestate++;
 		}
@@ -141,18 +143,18 @@ public class Game {
 	 * collision detection between all entities
 	 */
 	public void collide() {
-		
+
 		for (Entity a : Main.game.getEntities()) {
 			for (Entity b : Main.game.getEntities()) {
-				if(a != b && a.getCollidable() && b.getCollidable() && a.collides(b)) {
+				if (a != b && a.getCollidable() && b.getCollidable() && a.collides(b)) {
 					a.onCollide(b);
 					b.onCollide(a);
 				}
 			}
-			
+
 			for (Rectangle b : border) {
-				if(a.collides(b) && a instanceof entities.Haribo) {
-					a.dead=true;
+				if (a.collides(b) && a instanceof entities.Haribo) {
+					a.dead = true;
 					a.die();
 				}
 			}
@@ -180,23 +182,24 @@ public class Game {
 		}
 		return tmp;
 	}
-	
+
 	public void init() {
 		// test
-		Main.game.addEntity(new Player(4, 7));
-		Main.game.addEntity(new darstellung.Background(0,0));
+		Player p = new Player(4, 7);
+		Main.game.addEntity(p);
+		Main.game.addEntity(new darstellung.Background(0, 0));
 		Main.game.addEntity(new darstellung.Background(0, -11));
 		// renderer.render();
 		// entities.get(0).sndSpawn.startSound();
 	}
-	
-	//biochemischer emp	 
+
+	// biochemischer emp
 	public void bcemp() {
 		this.killAllEntities();
-		
 	}
-	
+
 	public void killAllEntities() {
+
 		List<Entity> tmp = this.getEntities();
 		for(int i = 0; i<tmp.size();i++) {
 			tmp.get(i).dead=true;
