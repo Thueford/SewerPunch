@@ -11,6 +11,7 @@ public class Fistmanagement {
 	private static boolean[] fistfromleft = new boolean[] {true, true, true, true}; //determines, if fist spawns from left or not
 	public static boolean[] occupied = new boolean[] {false, false, false, false}; //blocks line for inputs
 	public static Entity[] fists = new Entity[4];
+	public static final int resource_max = 50;
 	
 	public static void fistOut(int y, int x) { //y = line of fist, x = range of fist
 		

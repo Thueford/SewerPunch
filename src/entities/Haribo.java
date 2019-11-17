@@ -28,7 +28,7 @@ public class Haribo extends application.Entity {
 	private static final Vector size_init = new Vector(1, 1);
 	
 	private boolean collidable = true;
-	private static final int drawingOrder = 0;
+	private static final int drawingOrder = -5;
 	
 	private double anim_speed = 0.10;
 	
