@@ -13,12 +13,14 @@ public class Haribo extends application.Entity {
 	private static final String src_img = "Gegner_Feuer_V3.2.png";
 	private static final String src_dieanim = "";
 
-	private static final String[] src_sndSpawn = { "tone.wav" };
-	private static final String[] src_sndDie = { "tone.wav" };
+	private static final String[] src_sndSpawn = { "enemyspawn1.wav" , "enemyspawn2.wav", "enemyspawn3.wav"};
+	private static final String[] src_sndDie = { "enemysmash1.wav", "enemysmash2.wav", "enemysmash3.wav", "enemysmash4.wav", "enemysmash5.wav", "enemysmash6.wav", "enemysmash7.wav"};
 
 	private static final int HP_init = 1;
 	private static final Vector speed_init = new Vector(0, 2);
 	private static final Vector size_init = new Vector(1, 1);
+	
+	private static final boolean collidable = true;
 
 	public Haribo(int x, int y) {
 		super(x, y);
@@ -29,6 +31,11 @@ public class Haribo extends application.Entity {
 		this.img = Main.game.loader.LoadImage(src_img);
 		this.sndSpawn = Main.game.loader.LoadSound(src_sndSpawn[Main.game.ran.nextInt(src_sndSpawn.length)]);
 		this.sndDie = Main.game.loader.LoadSound(src_sndSpawn[Main.game.ran.nextInt(src_sndDie.length)]);
+	}
+
+	@Override
+	public boolean getCollidable() {
+		return collidable;
 	}
 
 	@Override

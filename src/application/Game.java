@@ -129,6 +129,15 @@ public class Game {
 	 */
 	public void collide() {
 
+		for (Entity a : Main.game.getEntities()) {
+			for (Entity b : Main.game.getEntities()) {
+				if(a != b && a.getCollidable() && b.getCollidable() && a.collides(b)) {
+					a.onCollide(b);
+					b.onCollide(a);
+				}
+			}
+			// TODO: border collision
+		}
 	}
 
 	public Entity addEntity(Entity e) {

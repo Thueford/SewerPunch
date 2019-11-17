@@ -3,32 +3,30 @@ package entities;
 import application.Entity;
 import application.Main;
 import application.Vector;
+import darstellung.Loader;
 
-public class Fist extends application.Entity {
-
-	private static final String src_img = "haribo.jpeg";
+public class Garbage extends application.Entity{
+	private static final String src_img = "Hindernis_1.2.png";
 	private static final String src_dieanim = "";
 
-	private static final String[] src_sndSpawn = { "faustangriff1.wav", "faustangriff2.wav", "faustangriff3.wav",};
-	private static final String[] src_sndDie = { "faustdie.wav" };
-	private static final String[] src_sndweg = { "faustweg1.wav", "faustweg2.wav", "faustweg3.wav" };
+	private static final String[] src_sndSpawn = { "enemyspawn1.wav" , "enemyspawn2.wav", "enemyspawn3.wav"};
+	private static final String[] src_sndDie = { "enemysmash1.wav", "enemysmash2.wav", "enemysmash3.wav", "enemysmash4.wav", "enemysmash5.wav", "enemysmash6.wav", "enemysmash7.wav",};
 
-	private static final int HP_init = 100;
-	private static final Vector speed_init = new Vector(4, 0);
+	private static final int HP_init = 1;
+	private static final Vector speed_init = new Vector(0, 0.5);
 	private static final Vector size_init = new Vector(1, 1);
 	
 	private static final boolean collidable = true;
 
-	public Fist(int x, int y) {
+	public Garbage(int x, int y) {
 		super(x, y);
-		decrease_bots(x+1);
 	}
 
 	@Override
 	public void LoadAssets() {
 		this.img = Main.game.loader.LoadImage(src_img);
 		this.sndSpawn = Main.game.loader.LoadSound(src_sndSpawn[Main.game.ran.nextInt(src_sndSpawn.length)]);
-		this.sndDie = Main.game.loader.LoadSound(src_sndSpawn[Main.game.ran.nextInt(src_sndDie.length)]);
+		this.sndDie = Main.game.loader.LoadSound(src_sndDie[Main.game.ran.nextInt(src_sndDie.length)]);
 	}
 	
 	@Override
@@ -50,25 +48,24 @@ public class Fist extends application.Entity {
 	public Vector getInitSize() {
 		return size_init;
 	}
-	
-	@Override
-	public void move(long dtime) {	
-		super.move(dtime);
-		
-	}
 
 	@Override
 	public void onCollide(Entity e) {
-		if (e instanceof Haribo)
-			e.reduceHP(1);
-	}
-	
-	public void decrease_bots(int anz) {
-		Main.game.bots -= anz;
+		super.onCollide(e);
+		if (e instanceof Fist) {
+			stopWalking();
+			reduceHP(1);
+		}
 	}
 
 	@Override
 	public void onUncollide() {
-
+		this.startWalking();
 	}
+
+	@Override
+	public void onDie() {
+		
+	}
+
 }
