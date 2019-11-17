@@ -20,6 +20,7 @@ public class FistL extends application.Entity {
 	private boolean collidable = true;
 	private static final int drawingOrder = 0;
 	
+	//variables for controlling fist movement
 	private static int range;
 
 	public FistL(int x, int y, int range) {
@@ -62,12 +63,9 @@ public class FistL extends application.Entity {
 	
 	@Override
 	public void move(double dtime) {
-		if(this.getX() >= range) {
-			if(true);
-		}
-		
-		super.move(dtime);
-		
+		//if on target tile 'range', dont move, unless speed is inverted
+		if(this.getX() >= range && this.getSpeed().x > 0) return;		
+		super.move(dtime);		
 	}
 
 	@Override

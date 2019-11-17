@@ -78,6 +78,7 @@ public class Game {
 	public void MainThreadFunctions(double time, double dtime) {
 		Main.game.renderer.render(time, dtime);
 		// SoundHandler.play(Soundlist);
+		Fistmanagement.showResource();
 		
 		if(!atmosphere.isPlaying()) {
 			atmosphere.startSound();
@@ -175,6 +176,13 @@ public class Game {
 	public Entity addEntity(Entity e) {
 		synchronized (entities) {
 			entities.add(e);
+		}
+		return e;
+	}
+	
+	public Entity removeEntity(Entity e) {
+		synchronized (entities) {
+			entities.remove(e);
 		}
 		return e;
 	}
