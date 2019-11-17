@@ -44,10 +44,10 @@ public class Fistmanagement {
 		if(!occupied[y]) { return;}
 		
 		if(fistfromleft[y]) {
-			fists[y].speed.set(new Vector(-2,0));
+			fists[y].speed.set(new Vector(-10,0));
 			resource.genRes(10);
 		}else {
-			fists[y].speed.set(new Vector(2,0));
+			fists[y].speed.set(new Vector(10,0));
 			resource.genRes(10);
 		}
 	}
