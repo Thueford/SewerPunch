@@ -13,10 +13,10 @@ public class Rectangle {
 	}
 
 	public Rectangle(double x, double y, double width, double height) {
-		this.height = height;
-		this.width = width;
 		this.x = x;
 		this.y = y;
+		this.width = width;
+		this.height = height;
 	}
 
 	// rückgabe der eckpunkte

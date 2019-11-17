@@ -63,10 +63,17 @@ public class Haribo extends application.Entity {
 	public Haribo(int x, int y) {
 		super(x, y);
 		
+<<<<<<< HEAD
 		animation = anim;
 		animation.start();
 		double HariboSpeed = ((Main.game.ran.nextDouble()*10)/2);
 		this.speed.y = HariboSpeed;
+=======
+		this.animation = anim;
+		this.animation.start();
+		
+		this.speed.y = Main.game.ran.nextDouble()*3 + 2;
+>>>>>>> branch 'master' of git@git.hs-mittweida.de:afeilke1/bigoof.git
 	}
 
 	@Override
@@ -78,7 +85,7 @@ public class Haribo extends application.Entity {
 
 	@Override
 	public boolean isCollidable() {
-		return collidable;
+		return this.collidable;
 	}
 
 	@Override
@@ -88,12 +95,20 @@ public class Haribo extends application.Entity {
 
 	@Override
 	public Vector getInitSpeed() {
-		return speed_init;
+		return speed_init.copy();
 	}
 
 	@Override
 	public Vector getInitSize() {
-		return size_init;
+		return size_init.copy();
+	}
+	
+	@Override
+	public void onMove() {
+		super.onMove();
+
+		if(this.x > 10 || this.y > 10)
+			Main.game.removeEntity(this);
 	}
 	
 	@Override
@@ -103,8 +118,8 @@ public class Haribo extends application.Entity {
 	
 	public void onAnimate(double time, double dtime) {
 		//animation.restart();
-		animation.update(time, dtime);
-		img = SwingFXUtils.toFXImage(animation.getSprite(), null);
+		this.animation.update(time, dtime);
+		this.img = SwingFXUtils.toFXImage(animation.getSprite(), null);
 	}
 
 	@Override
@@ -112,8 +127,8 @@ public class Haribo extends application.Entity {
 		super.onCollide(e);
 		if (e instanceof FistL) {
 			this.stopWalking();
-			this.speed.x=e.speed.x;
-			this.speed.y=0;
+			this.speed.x = e.speed.x;
+			this.speed.y = 0;
 			reduceHP(1);
 		}
 	}

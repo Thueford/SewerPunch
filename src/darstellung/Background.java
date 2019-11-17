@@ -13,7 +13,7 @@ public class Background extends Entity{
 	private static final int HP_init = 1;
 	private static final int drawingOrder = -100;
 	private static final Vector speed_init = new Vector(0, 0.5);
-	private static final Vector size_init = new Vector(1, 1);
+	private static final Vector size_init = new Vector(10, 10);
 
 	private static final boolean collidable = false;
 	
