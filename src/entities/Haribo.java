@@ -31,7 +31,7 @@ public class Haribo extends application.Entity {
 	private int anim_speed = 8;
 	
 	//Animation
-	private static String src_anim = "Gegner_Feuer_Spritesheet.png";
+	private static String src_anim = "Gegner_Feuer_Spritesheet_strip10x1.png";
 	private static BufferedImage[] anim1 = { 
 			Sprite.getSprite(1, 0, src_anim), 
 			Sprite.getSprite(2, 0, src_anim),
