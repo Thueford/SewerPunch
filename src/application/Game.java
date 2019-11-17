@@ -201,7 +201,7 @@ public class Game {
 		Main.game.addEntity(p);
 		
 		Main.game.addEntity(new darstellung.Background(0, 0));
-		Main.game.addEntity(new darstellung.Background(0, -11));
+		Main.game.addEntity(new darstellung.Background(0, -10));
 		
 		atmosphere = loader.LoadSound("atmosphere.wav");
 		atmosphere.setVolume(0.3);
