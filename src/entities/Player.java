@@ -6,15 +6,13 @@ import application.Animation;
 import application.Main;
 import application.Vector;
 import application.Sprite;
-import darstellung.Loader;
 import javafx.embed.swing.SwingFXUtils;
-import sounds.SoundLoader;
 
 public class Player extends application.Entity {
 	private static final String src_img = "Hauptfigur_V3.1.png";
 	private static final String src_dieanim = "";
-
 	private static final String[] src_sndDie = { "gameover.wav" };
+	private static final String[] src_sndSpawn = { "tone.wav" };
 
 	private static final int HP_init = 1;
 
@@ -23,7 +21,7 @@ public class Player extends application.Entity {
 	
 	private static final boolean collidable = true;
 
-	private static String src_anim = "AnimationSpriteSheet";
+	private static String src_anim = "AnimationSpriteSheet.png";
 
 	// Images for each animation
 
@@ -50,8 +48,9 @@ public class Player extends application.Entity {
 
 	@Override
 	public void LoadAssets() {
-		this.img = Loader.LoadImage(src_img);
-		this.sndDie = SoundLoader.LoadSound(src_sndDie[Main.game.ran.nextInt(src_sndDie.length)]);
+		this.img = Main.game.loader.LoadImage(src_img);
+		this.sndSpawn = Main.game.loader.LoadSound(src_sndSpawn[Main.game.ran.nextInt(src_sndSpawn.length)]);
+		this.sndDie = Main.game.loader.LoadSound(src_sndSpawn[Main.game.ran.nextInt(src_sndDie.length)]);
 	}
 	
 	@Override

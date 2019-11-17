@@ -5,7 +5,6 @@ import application.Main;
 import application.Vector;
 import darstellung.Loader;
 import entities.Fist;
-import sounds.SoundLoader;
 
 public class Background extends Entity{
 	private static final String[] src_img = {"bg1.png", "bg2.png", "bg3.png", "bg4.png",};
@@ -23,7 +22,7 @@ public class Background extends Entity{
 
 	@Override
 	public void LoadAssets() {
-		this.img = Loader.LoadImage(src_img[Main.game.ran.nextInt(src_img.length)]);
+		this.img = Main.game.loader.LoadImage(src_img[Main.game.ran.nextInt(src_img.length)]);
 	}
 
 	@Override

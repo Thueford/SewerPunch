@@ -1,12 +1,16 @@
 package darstellung;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-import application.Main;
+import javax.imageio.ImageIO;
+
 import javafx.scene.image.Image;
+import sounds.Sound;
 
 /**
  * @author afeilke1
@@ -17,15 +21,18 @@ public class Loader {
 	/**
 	 * stores loaded images for reusing
 	 */
-	private static Map<String, Image> assets = new HashMap<String, Image>();
+	private static Map<String, Image> images = new HashMap<String, Image>();
+	private static Map<String, BufferedImage> bufferedImages = new HashMap<String, BufferedImage>();
+	private static Map<String, Sound> sounds = new HashMap<String, Sound>();
 
 	/**
 	 * base path for image resources
 	 */
-	private static URL res_img;
+	private static URL res_img, res_snd;
 
-	public Loader(URL res_img) {
+	public Loader(URL res_img, URL res_snd) {
 		Loader.res_img = res_img;
+		Loader.res_snd = res_snd;
 	}
 
 	/**
@@ -33,13 +40,48 @@ public class Loader {
 	 * 
 	 * @param src image source path
 	 * @return javafx Image
+	 * @throws IOException 
 	 */
-	public static Image LoadImage(String src) {
-		System.out.println(Main.rootPath + src);
-		Image img = assets.get(Main.rootPath + src);
+	public Image LoadImage(String src) {
+		Image img = images.get(src);
 		if (img == null) {
-			img = new Image(new File(Main.rootPath + src).toURI().toString());
-			assets.put(src, img);
+			try {
+				img = new Image(new URL(res_img, src).openStream());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			images.put(src, img);
+		}
+		return img;
+	}
+
+	public Sound LoadSound(String src) {
+		Sound snd = sounds.get(src);
+		if (snd == null) {
+			try {
+				snd = new Sound(new URL(res_snd, src).getPath());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			sounds.put(src, snd);
+		}
+		return snd;
+	}
+
+	public File GetImageFile(String file) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public BufferedImage LoadBufferedImage(String src) {
+		BufferedImage img = bufferedImages.get(src);
+		if (img == null) {
+			try {
+				img = ImageIO.read(new URL(res_img, src).openStream());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			bufferedImages.put(src, img);
 		}
 		return img;
 	}

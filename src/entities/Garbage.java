@@ -4,7 +4,6 @@ import application.Entity;
 import application.Main;
 import application.Vector;
 import darstellung.Loader;
-import sounds.SoundLoader;
 
 public class Garbage extends application.Entity{
 	private static final String src_img = "Hindernis_1.2.png";
@@ -25,9 +24,9 @@ public class Garbage extends application.Entity{
 
 	@Override
 	public void LoadAssets() {
-		this.img = Loader.LoadImage(src_img);
-		this.sndSpawn = SoundLoader.LoadSound(src_sndSpawn[Main.game.ran.nextInt(src_sndSpawn.length)]);
-		this.sndDie = SoundLoader.LoadSound(src_sndDie[Main.game.ran.nextInt(src_sndDie.length)]);
+		this.img = Main.game.loader.LoadImage(src_img);
+		this.sndSpawn = Main.game.loader.LoadSound(src_sndSpawn[Main.game.ran.nextInt(src_sndSpawn.length)]);
+		this.sndDie = Main.game.loader.LoadSound(src_sndDie[Main.game.ran.nextInt(src_sndDie.length)]);
 	}
 	
 	@Override
