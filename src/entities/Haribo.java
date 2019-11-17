@@ -1,12 +1,18 @@
 package entities;
 
+import java.awt.image.BufferedImage;
+
+import application.Animation;
+
 /**
  * Die Klasse der mutierten Haribo-Bären, unserem Tier mit 'h' und dem einfachsten Gegner im Spiel
  */
 
 import application.Entity;
 import application.Main;
+import application.Sprite;
 import application.Vector;
+import javafx.embed.swing.SwingFXUtils;
 
 public class Haribo extends application.Entity {
 
@@ -21,9 +27,35 @@ public class Haribo extends application.Entity {
 	private static final Vector size_init = new Vector(1, 1);
 	
 	private static final boolean collidable = true;
+	
+	private int anim_speed = 8;
+	
+	//Animation
+	private static String src_anim = "Gegner_Feuer_Spritesheet.png";
+	private static BufferedImage[] anim1 = { 
+			Sprite.getSprite(1, 0, src_anim), 
+			Sprite.getSprite(2, 0, src_anim),
+			Sprite.getSprite(3, 0, src_anim),
+			Sprite.getSprite(4, 0, src_anim),
+			Sprite.getSprite(5, 0, src_anim),
+			Sprite.getSprite(6, 0, src_anim),
+			Sprite.getSprite(7, 0, src_anim),
+			Sprite.getSprite(8, 0, src_anim),
+			Sprite.getSprite(9, 0, src_anim)};
+
+	private BufferedImage[] standartanim = { Sprite.getSprite(0, 0, src_anim) };
+	// These are animation states
+	private Animation anim = new Animation(anim1, anim_speed);
+	private Animation standart_anim = new Animation(standartanim, 10);
+	// This is the actual animation
+	public Animation animation = standart_anim;
+	
 
 	public Haribo(int x, int y) {
 		super(x, y);
+		
+		animation = anim;
+		animation.start();
 	}
 
 	@Override
@@ -51,6 +83,12 @@ public class Haribo extends application.Entity {
 	@Override
 	public Vector getInitSize() {
 		return size_init;
+	}
+	
+	public void onAnimate() {
+		//animation.restart();
+		animation.update();
+		img = SwingFXUtils.toFXImage(animation.getSprite(), null);
 	}
 
 	@Override

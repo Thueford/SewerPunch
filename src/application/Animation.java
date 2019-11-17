@@ -7,10 +7,11 @@ import java.util.List;
 public class Animation {
 
 	private int frameCount; // Counts ticks for change
-	private int frameDelay; // frame delay 1-12 (You will have to play around with this)
+	private long frameDelay; // frame delay 1-12 (You will have to play around with this)
 	private int currentFrame; // animations current frame
 	private int animationDirection; // animation direction (i.e counting forward or backward)
 	private int totalFrames; // total amount of frames for your animation
+	private int lastframetime;
 
 	private boolean stopped; // has animations stopped
 
@@ -80,6 +81,9 @@ public class Animation {
 	public void update() {
 
 		if (!stopped) {
+			
+			
+			/*
 			frameCount++;
 
 			if (frameCount > frameDelay) {
@@ -92,6 +96,7 @@ public class Animation {
 					currentFrame = totalFrames - 1;
 				}
 			}
+			//*/
 
 		}
 
