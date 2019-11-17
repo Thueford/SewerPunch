@@ -17,7 +17,8 @@ import javafx.embed.swing.SwingFXUtils;
 public class Haribo extends application.Entity {
 
 	private static final String src_img = "Gegner_Feuer_V3.2.png";
-	private static final String src_dieanim = "";
+	private static final String src_dieanim = "Haribo_death_Sprite_strip5x1.png";
+	private static final String src_anim = "Gegner_Feuer_Spritesheet_strip10x1.png";
 
 	private static final String[] src_sndSpawn = { "enemyspawn1.wav" , "enemyspawn2.wav", "enemyspawn3.wav"};
 	private static final String[] src_sndDie = { "enemysmash1.wav", "enemysmash2.wav", "enemysmash3.wav", "enemysmash4.wav", "enemysmash5.wav", "enemysmash6.wav", "enemysmash7.wav"};
@@ -32,7 +33,6 @@ public class Haribo extends application.Entity {
 	private double anim_speed = 0.10;
 	
 	//Animation
-	private static String src_anim = "Gegner_Feuer_Spritesheet_strip10x1.png";
 	private static BufferedImage[] anim1 = { 
 			Sprite.getSprite(1, 0, src_anim), 
 			Sprite.getSprite(2, 0, src_anim),
@@ -43,11 +43,19 @@ public class Haribo extends application.Entity {
 			Sprite.getSprite(7, 0, src_anim),
 			Sprite.getSprite(8, 0, src_anim),
 			Sprite.getSprite(9, 0, src_anim)};
+	
+	private static BufferedImage[] anim_die = { 
+			Sprite.getSprite(0, 0, src_dieanim), 
+			Sprite.getSprite(1, 0, src_dieanim),
+			Sprite.getSprite(2, 0, src_dieanim),
+			Sprite.getSprite(3, 0, src_dieanim),
+			Sprite.getSprite(4, 0, src_dieanim)};
 
 	private BufferedImage[] standartanim = { Sprite.getSprite(0, 0, src_anim) };
 	// These are animation states
 	private Animation anim = new Animation(anim1, anim_speed);
 	private Animation standart_anim = new Animation(standartanim, 1);
+	private Animation die_anim = new Animation(anim_die, anim_speed);
 	// This is the actual animation
 	public Animation animation = standart_anim;
 	
@@ -110,7 +118,7 @@ public class Haribo extends application.Entity {
 	@Override
 	public void onCollide(Entity e) {
 		super.onCollide(e);
-		if (e instanceof Fist) {
+		if (e instanceof FistL) {
 			this.stopWalking();
 			this.speed.x = e.speed.x;
 			this.speed.y = 0;
@@ -125,5 +133,6 @@ public class Haribo extends application.Entity {
 
 	@Override
 	public void onDie() {
+		animation = die_anim;
 	}
 }

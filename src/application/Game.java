@@ -26,16 +26,15 @@ public class Game {
 	public Loader loader;
 
 	private final List<Entity> entities = new ArrayList<Entity>();
-	private static final Rectangle[] border = { new Rectangle(0, 0, 50, 720), new Rectangle(670, 0, 60, 720) };
+	//private static final Rectangle[] border = { new Rectangle(0, 0, 50, 720), new Rectangle(670, 0, 60, 720) };
 	public final int resource = 50;
 	public Gameloop loop;
 	public Random ran = new Random();
-	public double bots = 50;
 	
 	private Sound atmosphere;
 	public Sound soundtrack;
 	private Sound emp;
-	
+	private Sound fillsnd;
 	/**
 	 * Create renderer and loader instances
 	 */
@@ -80,6 +79,7 @@ public class Game {
 	public void MainThreadFunctions(double time, double dtime) {
 		Main.game.renderer.render(time, dtime);
 		// SoundHandler.play(Soundlist);
+		Fistmanagement.showResource();
 		
 		if(!atmosphere.isPlaying()) {
 			atmosphere.startSound();
@@ -165,12 +165,12 @@ public class Game {
 				}
 			}
 
-			for (Rectangle b : border) {
-				if (a.collides(b) && a instanceof entities.Haribo) {
-					a.dead = true;
-					a.die();
-				}
+			//for (Rectangle b : border) {
+			if ((a.x > 10 || a.x<0) && a instanceof entities.Haribo) {
+				a.dead = true;
+				a.die();
 			}
+			//}
 		}
 	}
 
@@ -178,6 +178,13 @@ public class Game {
 		synchronized (entities) {
 			entities.add(e);
 			System.out.println("Entity added");
+		}
+		return e;
+	}
+	
+	public Entity removeEntity(Entity e) {
+		synchronized (entities) {
+			entities.remove(e);
 		}
 		return e;
 	}
@@ -212,6 +219,7 @@ public class Game {
 		soundtrack.setVolume(0.7);
 		soundtrack.setPriority(95);
 		emp = loader.LoadSound("emp.wav");
+		fillsnd = loader.LoadSound("refill.wav");
 		// entities.get(0).sndSpawn.startSound();
 	}
 
@@ -237,5 +245,10 @@ public class Game {
 			entities.remove(e);
 			System.out.println("Entity removed");
 		}
+	}
+	
+	public void fillPockets() {
+		application.Fistmanagement.resource = this.resource;
+		fillsnd.startSound();
 	}
 }

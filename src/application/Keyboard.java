@@ -1,6 +1,6 @@
 package application;
 
-import entities.Fist;
+import entities.FistL;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.Scene;
@@ -34,6 +34,7 @@ public class Keyboard {
 				int[] point = { 99, 99 };
 				for (int y = 0; y < 4; y++) {
 					for (int x = 0; x < 10; x++) {
+						
 						if (field[y][x] == event.getCode().ordinal()) {
 							point[0] = x;
 							point[1] = y;
@@ -94,17 +95,28 @@ public class Keyboard {
 						//System.out.println("default");
 						checked = true;
 					}
+					return; //when no fist-key was pressed, return
 				}
 
 				 
 				// System.out.println(point[1]);
 				Vector p = new Vector(point[0], point[1]);
 				if (point[0] != 99 && point[1] != 99) {
-					Fist f = new Fist(point[0], point[1]);
-					Main.game.addEntity(f);
+					Fistmanagement.fistOut(point[1], point[0]);
+					
+					
 				}
+				
+				scene.setOnKeyReleased(k ->{
+					
+					if(event.getCode() == k.getCode()) {
+						Fistmanagement.fistBack(point[1]);
+					}
+					
+				});
 			}
 		});
+		
 	}
 
 }
