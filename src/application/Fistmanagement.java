@@ -7,9 +7,9 @@ public class Fistmanagement {
 
 	public static double resource = 50;
 
-	private static boolean[] fistfromleft = new boolean[] {false, false, false, false}; //determines, if fist spawns from left or not
-	private static boolean[] occupied = new boolean[] {false, false, false, false}; //blocks line for inputs
-	private static Entity[] fists = new Entity[4];
+	private static boolean[] fistfromleft = new boolean[] {true, true, true, true}; //determines, if fist spawns from left or not
+	public static boolean[] occupied = new boolean[] {false, false, false, false}; //blocks line for inputs
+	public static Entity[] fists = new Entity[4];
 	
 	public static void fistOut(int y, int x) { //y = line of fist, x = range of fist
 		
@@ -19,13 +19,13 @@ public class Fistmanagement {
 		
 		resource -= 10;
 		
-		if(!fistfromleft[y]) {
-			FistL f = new FistL(0,5,x);
+		if(fistfromleft[y]) {
+			FistL f = new FistL(-9,5+y,x-9);
 			Main.game.addEntity(f);
 			fists[y] = f;
 			occupied[y] = true; //set line occupied
 		}else {
-			FistR f = new FistR(9,y,x);
+			FistR f = new FistR(9,5+y,x);
 			Main.game.addEntity(f);
 			fists[y] = f;
 			occupied[y] = true; //set line occupied
@@ -33,22 +33,22 @@ public class Fistmanagement {
 	}
 
 	public static void fistBack(int y) {
-		if(!occupied[y]) { return;}
+		if(occupied[y]) { return;}
 		
-		if(!fistfromleft[y]) {
+		if(fistfromleft[y]) {
 			fists[y].setSpeed(new Vector(-2,0));
-			fists[y] = null;
-			occupied[y] = false; //set line free
+			resource += 10;
 		}else {
 			fists[y].setSpeed(new Vector(2,0));;
-			fists[y] = null;
-			occupied[y] = false; //set line free
+			resource += 10;
 		}
 	}
 
 	public static void update() {
+		
 		resource = resource < 0 ? 0 : resource;
 		resource = resource > 50 ? 50 : resource;
+		
 	}
 
 	/**

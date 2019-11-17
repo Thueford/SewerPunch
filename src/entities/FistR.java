@@ -1,6 +1,7 @@
 package entities;
 
 import application.Entity;
+import application.Fistmanagement;
 import application.Main;
 import application.Vector;
 
@@ -14,8 +15,8 @@ public class FistR extends application.Entity {
 	private static final String[] src_sndweg = { "faustweg1.wav", "faustweg2.wav", "faustweg3.wav" };
 
 	private static final int HP_init = 100;
-	private static final Vector speed_init = new Vector(-4, 0);
-	private static final Vector size_init = new Vector(1, 1);
+	private static final Vector speed_init = new Vector(-6, 0);
+	private static final Vector size_init = new Vector(10, 1);
 	
 	private boolean collidable = true;
 	private static final int drawingOrder = 0;
@@ -84,6 +85,7 @@ public class FistR extends application.Entity {
 	
 	@Override
 	public void onDie() {
-		
+		Fistmanagement.fists[(int)this.y - 5] = null;
+		Fistmanagement.occupied[(int)this.y - 5] = false;
 	}
 }
