@@ -84,7 +84,7 @@ public class Game {
 	public void MainThreadFunctions(double time, double dtime) {
 		Main.game.renderer.render(time, dtime);
 		// SoundHandler.play(Soundlist);
-		//Fistmanagement.showResource();
+		bots.showRes();
 		
 		if(!atmosphere.isPlaying()) {
 			atmosphere.startSound();
