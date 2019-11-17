@@ -108,6 +108,7 @@ public class Game {
 
 				case 10: {
 					alert.startSound();
+//					while (alert.isPlaying()) {}
 					wavestate++;
 				}
 				case 11: {
@@ -222,7 +223,7 @@ public class Game {
 		emp = loader.LoadSound("emp.wav");
 		fillsnd = loader.LoadSound("refill.wav");
 		alert = loader.LoadSound("alert.wav");
-		alert.setSpeed(8);
+		//alert.setSpeed(8);
 		// entities.get(0).sndSpawn.startSound();
 		
 		Main.game.addEntity(new entities.Battery(-1.0, 4.5, resource));
