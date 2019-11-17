@@ -7,7 +7,7 @@ import darstellung.Loader;
 import entities.Fist;
 
 public class Background extends Entity{
-	private static final String[] src_img = {"bg1.png", "bg2.png", "bg3.png", "bg4.png",};
+	private static final String[] src_img = {"bg1.png", "bg2.png", "bg3.png", "bg4.png"};
 	private static final String src_dieanim = "";
 
 	private static final int HP_init = 1;
@@ -58,5 +58,14 @@ public class Background extends Entity{
 	@Override
 	public void onDie() {
 		
+	}
+	
+	@Override
+	public void onAnimate(double time, double dtime) {
+		super.onAnimate(time, dtime);
+		if(this.y > 9) {
+			this.y = -11;
+			this.LoadAssets();
+		}
 	}
 }

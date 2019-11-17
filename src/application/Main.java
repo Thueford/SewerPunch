@@ -37,6 +37,8 @@ public class Main extends Application {
 				}
 			});
 			primaryStage.show();
+			
+			Main.game = new Game();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
