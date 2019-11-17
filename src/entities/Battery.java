@@ -59,7 +59,7 @@ public class Battery extends Entity{
 	
 	private void LoadImages() {
 		for(int i = 0; i<src_img.length-1; i++) {
-			images[i] = Main.game.loader.LoadImage(src_img[i]);
+			//images[i] = Main.game.loader.LoadImage(src_img[i]);
 		}
 	}
 	
