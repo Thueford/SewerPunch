@@ -23,7 +23,7 @@ public class Background extends Entity{
 
 	@Override
 	public void LoadAssets() {
-		this.img = Main.game.loader.LoadImage(src_img[Main.game.ran.nextInt(src_img.length+1)]);
+		this.img = Main.game.loader.LoadImage(src_img[Main.game.ran.nextInt(src_img.length)]);
 	}
 
 	@Override
@@ -69,8 +69,8 @@ public class Background extends Entity{
 	@Override
 	public void onAnimate(double time, double dtime) {
 		super.onAnimate(time, dtime);
-		if(this.y > 9) {
-			this.y = -11;
+		if(this.y > 20) {
+			this.y = -9;
 			this.LoadAssets();
 		}
 	}

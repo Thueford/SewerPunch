@@ -200,8 +200,8 @@ public class Game {
 		Player p = new Player(4, 7);
 		Main.game.addEntity(p);
 		
-		Main.game.addEntity(new darstellung.Background(0, 0));
-		Main.game.addEntity(new darstellung.Background(0, -11));
+		Main.game.addEntity(new darstellung.Background(6, 5));
+		Main.game.addEntity(new darstellung.Background(-3, 4));
 		
 		atmosphere = loader.LoadSound("atmosphere.wav");
 		atmosphere.setVolume(0.3);
