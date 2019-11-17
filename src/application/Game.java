@@ -253,6 +253,7 @@ public class Game {
 			if(tmp.get(i) instanceof entities.Haribo) {
 				tmp.get(i).dead=true;
 				tmp.get(i).die();
+				Main.game.removeEntity(tmp.get(i));
 			}
 		}
 	}
