@@ -35,6 +35,7 @@ public class Game {
 	public Sound soundtrack;
 	private Sound emp;
 	private Sound fillsnd;
+	private Sound alert;
 	/**
 	 * Create renderer and loader instances
 	 */
@@ -106,7 +107,7 @@ public class Game {
 				switch (wavestate) {
 
 				case 10: {
-					// AlertSound();
+					alert.startSound();
 					wavestate++;
 				}
 				case 11: {
@@ -220,6 +221,7 @@ public class Game {
 		soundtrack.setPriority(95);
 		emp = loader.LoadSound("emp.wav");
 		fillsnd = loader.LoadSound("refill.wav");
+		alert = loader.LoadSound("alert.wav");
 		// entities.get(0).sndSpawn.startSound();
 		
 		Main.game.addEntity(new entities.Battery(-1.0, 4.5, resource));

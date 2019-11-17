@@ -8,10 +8,10 @@ import javafx.scene.image.Image;
 
 public class Battery extends Entity{
 	
-	private static final String[] src_img = {"battery/Batterie_V3f0.png", "battery/Batterie_V3f1.png", "battery/Batterie_V3f2.png", "battery/Batterie_V3f3.png", "battery/Batterie_V3f4.png", "battery/Batterie_V3f5.png", 
-											 "battery/Batterie_V3f6.png", "battery/Batterie_V3f7.png", "battery/Batterie_V3f8.png", "battery/Batterie_V3f9.png", "battery/Batterie_V3f10.png",
-											 "battery/Batterie_V3f11.png", "battery/Batterie_V3f12.png", "battery/Batterie_V3f13.png", "battery/Batterie_V3f14.png", "battery/Batterie_V3f15.png"};
-	private Image[] images = new Image[] {};
+	private static final String[] src_img = {"battery/Batterie_V3f0_.png", "battery/Batterie_V3f1_.png", "battery/Batterie_V3f2_.png", "battery/Batterie_V3f3_.png", "battery/Batterie_V3f4_.png", "battery/Batterie_V3f5_.png", 
+											 "battery/Batterie_V3f6_.png", "battery/Batterie_V3f7_.png", "battery/Batterie_V3f8_.png", "battery/Batterie_V3f9_.png", "battery/Batterie_V3f10_.png",
+											 "battery/Batterie_V3f11_.png", "battery/Batterie_V3f12_.png", "battery/Batterie_V3f13_.png", "battery/Batterie_V3f14_.png", "battery/Batterie_V3f15_.png"};
+	private Image[] images = new Image[src_img.length];
 	private double fill;
 	private static final double bots = 50;
 	
@@ -58,7 +58,7 @@ public class Battery extends Entity{
 	}
 	
 	private void LoadImages() {
-		for(int i = 0; i<src_img.length-1; i++) {
+		for(int i = 0; i<src_img.length; i++) {
 			images[i] = Main.game.loader.LoadImage(src_img[i]);
 		}
 	}
