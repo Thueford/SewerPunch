@@ -8,11 +8,12 @@ import sounds.SoundLoader;
 
 public class Fist extends application.Entity {
 
-	private static final String src_img = "./res/haribo.jpeg";
+	private static final String src_img = "haribo.jpeg";
 	private static final String src_dieanim = "";
 
-	private static final String[] src_sndSpawn = { "./res/tone.wav" };
-	private static final String[] src_sndDie = { "./res/tone.wav" };
+	private static final String[] src_sndSpawn = { "faustangriff1.wav", "faustangriff2.wav", "faustangriff3.wav",};
+	private static final String[] src_sndDie = { "faustdie.wav" };
+	private static final String[] src_sndweg = { "faustweg1.wav", "faustweg2.wav", "faustweg3.wav" };
 
 	private static final int HP_init = 100;
 	private static final Vector speed_init = new Vector(4, 0);
@@ -29,7 +30,7 @@ public class Fist extends application.Entity {
 	public void LoadAssets() {
 		this.img = Loader.LoadImage(src_img);
 		this.sndSpawn = SoundLoader.LoadSound(src_sndSpawn[Main.game.ran.nextInt(src_sndSpawn.length)]);
-		this.sndDie = SoundLoader.LoadSound(src_sndSpawn[Main.game.ran.nextInt(src_sndDie.length)]);
+		this.sndDie = SoundLoader.LoadSound(src_sndDie[Main.game.ran.nextInt(src_sndDie.length)]);
 	}
 	
 	@Override
@@ -63,6 +64,7 @@ public class Fist extends application.Entity {
 		if (e instanceof Haribo)
 			e.reduceHP(1);
 	}
+	
 	public void decrease_bots(int anz) {
 		Main.game.bots -= anz;
 	}
