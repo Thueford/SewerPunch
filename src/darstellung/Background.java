@@ -64,7 +64,7 @@ public class Background extends Entity{
 	public void onAnimate(double time, double dtime) {
 		super.onAnimate(time, dtime);
 		if(this.y > 9) {
-			this.y = -11;
+			this.y = -10;
 			this.LoadAssets();
 		}
 	}

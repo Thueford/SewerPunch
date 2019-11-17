@@ -33,6 +33,7 @@ public class Game {
 	
 	private Sound atmosphere;
 	private Sound soundtrack;
+	private Sound emp;
 	
 	/**
 	 * Create renderer and loader instances
@@ -198,8 +199,9 @@ public class Game {
 		// test
 		Player p = new Player(4, 7);
 		Main.game.addEntity(p);
+		
 		Main.game.addEntity(new darstellung.Background(0, 0));
-		Main.game.addEntity(new darstellung.Background(0, -11));
+		Main.game.addEntity(new darstellung.Background(0, -10));
 		
 		atmosphere = loader.LoadSound("atmosphere.wav");
 		atmosphere.setVolume(0.3);
@@ -207,12 +209,14 @@ public class Game {
 		soundtrack = loader.LoadSound("soundtrack.wav");
 		soundtrack.setVolume(0.3);
 		soundtrack.setPriority(95);
+		emp = loader.LoadSound("emp.wav");
 		// renderer.render();
 		// entities.get(0).sndSpawn.startSound();
 	}
 
 	// biochemischer emp
 	public void bcemp() {
+		emp.startSound();
 		this.killAllEntities();
 	}
 
@@ -220,8 +224,10 @@ public class Game {
 
 		List<Entity> tmp = this.getEntities();
 		for(int i = 0; i<tmp.size();i++) {
-			tmp.get(i).dead=true;
-			tmp.get(i).die();
+			if(tmp.get(i) instanceof entities.Haribo) {
+				tmp.get(i).dead=true;
+				tmp.get(i).die();
+			}
 		}
 	}
 }

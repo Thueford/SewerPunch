@@ -1,6 +1,6 @@
 package application;
 
-import entities.Haribo;
+import entities.*;
 
 public class Spawner {
 	// wahrscheinlichkeiten für spawn in feldern
@@ -32,7 +32,12 @@ public class Spawner {
 	// feld ist die x Koordinate
 	public void spawn(int feld) {
 		System.out.print("spawn ");
-		Main.game.addEntity(new Haribo(feld, 1));
+		int r = (int) Math.random() * 100;
+		if(r>10) {
+			Main.game.addEntity(new Haribo(feld, 1));
+		} else {
+			Main.game.addEntity(new Garbage(feld, 1));
+		}
 		// Main.game.entities.get(Main.game.entities.size()-1).sndSpawn.startSound();
 	}
 
