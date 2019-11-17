@@ -63,14 +63,13 @@ public class Game {
 		new Keyboard(scene);
 		Main.primaryStage.setScene(scene);
 		Main.primaryStage.show();
+		
+		this.init();
 
 		loop = new Gameloop();
 		loop.start();
 
-		// test
-		Main.game.addEntity(new Player(1, 1));
-		// renderer.render();
-		// entities.get(0).sndSpawn.startSound();
+		
 	}
 
 	public void MainThreadFunctions() {
@@ -182,6 +181,13 @@ public class Game {
 				tmp.add(e);
 		}
 		return tmp;
+	}
+	
+	public void init() {
+		// test
+		Main.game.addEntity(new Player(4, 7));
+		// renderer.render();
+		// entities.get(0).sndSpawn.startSound();
 	}
 	
 	//biochemischer emp	 
