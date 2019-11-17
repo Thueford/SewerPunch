@@ -17,7 +17,7 @@ public class Garbage extends application.Entity{
 	private static final Vector size_init = new Vector(1, 1);
 	
 	private boolean collidable = true;
-	private static final int drawingOrder = 0;
+	private static final int drawingOrder = -5;
 
 	public Garbage(int x, int y) {
 		super(x, y);
