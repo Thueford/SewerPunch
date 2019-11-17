@@ -15,11 +15,12 @@ public class Player extends application.Entity {
 	
 
 	private static final int HP_init = 1;
+	private static final int drawingOrder = 0;
 
 	private static final Vector speed_init = new Vector(0, 0);
 	private static final Vector size_init = new Vector(1, 1);
 	
-	private static final boolean collidable = true;
+	private boolean collidable = true;
 
 	private static String src_anim = "AnimationSpriteSheet_strip3x4.png";
 
@@ -53,7 +54,7 @@ public class Player extends application.Entity {
 	}
 	
 	@Override
-	public boolean getCollidable() {
+	public boolean isCollidable() {
 		return collidable;
 	}
 
@@ -70,6 +71,11 @@ public class Player extends application.Entity {
 	@Override
 	public Vector getInitSize() {
 		return size_init;
+	}
+	
+	@Override
+	public int getDrawingOrder() {
+		return drawingOrder;
 	}
 
 	@Override

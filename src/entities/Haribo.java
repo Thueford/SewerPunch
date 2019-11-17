@@ -26,7 +26,8 @@ public class Haribo extends application.Entity {
 	private static final Vector speed_init = new Vector(0, 2);
 	private static final Vector size_init = new Vector(1, 1);
 	
-	private static final boolean collidable = true;
+	private boolean collidable = true;
+	private static final int drawingOrder = 0;
 	
 	private int anim_speed = 8;
 	
@@ -66,7 +67,7 @@ public class Haribo extends application.Entity {
 	}
 
 	@Override
-	public boolean getCollidable() {
+	public boolean isCollidable() {
 		return collidable;
 	}
 
@@ -83,6 +84,11 @@ public class Haribo extends application.Entity {
 	@Override
 	public Vector getInitSize() {
 		return size_init;
+	}
+	
+	@Override
+	public int getDrawingOrder() {
+		return drawingOrder;
 	}
 	
 	public void onAnimate() {

@@ -32,7 +32,9 @@ public abstract class Entity extends Rectangle {
 
 	public abstract Vector getInitSize();
 	
-	public abstract boolean getCollidable();
+	public abstract boolean isCollidable();
+	
+	public abstract int getDrawingOrder();
 
 	/**
 	 * Called once on game load Load all relevat assets
