@@ -7,7 +7,7 @@ public abstract class Entity extends Rectangle {
 
 	// game vars
 	public boolean visible = true, dead = false, collided = false;
-	public Vector speed;
+	public Vector speed = new Vector();
 	public int HP;
 
 	// assets
@@ -19,8 +19,10 @@ public abstract class Entity extends Rectangle {
 
 		this.x = x;
 		this.y = y;
+		this.width = getInitSize().x;
+		this.height = getInitSize().y;
 
-		this.speed = getInitSpeed();
+		this.speed.set(getInitSpeed());
 		this.HP = getInitHP();
 
 		LoadAssets();
@@ -42,11 +44,11 @@ public abstract class Entity extends Rectangle {
 	public abstract void LoadAssets();
 
 	public Vector getSpeed() {
-		return speed;
+		return this.speed;
 	}
 
 	public void setSpeed(Vector speed) {
-		this.speed = speed;
+		this.speed.set(speed);
 	}
 
 	public void stopWalking() {
@@ -67,7 +69,7 @@ public abstract class Entity extends Rectangle {
 	 * @param dtime
 	 */
 	public void move(double dtime) {
-		add(speed.x * dtime, speed.y * dtime);
+		this.add(this.speed.x * dtime, this.speed.y * dtime);
 	}
 
 	/**
@@ -76,17 +78,17 @@ public abstract class Entity extends Rectangle {
 	 * @param damage
 	 */
 	public void reduceHP(int damage) {
-		HP -= damage;
+		this.HP -= damage;
 		if (damage <= 0)
-			die();
+			this.die();
 	}
 
 	/**
 	 * kill entity
 	 */
 	public void die() {
-		dead = true;
-		onDie();
+		this.dead = true;
+		this.onDie();
 	}
 
 	/**
@@ -107,7 +109,7 @@ public abstract class Entity extends Rectangle {
 	 * @param e collided entity
 	 */
 	public void onCollide(Entity e) {
-		collided = true;
+		this.collided = true;
 	}
 
 	/**

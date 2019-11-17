@@ -4,8 +4,9 @@ import entities.FistL;
 import entities.FistR;
 
 public class Fistmanagement {
-	
+
 	public static double resource = 50;
+
 	private static boolean[] fistfromleft = new boolean[] {false, false, false, false}; //determines, if fist spawns from left or not
 	private static boolean[] occupied = new boolean[] {false, false, false, false}; //blocks line for inputs
 	private static Entity[] fists = new Entity[4];
@@ -29,11 +30,8 @@ public class Fistmanagement {
 			fists[y] = f;
 			occupied[y] = true; //set line occupied
 		}
-		
-		
-		
 	}
-	
+
 	public static void fistBack(int y) {
 		if(!occupied[y]) { return;}
 		
@@ -46,16 +44,11 @@ public class Fistmanagement {
 			fists[y] = null;
 			occupied[y] = false; //set line free
 		}
-		
-		
-		
 	}
-	
-	public static void update(){
-		
-		resource = resource < 0?0:resource;
-		resource = resource > 50?50:resource;
-		
+
+	public static void update() {
+		resource = resource < 0 ? 0 : resource;
+		resource = resource > 50 ? 50 : resource;
 	}
 
 	/**
@@ -66,15 +59,15 @@ public class Fistmanagement {
 		if(occupied[line]) { return; }
 		fistfromleft[line] = fistfromleft[line]?false:true;
 	}
-	
+
 	public static void showResource() {
-		
-		for(Entity obj : Main.game.getEntities()) {
-			if(obj instanceof entities.Battery) {
+
+		for (Entity obj : Main.game.getEntities()) {
+			if (obj instanceof entities.Battery) {
 				Main.game.removeEntity(obj);
 			}
 		}
 		Main.game.addEntity(new entities.Battery(650, 400, resource));
-		
+
 	}
 }

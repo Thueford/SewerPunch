@@ -3,6 +3,7 @@ package entities;
 import java.awt.image.BufferedImage;
 
 import application.Animation;
+import application.Entity;
 import application.Main;
 import application.Vector;
 import application.Sprite;
@@ -58,7 +59,7 @@ public class Player extends application.Entity {
 	
 	@Override
 	public boolean isCollidable() {
-		return collidable;
+		return this.collidable;
 	}
 
 	@Override
@@ -68,12 +69,12 @@ public class Player extends application.Entity {
 
 	@Override
 	public Vector getInitSpeed() {
-		return speed_init;
+		return speed_init.copy();
 	}
 
 	@Override
 	public Vector getInitSize() {
-		return size_init;
+		return size_init.copy();
 	}
 	
 	@Override
@@ -90,5 +91,14 @@ public class Player extends application.Entity {
 	@Override
 	public void move(double dtime) {
 		
+	}
+	
+	@Override
+	public void onCollide(Entity e) {
+		super.onCollide(e);
+		if (e instanceof Haribo || e instanceof Garbage) {
+			this.stopWalking();
+			reduceHP(1);
+		}
 	}
 }

@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Random;
 
 import darstellung.Loader;
+import entities.Haribo;
 import entities.Player;
 import sounds.Sound;
 import javafx.application.Platform;
@@ -176,6 +177,7 @@ public class Game {
 	public Entity addEntity(Entity e) {
 		synchronized (entities) {
 			entities.add(e);
+			System.out.println("Entity added");
 		}
 		return e;
 	}
