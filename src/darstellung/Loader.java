@@ -9,6 +9,7 @@ import java.util.Map;
 
 import javax.imageio.ImageIO;
 
+import javafx.application.Platform;
 import javafx.scene.image.Image;
 import sounds.Sound;
 
@@ -49,6 +50,7 @@ public class Loader {
 				img = new Image(new URL(res_img, src).openStream());
 			} catch (IOException e) {
 				e.printStackTrace();
+				Platform.exit();
 			}
 			images.put(src, img);
 		}
@@ -62,15 +64,11 @@ public class Loader {
 				snd = new Sound(new URL(res_snd, src).getPath());
 			} catch (IOException e) {
 				e.printStackTrace();
+				Platform.exit();
 			}
 			sounds.put(src, snd);
 		}
 		return snd;
-	}
-
-	public File GetImageFile(String file) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	public BufferedImage LoadBufferedImage(String src) {
@@ -80,6 +78,7 @@ public class Loader {
 				img = ImageIO.read(new URL(res_img, src).openStream());
 			} catch (IOException e) {
 				e.printStackTrace();
+				Platform.exit();
 			}
 			bufferedImages.put(src, img);
 		}

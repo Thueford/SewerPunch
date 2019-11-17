@@ -21,7 +21,7 @@ public class Player extends application.Entity {
 	
 	private static final boolean collidable = true;
 
-	private static String src_anim = "AnimationSpriteSheet.png";
+	private static String src_anim = "AnimationSpriteSheet_3x4.png";
 
 	// Images for each animation
 
