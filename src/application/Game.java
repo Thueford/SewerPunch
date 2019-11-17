@@ -242,6 +242,7 @@ public class Game {
 		if(empReady) {
 			emp.startSound();
 			this.killAllEntities();
+			empReady = false;
 		}
 	}
 
