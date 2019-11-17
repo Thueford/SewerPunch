@@ -72,8 +72,8 @@ public class Game {
 		
 	}
 
-	public void MainThreadFunctions() {
-		Main.game.renderer.render();
+	public void MainThreadFunctions(long time, long dtime) {
+		Main.game.renderer.render(time, dtime);
 		// SoundHandler.play(Soundlist);
 	}
 

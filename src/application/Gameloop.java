@@ -18,14 +18,14 @@ public class Gameloop extends Thread {
 	 * Calls Renderer on JavaFX Main Thread to invoke the painting of Ingame-Objects
 	 */
 	public Gameloop() {
-		globalT = new Timer();
-		paintT = new Timer();
 		spmanager = Main.game.new SpawnManagement();
 	}
 
 	public void run() {
 
 		System.out.println("Thread gestartet");
+		globalT = new Timer();
+		paintT = new Timer();
 
 		while (run) {
 
@@ -47,14 +47,12 @@ public class Gameloop extends Thread {
 			Main.game.collide();
 
 			// Paint changes on Canvas -> Only run this once every frame
-			if (System.nanoTime() >= paintT.time + wait) { // if wait + time exceeds nanoTime, the next Frame can be
-															// painted
+			// if wait + time exceeds nanoTime, the next Frame can be painted
+			if (System.nanoTime() >= paintT.time + wait) {
 				paintT.newltime();
+				Platform.runLater(() -> Main.game.MainThreadFunctions(globalT.time, globalT.dtime));
 
-				Platform.runLater(() -> Main.game.MainThreadFunctions());
-
-				// calculates wait time, saves the timestamp of the time of calculation in
-				// 'time'
+				// calculates wait time, saves the timestamp of the time of calculation in 'time'
 				wait = framelength - (paintT.newtime() - paintT.ltime);
 
 				lastspawn++;

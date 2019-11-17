@@ -1,9 +1,6 @@
 package application;
 
-import entities.Player;
-import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 
 public class Renderer {
 
@@ -23,11 +20,11 @@ public class Renderer {
 		this.ctx = ctx;
 	}
 
-	public void render() {
+	public void render(long time, long dtime) {
 		ctx.clearRect(0, 0, Main.WIDTH, Main.HEIGHT);
 		for (Entity e : Main.game.getEntities()) {
 			if (e.visible) {
-				e.onAnimate();
+				e.onAnimate(time, dtime);
 				ctx.drawImage(e.img, xCoordToPixel(e.x), yCoordToPixel(e.y));
 			}
 		}
