@@ -13,7 +13,7 @@ public class Background extends Entity{
 	private static final int HP_init = 1;
 	private static final int drawingOrder = -100;
 	private static final Vector speed_init = new Vector(0, 0.5);
-	private static final Vector size_init = new Vector(10, 10);
+	private static final Vector size_init = new Vector(10, 12);
 
 	private static final boolean collidable = false;
 	
@@ -69,8 +69,9 @@ public class Background extends Entity{
 	@Override
 	public void onAnimate(double time, double dtime) {
 		super.onAnimate(time, dtime);
-		if(this.y > 20) {
-			this.y = -9;
+		System.out.println(this.x + "," + this.y);
+		if(this.y > 10) {
+			this.y = -10;
 			//this.x = 2;
 			this.LoadAssets();
 		}

@@ -26,6 +26,11 @@ public class Gameloop extends Thread {
 		System.out.println("Thread gestartet");
 		globalT = new Timer();
 		paintT = new Timer();
+		
+		globalT.step();
+		paintT.step();
+		globalT.step();
+		paintT.step();
 
 		while (run) {
 
@@ -48,6 +53,8 @@ public class Gameloop extends Thread {
 			// Collision detection
 			Main.game.collide();
 
+			globalT.step();
+			paintT.step();
 			// Paint changes on Canvas -> Only run this once every frame
 			// apply framerate by time diff to lastRenderTime
 			if (fps * (globalT.sec() - lastRenderTime) >= 1) {
