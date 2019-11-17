@@ -145,7 +145,7 @@ public class Game {
 	/**
 	 * move all entities
 	 */
-	public void move(long dtime) {
+	public void move(double dtime) {
 		for (Entity obj : Main.game.getEntities()) {
 			obj.move(dtime);
 		}

@@ -52,7 +52,7 @@ public class Fist extends application.Entity {
 	}
 	
 	@Override
-	public void move(long dtime) {	
+	public void move(double dtime) {	
 		super.move(dtime);
 		
 	}

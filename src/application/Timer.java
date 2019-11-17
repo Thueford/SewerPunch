@@ -2,7 +2,7 @@ package application;
 
 public class Timer {
 
-	public long starttime; // of Timer.class
+	public long startTime; // of Timer.class
 	public long ltime; // time from when was last measured
 	public long dtime; // delta-time - time spent between now and last call
 	public long time;
@@ -12,44 +12,53 @@ public class Timer {
 	 * )
 	 */
 	public Timer() {
-		starttime = System.nanoTime();
-		ltime = starttime;
-	}
-
-	/**
-	 * returns System.nanotime() and saves the value in the variable time
-	 * 
-	 * @return
-	 */
-	public long newtime() {
-		return time = System.nanoTime();
-	}
-
-	/**
-	 * sets the value of ltime to now (System.nanoTime() ), sets dtime to 0
-	 * 
-	 * @return
-	 */
-	public void newltime() {
-		ltime = System.nanoTime();
-		dtime = 0;
-	}
-
-	/**
-	 * calculates the value of dtime (time passed since timestamp of ltime), writes
-	 * over the value of dtime and returns new dtime
-	 */
-	public long newdtime() {
-		long time = System.nanoTime();
-		dtime = time - ltime;
-		return dtime;
+		startTime = System.nanoTime();
 	}
 	
-	public double getTimeSeconds() {
+	/**
+	 * save current timestamp to take diff at toc() from
+	 */
+	public void tic() {
+		time = System.nanoTime();
+	}
+	
+	/**
+	 * save time difference from last tic call to dtime
+	 */
+	public void toc() {
+		dtime = System.nanoTime() - ltime;
+		ltime = time;
+	}
+	
+	/**
+	 * Get elapsed time since initialization in seconds
+	 * @return seconds
+	 */
+	public double gameTime() {
+		return (System.nanoTime() - startTime) / 1e9;
+	}
+	
+	/**
+	 * do a toc() and tic() call at once
+	 */
+	public void step() {
+		toc();
+		tic();
+	}
+	
+	/**
+	 * get time in seconds
+	 * @return seconds
+	 */
+	public double sec() {
 		return time / 1e9;
 	}
-	
-	public double getDTimeSeconds() {
+
+	/**
+	 * get time difference in seconds
+	 * @return time difference
+	 */
+	public double d_sec() {
 		return dtime / 1e9;
 	}
 }
