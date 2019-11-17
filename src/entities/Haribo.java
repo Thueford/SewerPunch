@@ -62,6 +62,7 @@ public class Haribo extends application.Entity {
 
 	public Haribo(int x, int y) {
 		super(x, y);
+
 		
 		this.animation = anim;
 		this.animation.start();
