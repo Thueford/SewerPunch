@@ -37,7 +37,7 @@ public class Ressource {
 				Main.game.removeEntity(obj);
 			}
 		}
-		Main.game.addEntity(new entities.Battery(1, 1, res));
+		Main.game.addEntity(new entities.Battery(0, 0, res));
 
 	}
 }

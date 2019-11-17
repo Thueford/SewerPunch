@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Random;
 
 import darstellung.Loader;
+import darstellung.MainMenu;
 import darstellung.Ressource;
 import entities.Haribo;
 import entities.Player;
@@ -178,6 +179,9 @@ public class Game {
 			}
 			if ((a.y > 10 ) && (a instanceof entities.Haribo || a instanceof entities.Garbage)){
 				Main.game.removeEntity(a);
+			}
+			if ((a.y >= 9) && (a instanceof entities.Haribo || a instanceof entities.Garbage) && !a.isDead()) {
+				Platform.runLater( () -> new MainMenu() );
 			}
 			
 			if(a.collided && !coll) {

@@ -5,9 +5,9 @@ import javafx.scene.media.*;
 import java.io.File;
 
 public class Sound {
-	private double volume; // default: 0.3 possible: 0.0 to 1.0 0- mute, 1-extremely loud
-	private double speed; // default: 1 possible: 0.125 to 8
-	private int priority; // default: 0 possible: any Integer Background gets highest
+	private double volume; 	// default: 0.3 possible: 0.0 to 1.0 0- mute, 1-extremely loud
+	private double speed; 	// default: 1 	possible: 0.125 to 8
+	private int priority; 	// default: 0 	possible: any Integer Background gets highest
 	private String src;
 	private AudioClip audioClip;
 

@@ -59,7 +59,7 @@ public class Player extends application.Entity {
 	
 	@Override
 	public boolean isCollidable() {
-		return this.collidable;
+		return collidable;
 	}
 
 	@Override
@@ -69,12 +69,12 @@ public class Player extends application.Entity {
 
 	@Override
 	public Vector getInitSpeed() {
-		return speed_init.copy();
+		return speed_init;
 	}
 
 	@Override
 	public Vector getInitSize() {
-		return size_init.copy();
+		return size_init;
 	}
 	
 	@Override
