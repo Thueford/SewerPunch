@@ -34,7 +34,7 @@ public class Fist extends application.Entity {
 	
 	@Override
 	public boolean isCollidable() {
-		return collidable;
+		return this.collidable;
 	}
 
 	@Override
@@ -44,12 +44,12 @@ public class Fist extends application.Entity {
 
 	@Override
 	public Vector getInitSpeed() {
-		return speed_init;
+		return speed_init.copy();
 	}
 
 	@Override
 	public Vector getInitSize() {
-		return size_init;
+		return size_init.copy();
 	}
 	
 	@Override
@@ -61,6 +61,8 @@ public class Fist extends application.Entity {
 	public void move(double dtime) {	
 		super.move(dtime);
 		
+		if(this.x > 10 || this.y > 10)
+			Main.game.removeEntity(this);
 	}
 
 	@Override

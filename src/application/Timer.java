@@ -12,7 +12,7 @@ public class Timer {
 	 * )
 	 */
 	public Timer() {
-		startTime = System.nanoTime();
+		startTime = ltime = System.nanoTime();
 	}
 	
 	/**
