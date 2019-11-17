@@ -30,7 +30,7 @@ public class Gameloop extends Thread {
 		while (run) {
 
 			if (pause) {
-				Platform.runLater(() -> Main.game.soundtrack.stopSound() );
+				//Platform.runLater(() -> Main.game.soundtrack.stopSound() );
 				continue;
 			}
 
