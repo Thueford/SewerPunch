@@ -58,7 +58,7 @@ public class Garbage extends application.Entity{
 	@Override
 	public void onCollide(Entity e) {
 		super.onCollide(e);
-		if (e instanceof Fist) {
+		if (e instanceof FistL) {
 			stopWalking();
 			reduceHP(1);
 		}

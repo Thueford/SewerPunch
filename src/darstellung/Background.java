@@ -4,7 +4,7 @@ import application.Entity;
 import application.Main;
 import application.Vector;
 import darstellung.Loader;
-import entities.Fist;
+import entities.FistL;
 
 public class Background extends Entity{
 	private static final String[] src_img = {"bg1.png", "bg2.png", "bg3.png", "bg4.png"};
