@@ -50,11 +50,14 @@ public class Story {
 	}
 	
 	private void step() {
-		//adds one character to the textarea from current story-String
-		textarea.setText(textarea.getText() + story[index].charAt(counter));
-		
+		//adds 1 to 3 characters to the textarea from current story-String
+		String tmp = "";
+		for(int i = 0;i <= (Math.random()*10)%4 && counter < story[index].length(); i++,counter++) {
+			tmp = tmp + story[index].charAt(counter);
+		}
+		textarea.setText(textarea.getText() + tmp);
 		//if counter exceeds the length of the story, test if there are more strings
-		if(++counter >= story[index].length()) {
+		if(counter >= story[index].length()) {
 			if(++index > story.length-1) startGame(); //start new Game
 			//or reset the textarea and counter
 			textarea.setText("");

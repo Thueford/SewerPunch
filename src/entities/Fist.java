@@ -6,7 +6,7 @@ import application.Vector;
 
 public class Fist extends application.Entity {
 
-	private static final String src_img = "haribo.jpeg";
+	private static final String src_img = "Hand_V1.1.png";
 	private static final String src_dieanim = "";
 
 	private static final String[] src_sndSpawn = { "faustangriff1.wav", "faustangriff2.wav", "faustangriff3.wav",};
