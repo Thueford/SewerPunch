@@ -36,7 +36,7 @@ public class Game {
 	private Sound atmosphere;
 	public Sound soundtrack;
 	private Sound emp;
-	private Sound fillsnd;
+	public Sound fillsnd;
 	private Sound alert;
 	/**
 	 * Create renderer and loader instances
@@ -212,8 +212,8 @@ public class Game {
 		Player p = new Player(4, 7);
 		Main.game.addEntity(p);
 		
-		Main.game.addEntity(new darstellung.Background(6, 5));
-		Main.game.addEntity(new darstellung.Background(-3, 4));
+		Main.game.addEntity(new darstellung.Background(-1, 0));
+		Main.game.addEntity(new darstellung.Background(-1, -10));
 		
 		atmosphere = loader.LoadSound("atmosphere.wav");
 		atmosphere.setVolume(0.3);
@@ -224,6 +224,7 @@ public class Game {
 		emp = loader.LoadSound("emp.wav");
 		fillsnd = loader.LoadSound("refill.wav");
 		alert = loader.LoadSound("alert.wav");
+		alert.setSpeed(8);
 		// entities.get(0).sndSpawn.startSound();
 		
 		bots.setRes(50);
@@ -247,5 +248,4 @@ public class Game {
 			}
 		}
 	}
-
 }
