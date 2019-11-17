@@ -64,5 +64,9 @@ public class Sound {
 	public void stopSound() {
 		audioClip.stop();
 	}
+	
+	public boolean isPlaying() {
+		return audioClip.isPlaying();
+	}
 
 }

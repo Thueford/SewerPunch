@@ -8,6 +8,7 @@ import java.util.Random;
 
 import darstellung.Loader;
 import entities.Player;
+import sounds.Sound;
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -28,7 +29,10 @@ public class Game {
 	public Gameloop loop;
 	public Random ran = new Random();
 	public double bots = 50;
-
+	
+	private Sound atmosphere;
+	private Sound soundtrack;
+	
 	/**
 	 * Create renderer and loader instances
 	 */
@@ -73,6 +77,13 @@ public class Game {
 	public void MainThreadFunctions(double time, double dtime) {
 		Main.game.renderer.render(time, dtime);
 		// SoundHandler.play(Soundlist);
+		
+		if(!atmosphere.isPlaying()) {
+			atmosphere.startSound();
+		}
+		if(!soundtrack.isPlaying()) {
+			soundtrack.startSound();
+		}
 	}
 
 	public class SpawnManagement {
@@ -186,6 +197,13 @@ public class Game {
 		Main.game.addEntity(new Player(4, 7));
 		Main.game.addEntity(new darstellung.Background(0,0));
 		Main.game.addEntity(new darstellung.Background(0, -11));
+		
+		atmosphere = loader.LoadSound("atmosphere.wav");
+		atmosphere.setVolume(0.3);
+		atmosphere.setPriority(100);
+		soundtrack = loader.LoadSound("soundtrack.wav");
+		soundtrack.setVolume(0.3);
+		soundtrack.setPriority(95);
 		// renderer.render();
 		// entities.get(0).sndSpawn.startSound();
 	}
