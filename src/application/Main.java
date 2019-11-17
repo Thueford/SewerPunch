@@ -2,6 +2,8 @@ package application;
 
 import darstellung.MainMenu;
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -14,6 +16,13 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 
 			Main.primaryStage = primaryStage;
+			Main.primaryStage.setOnCloseRequest(e -> {
+				Platform.exit();
+				try {
+					Main.game.loop.terminate();
+				}catch (Exception err) {}		
+			});
+			Main.primaryStage.setResizable(false);
 			Main.game = new Game();
 			
 			new MainMenu();
@@ -21,5 +30,9 @@ public class Main extends Application {
 
 	public static void main(String[] args) {
 		launch(args);
+	}
+	public static void changeScene(Scene scene) {
+		Main.primaryStage.setScene(scene);
+		Main.primaryStage.show();
 	}
 }

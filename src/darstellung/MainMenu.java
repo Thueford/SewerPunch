@@ -23,16 +23,7 @@ public class MainMenu extends BorderPane {
 		
 
 		Scene scene = new Scene(this, Main.WIDTH, Main.HEIGHT);
-		Main.primaryStage.setScene(scene);
-		Main.primaryStage.setResizable(false);
-
-		Main.primaryStage.setOnCloseRequest(e -> {
-			Platform.exit();
-			try {
-				Main.game.loop.terminate();
-			}catch (Exception err) {}		
-		});
-		Main.primaryStage.show();
+		Main.changeScene(scene);
 	}
 
 	/**
