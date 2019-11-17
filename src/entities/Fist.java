@@ -71,4 +71,9 @@ public class Fist extends application.Entity {
 	public void onUncollide() {
 
 	}
+	
+	@Override
+	public void onDie() {
+		
+	}
 }

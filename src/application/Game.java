@@ -23,6 +23,7 @@ public class Game {
 
 	public final Renderer renderer;
 	public Loader loader;
+
 	private final List<Entity> entities = new ArrayList<Entity>();
 	private static final Rectangle[] border = { new Rectangle(0, 0, 50, 720), new Rectangle(670, 0, 60, 720) };
 	public final int resource = 50;
@@ -219,9 +220,10 @@ public class Game {
 	}
 
 	public void killAllEntities() {
-		List<Entity> tmp = getEntities();
-		for (int i = 0; i < tmp.size(); i++) {
-			tmp.get(i).dead = true;
+
+		List<Entity> tmp = this.getEntities();
+		for(int i = 0; i<tmp.size();i++) {
+			tmp.get(i).dead=true;
 			tmp.get(i).die();
 		}
 	}
