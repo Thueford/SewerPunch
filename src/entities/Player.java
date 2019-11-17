@@ -79,7 +79,7 @@ public class Player extends application.Entity {
 	}
 
 	@Override
-	public void move(long dtime) {
+	public void move(double dtime) {
 		animation = anim;
 		animation.start();
 	}

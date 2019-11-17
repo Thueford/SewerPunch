@@ -64,7 +64,7 @@ public abstract class Entity extends Rectangle {
 	 * 
 	 * @param dtime
 	 */
-	public void move(long dtime) {
+	public void move(double dtime) {
 		add(speed.x * dtime, speed.y * dtime);
 	}
 

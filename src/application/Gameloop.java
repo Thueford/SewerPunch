@@ -8,8 +8,8 @@ public class Gameloop extends Thread {
 
 	private boolean run = true, pause = false;
 	private Timer globalT, paintT; // the two different timer-Objects
-	private long wait = 0, framelength = 20000000; // wait is temp-variable , framelenght determines length of one frame
-	private int lastspawn = 120;
+	private long fps = 60; // wait is temp-variable , framelenght determines length of one frame
+	private double lastSpawnTime = 0, lastRenderTime = 0;
 
 	SpawnManagement spmanager;
 
@@ -32,30 +32,29 @@ public class Gameloop extends Thread {
 			if (pause)
 				continue;
 
-			globalT.newltime();
-			long dtime = globalT.newdtime();
+			globalT.step();
 
 			// move Entities, move nanobots
-			Main.game.move(dtime);
+			Main.game.move(globalT.d_sec());
 
-			if (lastspawn >= 120) { // every 120 frames, a new Span is initialized
+			// every 2 seconds frames, a new Spawn is initialized
+			if (globalT.sec() - lastSpawnTime >= 2) { 
 				spmanager.spawn();
-				lastspawn = 0;
+				lastSpawnTime = globalT.sec();
 			}
 
 			// Collision detection
 			Main.game.collide();
 
 			// Paint changes on Canvas -> Only run this once every frame
-			// if wait + time exceeds nanoTime, the next Frame can be painted
-			if (System.nanoTime() >= paintT.time + wait) {
-				paintT.newltime();
-				Platform.runLater(() -> Main.game.MainThreadFunctions(globalT.getTimeSeconds(), globalT.getDTimeSeconds()));
-
-				// calculates wait time, saves the timestamp of the time of calculation in 'time'
-				wait = framelength - (paintT.newtime() - paintT.ltime);
-
-				lastspawn++;
+			// apply framerate by time diff to lastRenderTime
+			if (fps * (globalT.sec() - lastRenderTime) >= 1) {
+				paintT.toc();
+				Platform.runLater(() -> Main.game.MainThreadFunctions(
+						paintT.sec(), paintT.d_sec()));
+				
+				paintT.tic();
+				lastRenderTime = globalT.sec();
 			}
 		}
 		System.out.println("Thread beendet");
