@@ -29,19 +29,19 @@ public class Battery extends Entity{
 	@Override
 	public int getInitHP() {
 		// TODO Auto-generated method stub
-		return 0;
+		return HP_init;
 	}
 
 	@Override
 	public Vector getInitSpeed() {
 		// TODO Auto-generated method stub
-		return null;
+		return speed_init;
 	}
 
 	@Override
 	public Vector getInitSize() {
 		// TODO Auto-generated method stub
-		return null;
+		return size_init;
 	}
 
 	@Override
@@ -53,7 +53,7 @@ public class Battery extends Entity{
 	@Override
 	public int getDrawingOrder() {
 		// TODO Auto-generated method stub
-		return -99;
+		return drawingOrder;
 	}
 
 	@Override
