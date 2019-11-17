@@ -151,6 +151,11 @@ public class Game {
 	public void move(double dtime) {
 		for (Entity obj : Main.game.getEntities()) {
 			obj.move(dtime);
+
+			if(obj.dead) {
+				obj.deadTimer -= dtime;
+				if(obj.deadTimer <= 0) Main.game.removeEntity(obj);
+			}
 		}
 	}
 
@@ -253,6 +258,7 @@ public class Game {
 			if(tmp.get(i) instanceof entities.Haribo) {
 				tmp.get(i).dead=true;
 				tmp.get(i).die();
+				tmp.get(i).deadTimer = 2;
 				Main.game.removeEntity(tmp.get(i));
 			}
 		}

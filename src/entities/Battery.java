@@ -4,17 +4,21 @@ import application.Entity;
 import application.Fistmanagement;
 import application.Main;
 import application.Vector;
+import darstellung.Ressource;
 import javafx.scene.image.Image;
 
-public class Battery extends Entity{
-	
-	private static final String[] src_img = {"battery/Batterie_V3f0_.png", "battery/Batterie_V3f1_.png", "battery/Batterie_V3f2_.png", "battery/Batterie_V3f3_.png", "battery/Batterie_V3f4_.png", "battery/Batterie_V3f5_.png", 
-											 "battery/Batterie_V3f6_.png", "battery/Batterie_V3f7_.png", "battery/Batterie_V3f8_.png", "battery/Batterie_V3f9_.png", "battery/Batterie_V3f10_.png",
-											 "battery/Batterie_V3f11_.png", "battery/Batterie_V3f12_.png", "battery/Batterie_V3f13_.png", "battery/Batterie_V3f14_.png", "battery/Batterie_V3f15_.png"};
-	private Image[] images = new Image[src_img.length];
+public class Battery extends Entity {
+
+	private static final String[] src_img = { "battery/Batterie_V3f0_.png", "battery/Batterie_V3f1_.png",
+			"battery/Batterie_V3f2_.png", "battery/Batterie_V3f3_.png", "battery/Batterie_V3f4_.png",
+			"battery/Batterie_V3f5_.png", "battery/Batterie_V3f6_.png", "battery/Batterie_V3f7_.png",
+			"battery/Batterie_V3f8_.png", "battery/Batterie_V3f9_.png", "battery/Batterie_V3f10_.png",
+			"battery/Batterie_V3f11_.png", "battery/Batterie_V3f12_.png", "battery/Batterie_V3f13_.png",
+			"battery/Batterie_V3f14_.png", "battery/Batterie_V3f15_.png" };
+	private Image[] images = new Image[src_img.length + 10];
 	private double fill;
 	private static final double bots = 50;
-	
+
 	private static final int HP_init = 9999999;
 	private static final int drawingOrder = -99;
 
@@ -54,17 +58,32 @@ public class Battery extends Entity{
 
 	@Override
 	public void LoadAssets() {
-		
+
 	}
 	
+	@Override
+	public void move(double dtime) {
+		update();
+	}
+
+	@Override
+	public void onAnimate(double time, double dtime) {
+		super.onAnimate(time, dtime);
+	}
+
 	private void LoadImages() {
-		for(int i = 0; i<src_img.length; i++) {
+		for (int i = 0; i < src_img.length; i++) {
 			images[i] = Main.game.loader.LoadImage(src_img[i]);
 		}
 	}
-	
+
 	public void update() {
-		this.img = Main.game.loader.LoadImage(src_img[(int) (src_img.length * this.fill / Fistmanagement.resource_max)]);
+		try {
+			this.img = Main.game.loader
+					.LoadImage(src_img[(int) ((src_img.length - 1) * Main.game.bots.getRes() / Fistmanagement.resource_max)]);
+		} catch (ArrayIndexOutOfBoundsException e) {
+			System.err.println(e.getMessage());
+		}
 	}
 
 }
