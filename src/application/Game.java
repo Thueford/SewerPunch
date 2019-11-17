@@ -161,4 +161,16 @@ public class Game {
 		}
 		return tmp;
 	}
+	
+	//biochemischer emp	 
+	public void bcemp() {
+		this.killAllEntities();
+		
+	}
+	
+	public void killAllEntities() {
+		for(int i = 0; i<this.entities.size();i++) {
+			this.entities.get(i).die();
+		}
+	}
 }
