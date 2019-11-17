@@ -221,6 +221,8 @@ public class Game {
 		emp = loader.LoadSound("emp.wav");
 		fillsnd = loader.LoadSound("refill.wav");
 		// entities.get(0).sndSpawn.startSound();
+		
+		Main.game.addEntity(new entities.Battery(-1.0, 4.5, resource));
 	}
 
 	// biochemischer emp

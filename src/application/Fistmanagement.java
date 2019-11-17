@@ -10,6 +10,7 @@ public class Fistmanagement {
 	private static boolean[] fistfromleft = new boolean[] {true, true, true, true}; //determines, if fist spawns from left or not
 	public static boolean[] occupied = new boolean[] {false, false, false, false}; //blocks line for inputs
 	public static Entity[] fists = new Entity[4];
+	public static final int resource_max = 50;
 	
 	public static void fistOut(int y, int x) { //y = line of fist, x = range of fist
 		
@@ -58,16 +59,5 @@ public class Fistmanagement {
 	public static void changeSide(int line) {
 		if(occupied[line]) { return; }
 		fistfromleft[line] = fistfromleft[line]?false:true;
-	}
-
-	public static void showResource() {
-
-		for (Entity obj : Main.game.getEntities()) {
-			if (obj instanceof entities.Battery) {
-				Main.game.removeEntity(obj);
-			}
-		}
-		Main.game.addEntity(new entities.Battery(650, 400, resource));
-
 	}
 }

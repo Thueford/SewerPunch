@@ -14,7 +14,7 @@ public abstract class Entity extends Rectangle {
 	public Image img;
 	public Sound sndSpawn, sndDie;
 
-	public Entity(int x, int y) {
+	public Entity(double x, double y) {
 		super(x, y, 1, 1);
 
 		this.x = x;

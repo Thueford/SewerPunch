@@ -1,6 +1,7 @@
 package entities;
 
 import application.Entity;
+import application.Fistmanagement;
 import application.Main;
 import application.Vector;
 import javafx.scene.image.Image;
@@ -20,7 +21,7 @@ public class Battery extends Entity{
 	private static final Vector speed_init = new Vector(0, 0);
 	private static final Vector size_init = new Vector(1, 1);
 
-	public Battery(int x, int y, double fill) {
+	public Battery(double x, double y, double fill) {
 		super(x, y);
 		this.LoadImages();
 		this.fill = fill;
@@ -28,38 +29,31 @@ public class Battery extends Entity{
 
 	@Override
 	public int getInitHP() {
-		// TODO Auto-generated method stub
 		return HP_init;
 	}
 
 	@Override
 	public Vector getInitSpeed() {
-		// TODO Auto-generated method stub
 		return speed_init;
 	}
 
 	@Override
 	public Vector getInitSize() {
-		// TODO Auto-generated method stub
 		return size_init;
 	}
 
 	@Override
 	public boolean isCollidable() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public int getDrawingOrder() {
-		// TODO Auto-generated method stub
 		return drawingOrder;
 	}
 
 	@Override
 	public void LoadAssets() {
-		
-		
 		
 	}
 	
@@ -68,8 +62,9 @@ public class Battery extends Entity{
 			images[i] = Main.game.loader.LoadImage(src_img[i]);
 		}
 	}
+	
 	public void update() {
-		this.img = Main.game.loader.LoadImage(src_img[(int) (this.fill/src_img.length)]);
+		this.img = Main.game.loader.LoadImage(src_img[(int) (src_img.length * this.fill / Fistmanagement.resource_max)]);
 	}
 
 }
