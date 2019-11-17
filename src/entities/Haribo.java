@@ -100,7 +100,7 @@ public class Haribo extends application.Entity {
 	@Override
 	public void onCollide(Entity e) {
 		super.onCollide(e);
-		if (e instanceof Fist) {
+		if (e instanceof FistL) {
 			this.stopWalking();
 			this.speed.x=e.speed.x;
 			this.speed.y=0;

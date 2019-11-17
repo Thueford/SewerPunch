@@ -3,24 +3,29 @@ package entities;
 import application.Entity;
 import application.Main;
 import application.Vector;
-import darstellung.Loader;
 
-public class Garbage extends application.Entity{
-	private static final String src_img = "Hindernis_1.2.png";
+public class FistL extends application.Entity {
+
+	private static final String src_img = "Hand_V3.1.png";
 	private static final String src_dieanim = "";
 
-	private static final String[] src_sndSpawn = { "enemyspawn1.wav" , "enemyspawn2.wav", "enemyspawn3.wav"};
-	private static final String[] src_sndDie = { "enemysmash1.wav", "enemysmash2.wav", "enemysmash3.wav", "enemysmash4.wav", "enemysmash5.wav", "enemysmash6.wav", "enemysmash7.wav",};
+	private static final String[] src_sndSpawn = { "faustangriff1.wav", "faustangriff2.wav", "faustangriff3.wav",};
+	private static final String[] src_sndDie = { "faustdie.wav" };
+	private static final String[] src_sndweg = { "faustweg1.wav", "faustweg2.wav", "faustweg3.wav" };
 
-	private static final int HP_init = 1;
-	private static final Vector speed_init = new Vector(0, 0.5);
+	private static final int HP_init = 100;
+	private static final Vector speed_init = new Vector(4, 0);
 	private static final Vector size_init = new Vector(1, 1);
 	
 	private boolean collidable = true;
 	private static final int drawingOrder = 0;
+	
+	private static int range;
 
-	public Garbage(int x, int y) {
+	public FistL(int x, int y, int range) {
 		super(x, y);
+		
+		this.range = range;
 	}
 
 	@Override
@@ -54,24 +59,26 @@ public class Garbage extends application.Entity{
 	public int getDrawingOrder() {
 		return drawingOrder;
 	}
+	
+	@Override
+	public void move(double dtime) {	
+		super.move(dtime);
+		
+	}
 
 	@Override
 	public void onCollide(Entity e) {
-		super.onCollide(e);
-		if (e instanceof FistL) {
-			stopWalking();
-			reduceHP(1);
-		}
+		if (e instanceof Haribo)
+			e.reduceHP(1);
 	}
 
 	@Override
 	public void onUncollide() {
-		this.startWalking();
-	}
 
+	}
+	
 	@Override
 	public void onDie() {
 		
 	}
-
 }

@@ -29,7 +29,6 @@ public class Game {
 	public final int resource = 50;
 	public Gameloop loop;
 	public Random ran = new Random();
-	public double bots = 50;
 	
 	private Sound atmosphere;
 	private Sound soundtrack;

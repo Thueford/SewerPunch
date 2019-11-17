@@ -4,9 +4,9 @@ import application.Entity;
 import application.Main;
 import application.Vector;
 
-public class Fist extends application.Entity {
+public class FistR extends application.Entity {
 
-	private static final String src_img = "Hand_V1.1.png";
+	private static final String src_img = "Hand_V3.2.png";
 	private static final String src_dieanim = "";
 
 	private static final String[] src_sndSpawn = { "faustangriff1.wav", "faustangriff2.wav", "faustangriff3.wav",};
@@ -14,15 +14,18 @@ public class Fist extends application.Entity {
 	private static final String[] src_sndweg = { "faustweg1.wav", "faustweg2.wav", "faustweg3.wav" };
 
 	private static final int HP_init = 100;
-	private static final Vector speed_init = new Vector(4, 0);
+	private static final Vector speed_init = new Vector(-4, 0);
 	private static final Vector size_init = new Vector(1, 1);
 	
 	private boolean collidable = true;
 	private static final int drawingOrder = 0;
+	
+	private static int range;
 
-	public Fist(int x, int y) {
+	public FistR(int x, int y, int range) {
 		super(x, y);
-		decrease_bots(x+1);
+		
+		this.range = range;
 	}
 
 	@Override
@@ -58,7 +61,8 @@ public class Fist extends application.Entity {
 	}
 	
 	@Override
-	public void move(double dtime) {	
+	public void move(double dtime) {
+		
 		super.move(dtime);
 		
 	}
@@ -69,10 +73,6 @@ public class Fist extends application.Entity {
 			e.reduceHP(1);
 	}
 	
-	public void decrease_bots(int anz) {
-		Main.game.bots -= anz;
-	}
-
 	@Override
 	public void onUncollide() {
 
