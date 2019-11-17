@@ -17,9 +17,7 @@ public class Fistmanagement {
 	
 	public static void fistOut(int y, int x) { //y = line of fist, x = range of fist
 		
-		if(occupied[y]) { return; }
-		
-		if(resource.getRes() <= 10) {
+		if( occupied[y] ||resource.getRes() <= 10) {
 			if(imp_action == null) {
 				imp_action = Main.game.loader.LoadSound("impossibleaction.wav");
 			}
@@ -27,7 +25,7 @@ public class Fistmanagement {
 			return; 
 		}
 		
-		resource.setRes(fistfromleft[y]?x:10-x); //determines cost of action
+		resource.reduceRes(fistfromleft[y]?x:10-x); //determines cost of action
 		
 		if(fistfromleft[y]) {
 			FistL f = new FistL(-9,5+y,x-9);

@@ -1,6 +1,5 @@
 package application;
 
-import entities.FistL;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.Scene;
@@ -107,16 +106,28 @@ public class Keyboard {
 					
 					
 				}
-				
-				scene.setOnKeyReleased(k ->{
-					
-					if(event.getCode() == k.getCode()) {
-						System.out.println(k.getCode().ordinal());
-						Fistmanagement.fistBack(point[1]);
-					}
-					
-				});
 			}
+		});
+		
+		scene.setOnKeyReleased(k ->{
+			
+			boolean checked = false;
+			int[] point = { 99, 99 };
+			for (int y = 0; y < 4; y++) {
+				for (int x = 0; x < 10; x++) {
+					
+					if (field[y][x] == k.getCode().ordinal()) {
+						point[0] = x;
+						point[1] = y;
+						checked = true;
+					}
+				}
+			}
+				
+			if(!checked) return;
+			System.out.println(k.getCode().ordinal());
+			Fistmanagement.fistBack(point[1]);
+			
 		});
 		
 	}

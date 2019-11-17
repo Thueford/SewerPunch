@@ -190,7 +190,7 @@ public class Game {
 	public Entity addEntity(Entity e) {
 		synchronized (entities) {
 			entities.add(e);
-			System.out.println("Entity added");
+			//System.out.println("Entity added");
 		}
 		return e;
 	}

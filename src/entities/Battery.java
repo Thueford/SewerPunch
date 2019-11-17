@@ -23,7 +23,7 @@ public class Battery extends Entity {
 	private static final int drawingOrder = -99;
 
 	private static final Vector speed_init = new Vector(0, 0);
-	private static final Vector size_init = new Vector(1, 1);
+	private static final Vector size_init = new Vector(1, 2);
 
 	public Battery(double x, double y, double fill) {
 		super(x, y);
@@ -82,7 +82,7 @@ public class Battery extends Entity {
 			this.img = Main.game.loader
 					.LoadImage(src_img[(int) ((src_img.length - 1) * Main.game.bots.getRes() / Fistmanagement.resource_max)]);
 		} catch (ArrayIndexOutOfBoundsException e) {
-			System.err.println(e.getMessage());
+			//System.err.println(e.getMessage());
 		}
 	}
 
