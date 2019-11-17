@@ -33,6 +33,8 @@ public class Game {
 	public Random ran = new Random();
 	public Ressource bots = new Ressource();
 	
+	private boolean empReady;
+	
 	private Sound atmosphere;
 	public Sound soundtrack;
 	private Sound emp;
@@ -234,14 +236,17 @@ public class Game {
 		// entities.get(0).sndSpawn.startSound();
 		
 		bots.setRes(50);
+		empReady = true;
 		
 		Main.game.addEntity(new entities.Battery(-1.0, 4.5, resource));
 	}
 
 	// biochemischer emp
 	public void bcemp() {
-		emp.startSound();
-		this.killAllEntities();
+		if(empReady) {
+			emp.startSound();
+			this.killAllEntities();
+		}
 	}
 
 	public void killAllEntities() {
