@@ -1,4 +1,6 @@
-
+#root{
+	-fx-background-image:url("../../res/img/Titelbildschirm_V1.png");
+}
 /*VBox stylen*/
 VBox {
 	-fx-spacing: 30px;

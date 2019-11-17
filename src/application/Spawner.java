@@ -33,7 +33,6 @@ public class Spawner {
 	public void spawn(int feld) {
 		System.out.print("spawn ");
 		int r = (int) (Math.random() * 100);
-		System.out.println(r);
 		if(r>10) {
 			Main.game.addEntity(new Haribo(feld, 1));
 		} else {

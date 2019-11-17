@@ -116,7 +116,6 @@ public class Game {
 					wavestate++;
 				}
 				case 11: {
-					System.out.println("Ult wave");
 					spawner.spawnWave(1 + (int) (wave * 0.5));
 					wavestate++;
 					return;
@@ -136,12 +135,9 @@ public class Game {
 			// in a 0.7 Chance spawns 2^wave*wavestate single enemys, otherwise spawns a
 			// wave
 			if ((int) (Math.random() * 10) <= 7) {
-				System.out.println("single spawns");
 
 				spawner.spawnNotWave((wave + (int) (wavestate * Math.random())) % (wave * 5 - 1));
 			} else {
-				System.out.println("wave");
-
 				spawner.spawnWave(1 + (int) (wave * 0.25));
 			}
 			wavestate++;

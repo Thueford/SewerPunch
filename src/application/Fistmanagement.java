@@ -3,10 +3,12 @@ package application;
 import darstellung.Ressource;
 import entities.FistL;
 import entities.FistR;
+import sounds.Sound;
 
 public class Fistmanagement {
 	
 	public static Ressource resource = new Ressource();
+	private static Sound imp_action;
 
 	private static boolean[] fistfromleft = new boolean[] {true, true, true, true}; //determines, if fist spawns from left or not
 	public static boolean[] occupied = new boolean[] {false, false, false, false}; //blocks line for inputs
@@ -17,7 +19,13 @@ public class Fistmanagement {
 		
 		if(occupied[y]) { return; }
 		
-		if(resource.getRes() <= 10) {return; }
+		if(resource.getRes() <= 10) {
+			if(imp_action == null) {
+				imp_action = Main.game.loader.LoadSound("impossibleaction.wav");
+			}
+			imp_action.startSound();
+			return; 
+		}
 		
 		resource.setRes(fistfromleft[y]?x:10-x); //determines cost of action
 		
