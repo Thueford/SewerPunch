@@ -17,6 +17,8 @@ public class Fist extends application.Entity {
 	private static final int HP_init = 100;
 	private static final Vector speed_init = new Vector(4, 0);
 	private static final Vector size_init = new Vector(1, 1);
+	
+	private static final boolean collidable = true;
 
 	public Fist(int x, int y) {
 		super(x, y);
@@ -28,6 +30,11 @@ public class Fist extends application.Entity {
 		this.img = Loader.LoadImage(src_img);
 		this.sndSpawn = SoundLoader.LoadSound(src_sndSpawn[Main.game.ran.nextInt(src_sndSpawn.length)]);
 		this.sndDie = SoundLoader.LoadSound(src_sndSpawn[Main.game.ran.nextInt(src_sndDie.length)]);
+	}
+	
+	@Override
+	public boolean getCollidable() {
+		return collidable;
 	}
 
 	@Override
