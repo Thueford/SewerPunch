@@ -63,6 +63,8 @@ public class Game {
 		new Keyboard(scene);
 		Main.primaryStage.setScene(scene);
 		Main.primaryStage.show();
+		
+		this.init();
 
 		loop = new Gameloop();
 		loop.start();
@@ -177,6 +179,15 @@ public class Game {
 				tmp.add(e);
 		}
 		return tmp;
+	}
+	
+	public void init() {
+		// test
+		Main.game.addEntity(new Player(4, 7));
+		Main.game.addEntity(new darstellung.Background(0,0));
+		Main.game.addEntity(new darstellung.Background(0, -11));
+		// renderer.render();
+		// entities.get(0).sndSpawn.startSound();
 	}
 	
 	//biochemischer emp	 
