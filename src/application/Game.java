@@ -1,11 +1,14 @@
 package application;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import darstellung.Loader;
 import entities.Player;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -18,7 +21,7 @@ import javafx.scene.layout.Pane;
 public class Game {
 
 	public final Renderer renderer;
-	public final Loader loader;
+	public Loader loader;
 	private final List<Entity> entities = new ArrayList<Entity>();
 	public final int resource = 50;
 	public Gameloop loop;
@@ -30,7 +33,16 @@ public class Game {
 	 */
 	public Game() {
 		renderer = new Renderer();
-		loader = new Loader(getClass().getResource("img"));
+		
+		URL res = null;
+		try {
+			res = getClass().getResource("/");
+			loader = new Loader(new URL(res, "../res/img/"), new URL(res, "../res/snd/"));
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+			loader = null;
+			Platform.exit();
+		}
 	}
 
 	/**
