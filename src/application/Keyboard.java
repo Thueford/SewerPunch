@@ -76,7 +76,7 @@ public class Keyboard {
 					case ENTER:
 						// fill ressources
 						checked = true;
-						Main.game.fillPockets();
+						
 						break;
 						
 					case SPACE:

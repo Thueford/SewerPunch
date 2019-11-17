@@ -22,7 +22,8 @@ public class Haribo extends application.Entity {
 
 	private static final String[] src_sndSpawn = { "enemyspawn1.wav" , "enemyspawn2.wav", "enemyspawn3.wav"};
 	private static final String[] src_sndDie = { "enemysmash1.wav", "enemysmash2.wav", "enemysmash3.wav", "enemysmash4.wav", "enemysmash5.wav", "enemysmash6.wav", "enemysmash7.wav"};
-
+	private static final String[] src_sndHit = { "fisthit1.wav", "fisthit2.wav", "fisthit3.wav" };
+	
 	private static final int HP_init = 1;
 	private static final Vector speed_init = new Vector(0, 2);
 	private static final Vector size_init = new Vector(1, 1);
@@ -69,7 +70,7 @@ public class Haribo extends application.Entity {
 		
 
 		this.speed.y = Main.game.ran.nextDouble()*2 + 2;
-
+		this.sndSpawn.startSound();
 	}
 
 	@Override
@@ -77,6 +78,7 @@ public class Haribo extends application.Entity {
 		this.img = Main.game.loader.LoadImage(src_img);
 		this.sndSpawn = Main.game.loader.LoadSound(src_sndSpawn[Main.game.ran.nextInt(src_sndSpawn.length)]);
 		this.sndDie = Main.game.loader.LoadSound(src_sndDie[Main.game.ran.nextInt(src_sndDie.length)]);
+		this.sndHit = Main.game.loader.LoadSound(src_sndHit[Main.game.ran.nextInt(src_sndHit.length)]);
 	}
 
 	@Override
@@ -121,7 +123,8 @@ public class Haribo extends application.Entity {
 	@Override
 	public void onCollide(Entity e) {
 		super.onCollide(e);
-		if (e instanceof FistL) {
+		if (e instanceof FistL || e instanceof FistR) {
+			sndHit.startSound();
 			this.stopWalking();
 			this.speed.x = e.speed.x;
 			this.speed.y = 0;
@@ -136,6 +139,7 @@ public class Haribo extends application.Entity {
 
 	@Override
 	public void onDie() {
+		this.sndDie.startSound();
 		animation = die_anim;
 	}
 }

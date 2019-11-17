@@ -12,7 +12,7 @@ public abstract class Entity extends Rectangle {
 
 	// assets
 	public Image img;
-	public Sound sndSpawn, sndDie;
+	public Sound sndSpawn, sndDie, sndHit;
 
 	public Entity(double x, double y) {
 		super(x, y, 1, 1);
