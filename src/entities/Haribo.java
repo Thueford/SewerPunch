@@ -142,5 +142,7 @@ public class Haribo extends application.Entity {
 	public void onDie() {
 		this.sndDie.startSound();
 		animation = die_anim;
+		this.speed.x = 0;
+		this.speed.y = 0.5;
 	}
 }

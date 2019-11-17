@@ -152,10 +152,7 @@ public class Game {
 		for (Entity obj : Main.game.getEntities()) {
 			obj.move(dtime);
 
-			if(obj.dead) {
-				obj.deadTimer -= dtime;
-				if(obj.deadTimer <= 0) Main.game.removeEntity(obj);
-			}
+			
 		}
 	}
 
@@ -178,6 +175,9 @@ public class Game {
 			if ((a.x > 10 || a.x<0) && a instanceof entities.Haribo) {
 				a.dead = true;
 				a.die();
+			}
+			if ((a.y > 10 ) && (a instanceof entities.Haribo || a instanceof entities.Garbage)){
+				Main.game.removeEntity(a);
 			}
 			
 			if(a.collided && !coll) {
@@ -247,7 +247,7 @@ public class Game {
 		if(empReady) {
 			emp.startSound();
 			this.killAllEntities();
-			empReady = false;
+			//empReady = false;
 		}
 	}
 
@@ -258,8 +258,7 @@ public class Game {
 			if(tmp.get(i) instanceof entities.Haribo) {
 				tmp.get(i).dead=true;
 				tmp.get(i).die();
-				tmp.get(i).deadTimer = 2;
-				Main.game.removeEntity(tmp.get(i));
+								
 			}
 		}
 	}
