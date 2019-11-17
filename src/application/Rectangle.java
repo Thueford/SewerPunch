@@ -35,13 +35,24 @@ public class Rectangle {
 		return this.y;
 	}
 
-	public void move(Vector p) {
-		move(p.x, p.y);
+	public void set(Vector p) {
+		set(p.x, p.y);
 	}
 
 	// versetzen des startpunktes
-	public void move(double x, double y) {
-		Vector p1 = new Vector(x, y);
+	public void set(double x, double y) {
+		this.x = x;
+		this.y = y;
+	}
+
+	public void add(Vector p) {
+		add(p.x, p.y);
+	}
+
+	// versetzen des startpunktes
+	public void add(double x, double y) {
+		this.x += x;
+		this.y += y;
 	}
 
 	// gibt eigenschaften des Rechteckes als String aus

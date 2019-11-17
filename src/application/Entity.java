@@ -65,7 +65,7 @@ public abstract class Entity extends Rectangle {
 	 * @param dtime
 	 */
 	public void move(long dtime) {
-		move(speed.x * dtime, speed.y * dtime);
+		add(speed.x * dtime, speed.y * dtime);
 	}
 
 	/**
@@ -88,9 +88,9 @@ public abstract class Entity extends Rectangle {
 	}
 
 	/**
-	 * Called on every game loop
+	 * Called every time the sprite is drawn
 	 */
-	public void onAnimate() {
+	public void onAnimate(long time, long dtime) {
 	}
 
 	/**
