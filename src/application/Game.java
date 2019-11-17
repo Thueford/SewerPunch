@@ -244,7 +244,7 @@ public class Game {
 
 	
 	public void fillPockets() {
-		application.Fistmanagement.resource = this.resource;
+		application.Fistmanagement.resource.setRes(this.resource);
 		fillsnd.startSound();
 	}
 }
