@@ -239,13 +239,6 @@ public class Game {
 			}
 		}
 	}
-
-	public void removeEntity(Entity e) {
-		synchronized (entities) {
-			entities.remove(e);
-			System.out.println("Entity removed");
-		}
-	}
 	
 	public void fillPockets() {
 		application.Fistmanagement.resource = this.resource;
