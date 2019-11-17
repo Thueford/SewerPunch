@@ -17,7 +17,7 @@ public class Fistmanagement {
 		
 		if(resource <= 10) {return; }
 		
-		resource -= 10;
+		resource -= fistfromleft[y]?x:10-x; //determines cost of action
 		
 		if(fistfromleft[y]) {
 			FistL f = new FistL(-9,5+y,x-9);
@@ -33,13 +33,13 @@ public class Fistmanagement {
 	}
 
 	public static void fistBack(int y) {
-		if(occupied[y]) { return;}
+		if(!occupied[y]) { return;}
 		
 		if(fistfromleft[y]) {
-			fists[y].setSpeed(new Vector(-2,0));
+			fists[y].speed.set(new Vector(-2,0));
 			resource += 10;
 		}else {
-			fists[y].setSpeed(new Vector(2,0));;
+			fists[y].speed.set(new Vector(2,0));
 			resource += 10;
 		}
 	}
