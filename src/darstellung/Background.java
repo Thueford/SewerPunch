@@ -38,12 +38,12 @@ public class Background extends Entity{
 
 	@Override
 	public Vector getInitSpeed() {
-		return speed_init;
+		return speed_init.copy();
 	}
 
 	@Override
 	public Vector getInitSize() {
-		return size_init;
+		return size_init.copy();
 	}
 	
 	@Override
