@@ -25,7 +25,7 @@ public class Game {
 	public Loader loader;
 
 	private final List<Entity> entities = new ArrayList<Entity>();
-	private static final Rectangle[] border = { new Rectangle(0, 0, 50, 720), new Rectangle(670, 0, 60, 720) };
+	//private static final Rectangle[] border = { new Rectangle(0, 0, 50, 720), new Rectangle(670, 0, 60, 720) };
 	public final int resource = 50;
 	public Gameloop loop;
 	public Random ran = new Random();
@@ -164,12 +164,12 @@ public class Game {
 				}
 			}
 
-			for (Rectangle b : border) {
-				if (a.collides(b) && a instanceof entities.Haribo) {
-					a.dead = true;
-					a.die();
-				}
+			//for (Rectangle b : border) {
+			if ((a.x > 10 || a.x<0) && a instanceof entities.Haribo) {
+				a.dead = true;
+				a.die();
 			}
+			//}
 		}
 	}
 
