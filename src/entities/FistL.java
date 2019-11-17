@@ -66,7 +66,7 @@ public class FistL extends application.Entity {
 	public void move(double dtime) {
 		//if on target tile 'range', dont move, unless speed is inverted
 		if(this.getX() >= range && this.getSpeed().x > 0) return;
-		if(this.getX() <= -10) Main.game.removeEntity(this);
+		if(this.getX() <= -10) this.die();
 		super.move(dtime);		
 	}
 
@@ -85,5 +85,6 @@ public class FistL extends application.Entity {
 	public void onDie() {
 		Fistmanagement.fists[(int)this.y - 5] = null;
 		Fistmanagement.occupied[(int)this.y - 5] = false;
+		Main.game.removeEntity(this);
 	}
 }

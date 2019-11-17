@@ -244,4 +244,12 @@ public class Game {
 		}
 	}
 
+<<<<<<< HEAD
+=======
+	
+	public void fillPockets() {
+		application.Fistmanagement.resource.setRes(this.resource);
+		fillsnd.startSound();
+	}
+>>>>>>> branch 'master' of git@git.hs-mittweida.de:afeilke1/bigoof.git
 }
