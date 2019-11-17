@@ -85,9 +85,9 @@ public class Haribo extends application.Entity {
 		return size_init;
 	}
 	
-	public void onAnimate() {
+	public void onAnimate(double time, double dtime) {
 		//animation.restart();
-		animation.update();
+		animation.update(time, dtime);
 		img = SwingFXUtils.toFXImage(animation.getSprite(), null);
 	}
 

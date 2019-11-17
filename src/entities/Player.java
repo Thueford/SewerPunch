@@ -21,14 +21,14 @@ public class Player extends application.Entity {
 	
 	private static final boolean collidable = true;
 
-	private static String src_anim = "AnimationSpriteSheet_strip3x4.png";
+	private static String src_anim = "AnimationSpriteSheet_strip3x1.png";
 
 	// Images for each animation
 
 	// Gets the upper left images of my sprite sheet
 	private static BufferedImage[] anim1 = { 
-			Sprite.getSprite(0, 1, src_anim), 
-			Sprite.getSprite(2, 1, src_anim) };
+			Sprite.getSprite(0, 0, src_anim), 
+			Sprite.getSprite(2, 0, src_anim) };
 
 	// private static BufferedImage[] walkingRight = {Sprite.getSprite(0, 2),
 	// Sprite.getSprite(2, 2)};
@@ -44,6 +44,9 @@ public class Player extends application.Entity {
 
 	public Player(int x, int y) {
 		super(x, y);
+		
+		animation = anim;
+		animation.start();
 	}
 
 	@Override
@@ -74,13 +77,12 @@ public class Player extends application.Entity {
 
 	@Override
 	public void onAnimate(double time, double dtime) {
-		animation.update();
+		animation.update(time, dtime);
 		img = SwingFXUtils.toFXImage(animation.getSprite(), null);
 	}
 
 	@Override
 	public void move(double dtime) {
-		animation = anim;
-		animation.start();
+		
 	}
 }

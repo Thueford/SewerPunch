@@ -78,15 +78,17 @@ public class Animation {
 		return frames.get(currentFrame).getFrame();
 	}
 
-	public void update() {
+	public void update(double time, double dtime) {
 
 		if (!stopped) {
 			
 			
-			/*
+			
+			
+			
 			frameCount++;
 
-			if (frameCount > frameDelay) {
+			if (frameCount > frameDelay*dtime) {
 				frameCount = 0;
 				currentFrame += animationDirection;
 
