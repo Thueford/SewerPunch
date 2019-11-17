@@ -54,4 +54,9 @@ public class Fistmanagement {
 		if(occupied[line]) { return; }
 		fistfromleft[line] = fistfromleft[line]?false:true;
 	}
+	
+	public static void occupied(int line) {
+		occupied[line] = occupied[line]?false:true;
+		System.out.println(occupied[line]);
+	}
 }
