@@ -29,7 +29,7 @@ public class Haribo extends application.Entity {
 	private boolean collidable = true;
 	private static final int drawingOrder = 0;
 	
-	private int anim_speed = 8;
+	private double anim_speed = 0.10;
 	
 	//Animation
 	private static String src_anim = "Gegner_Feuer_Spritesheet_strip10x1.png";
@@ -47,7 +47,7 @@ public class Haribo extends application.Entity {
 	private BufferedImage[] standartanim = { Sprite.getSprite(0, 0, src_anim) };
 	// These are animation states
 	private Animation anim = new Animation(anim1, anim_speed);
-	private Animation standart_anim = new Animation(standartanim, 10);
+	private Animation standart_anim = new Animation(standartanim, 1);
 	// This is the actual animation
 	public Animation animation = standart_anim;
 	
@@ -91,9 +91,9 @@ public class Haribo extends application.Entity {
 		return drawingOrder;
 	}
 	
-	public void onAnimate() {
+	public void onAnimate(double time, double dtime) {
 		//animation.restart();
-		animation.update();
+		animation.update(time, dtime);
 		img = SwingFXUtils.toFXImage(animation.getSprite(), null);
 	}
 

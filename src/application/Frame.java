@@ -5,9 +5,9 @@ import java.awt.image.BufferedImage;
 public class Frame {
 
 	private BufferedImage frame;
-	private int duration;
+	private double duration;
 
-	public Frame(BufferedImage frame, int duration) {
+	public Frame(BufferedImage frame, double duration) {
 		this.frame = frame;
 		this.duration = duration;
 	}
@@ -20,7 +20,7 @@ public class Frame {
 		this.frame = frame;
 	}
 
-	public int getDuration() {
+	public double getDuration() {
 		return duration;
 	}
 
