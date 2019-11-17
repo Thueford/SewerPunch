@@ -91,16 +91,31 @@ public class Game {
 			
 			System.out.println("\n");
 
-			if (wavestate == 10) { // 10 means last Wave of Stage - spawns big Wave, resets wavestate, increments
-									// wave
+			if(wavestate >= 10) {
+				switch(wavestate) { 
+					
+					case 10 : {
+						//AlertSound();
+						wavestate++;	
+					}
+					case 11 : {
+						System.out.println("Ult wave");
+						spawner.spawnWave(1 + (int)(wave * 0.5 ));
+						wavestate++;
+						return;
+					}
+					case 12 : {
+						for(Entity obj: getEntities()) {
+							if(obj instanceof entities.Haribo) return;
+							wave++;
+							wavestate = 0;
+							return;							
+						}
+					}
+				}
+			}	
 
-				System.out.println("Ult wave");
-				spawner.spawnWave(1 + (int)(wave * 0.5 ));
-				wave++;
-				wavestate = 0;
-
-				return;
-			}
+			
 			// in a 0.7 Chance spawns 2^wave*wavestate single enemys, otherwise spawns a wave
 			if ((int) (Math.random() * 10) <= 7) {
 				System.out.println("single spawns");
