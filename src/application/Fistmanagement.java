@@ -9,29 +9,29 @@ public class Fistmanagement {
 	private static boolean[] fistfromleft = new boolean[] {false, false, false, false}; //determines, if fist spawns from left or not
 	private static boolean[] occupied = new boolean[] {false, false, false, false};
 	
-	public static void fistOut(int x, int y) { //x = line of fist, y = range of fist
+	public static void fistOut(int y, int x) { //y = line of fist, x = range of fist
 		
 		System.out.println("Out");
 		
-		if(occupied[x]) { return; }
+		if(occupied[y]) { return; }
 		
-		if(fistfromleft[x]) {
-			FistL f = new FistL(x,0,y);
+		if(fistfromleft[y]) {
+			FistL f = new FistL(y,0,x);
 			Main.game.addEntity(f);
-			occupied[x] = true; //set line occupied
+			occupied[y] = true; //set line occupied
 		}else {
-			FistR f = new FistR(x,11,y);
+			FistR f = new FistR(y,11,x);
 			Main.game.addEntity(f);
-			occupied[x] = true; //set line occupied
+			occupied[y] = true; //set line occupied
 		}
 		
 		
 		
 	}
 	
-	public static void fistBack(int x) {
+	public static void fistBack(int y) {
 		System.out.println("Back");
-		if(!occupied[x]) { return;}
+		if(!occupied[y]) { return;}
 	}
 	
 	public static void update(){

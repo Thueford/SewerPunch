@@ -102,7 +102,7 @@ public class Keyboard {
 				// System.out.println(point[1]);
 				Vector p = new Vector(point[0], point[1]);
 				if (point[0] != 99 && point[1] != 99) {
-					Fistmanagement.fistOut(point[0], point[1]);
+					Fistmanagement.fistOut(point[1], point[0]);
 					
 					
 				}
@@ -110,7 +110,7 @@ public class Keyboard {
 				scene.setOnKeyReleased(k ->{
 					
 					if(event.getCode() == k.getCode()) {
-						Fistmanagement.fistBack(point[0]);
+						Fistmanagement.fistBack(point[1]);
 					}
 					
 				});

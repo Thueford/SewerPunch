@@ -61,7 +61,11 @@ public class FistL extends application.Entity {
 	}
 	
 	@Override
-	public void move(double dtime) {	
+	public void move(double dtime) {
+		if(this.getX() >= range) {
+			if(true);
+		}
+		
 		super.move(dtime);
 		
 	}
