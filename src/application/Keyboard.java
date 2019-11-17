@@ -88,6 +88,7 @@ public class Keyboard {
 						
 					case CONTROL:
 						// strg
+						Main.game.bcemp();
 						checked = true;
 						break;
 						
