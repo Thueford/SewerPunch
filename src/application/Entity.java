@@ -107,7 +107,6 @@ public abstract class Entity extends Rectangle {
 	 * @param e collided entity
 	 */
 	public void onCollide(Entity e) {
-		this.collided = true;
 	}
 
 	/**
