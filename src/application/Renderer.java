@@ -26,11 +26,11 @@ public class Renderer {
 			return a.getDrawingOrder() > b.getDrawingOrder() ? 1 : -1;
 		});
 		
-		for(int x=0;x<10;x++) {
-			ctx.strokeRect(xCoordToPixel(x), yCoordToPixel(0), 0, yCoordToPixel(10));
+		for(int x=0;x<=10;x++) {
+			ctx.strokeRect(xCoordToPixel(x), yCoordToPixel(0), 0, yCoordToPixel(10)-yCoordToPixel(0));
 		}
-		for(int x=0;x<10;x++) {
-			ctx.strokeRect(xCoordToPixel(0), yCoordToPixel(x), xCoordToPixel(10), 0);
+		for(int x=0;x<=10;x++) {
+			ctx.strokeRect(xCoordToPixel(0), yCoordToPixel(x), xCoordToPixel(10)-xCoordToPixel(0), 0);
 		}
         
 		for (Entity e : tmp) {
