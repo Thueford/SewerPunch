@@ -66,11 +66,6 @@ public class Game {
 
 		loop = new Gameloop();
 		loop.start();
-
-		// test
-		Main.game.addEntity(new Player(1, 1));
-		// renderer.render();
-		// entities.get(0).sndSpawn.startSound();
 	}
 
 	public void MainThreadFunctions(double time, double dtime) {

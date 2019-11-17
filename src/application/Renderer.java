@@ -35,10 +35,10 @@ public class Renderer {
 	}
 
 	public static double xCoordToPixel(double x) {
-		return Main.WIDTH * (x + OFFSET_TL.x) / (GRID_SIZE.x - OFFSET_BR.x);
+		return Main.WIDTH * (x + OFFSET_TL.x) / (GRID_SIZE.x - OFFSET_BR.x - OFFSET_TL.x);
 	}
 
 	public static double yCoordToPixel(double y) {
-		return Main.HEIGHT * (y + OFFSET_TL.y) / (GRID_SIZE.y - OFFSET_BR.y);
+		return Main.HEIGHT * (y + OFFSET_TL.y) / (GRID_SIZE.y - OFFSET_BR.y - OFFSET_TL.y);
 	}
 }

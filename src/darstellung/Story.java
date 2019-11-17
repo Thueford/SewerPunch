@@ -66,7 +66,6 @@ public class Story {
 	}
 	
 	private void startGame() {
-		Main.game = new application.Game();
 		Main.game.start();
 	}
 
