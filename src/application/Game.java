@@ -162,10 +162,12 @@ public class Game {
 	public void collide() {
 
 		for (Entity a : Main.game.getEntities()) {
+			boolean coll = false;
 			for (Entity b : Main.game.getEntities()) {
 				if (a != b && a.isCollidable() && b.isCollidable() && a.collides(b)) {
-					a.onCollide(b);
-					b.onCollide(a);
+					a.collided = true;
+					if(!a.collided) a.onCollide(b);
+					coll = true;
 				}
 			}
 
@@ -174,7 +176,11 @@ public class Game {
 				a.dead = true;
 				a.die();
 			}
-			//}
+			
+			if(a.collided && !coll) {
+				a.onUncollide();
+				a.collided = false;
+			}
 		}
 	}
 
