@@ -11,7 +11,7 @@ public class Battery extends Entity{
 	private static final String[] src_img = {"battery/Batterie_V3f0_.png", "battery/Batterie_V3f1_.png", "battery/Batterie_V3f2_.png", "battery/Batterie_V3f3_.png", "battery/Batterie_V3f4_.png", "battery/Batterie_V3f5_.png", 
 											 "battery/Batterie_V3f6_.png", "battery/Batterie_V3f7_.png", "battery/Batterie_V3f8_.png", "battery/Batterie_V3f9_.png", "battery/Batterie_V3f10_.png",
 											 "battery/Batterie_V3f11_.png", "battery/Batterie_V3f12_.png", "battery/Batterie_V3f13_.png", "battery/Batterie_V3f14_.png", "battery/Batterie_V3f15_.png"};
-	private Image[] images = new Image[] {};
+	private Image[] images = new Image[src_img.length];
 	private double fill;
 	private static final double bots = 50;
 	
@@ -58,8 +58,8 @@ public class Battery extends Entity{
 	}
 	
 	private void LoadImages() {
-		for(int i = 0; i<src_img.length-1; i++) {
-			//images[i] = Main.game.loader.LoadImage(src_img[i]);
+		for(int i = 0; i<src_img.length; i++) {
+			images[i] = Main.game.loader.LoadImage(src_img[i]);
 		}
 	}
 	
