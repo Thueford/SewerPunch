@@ -31,7 +31,7 @@ public class Game {
 	public Random ran = new Random();
 	
 	private Sound atmosphere;
-	private Sound soundtrack;
+	public Sound soundtrack;
 	private Sound emp;
 	
 	/**
@@ -199,17 +199,16 @@ public class Game {
 		Player p = new Player(4, 7);
 		Main.game.addEntity(p);
 		
-		Main.game.addEntity(new darstellung.Background(0, 0));
-		Main.game.addEntity(new darstellung.Background(0, -10));
+		Main.game.addEntity(new darstellung.Background(6, 5));
+		Main.game.addEntity(new darstellung.Background(-3, 4));
 		
 		atmosphere = loader.LoadSound("atmosphere.wav");
 		atmosphere.setVolume(0.3);
 		atmosphere.setPriority(100);
 		soundtrack = loader.LoadSound("soundtrack.wav");
-		soundtrack.setVolume(0.3);
+		soundtrack.setVolume(0.7);
 		soundtrack.setPriority(95);
 		emp = loader.LoadSound("emp.wav");
-		// renderer.render();
 		// entities.get(0).sndSpawn.startSound();
 	}
 

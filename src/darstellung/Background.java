@@ -69,8 +69,8 @@ public class Background extends Entity{
 	@Override
 	public void onAnimate(double time, double dtime) {
 		super.onAnimate(time, dtime);
-		if(this.y > 9) {
-			this.y = -10;
+		if(this.y > 20) {
+			this.y = -9;
 			this.LoadAssets();
 		}
 	}

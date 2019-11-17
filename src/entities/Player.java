@@ -22,29 +22,32 @@ public class Player extends application.Entity {
 	
 	private boolean collidable = true;
 
-	private static String src_anim = "AnimationSpriteSheet_strip3x4.png";
+	private static String src_anim = "AnimationSpriteSheet_strip3x1.png";
 
 	// Images for each animation
 
 	// Gets the upper left images of my sprite sheet
 	private static BufferedImage[] anim1 = { 
-			Sprite.getSprite(0, 1, src_anim), 
-			Sprite.getSprite(2, 1, src_anim) };
+			Sprite.getSprite(0, 0, src_anim), 
+			Sprite.getSprite(2, 0, src_anim) };
 
 	// private static BufferedImage[] walkingRight = {Sprite.getSprite(0, 2),
 	// Sprite.getSprite(2, 2)};
 	private static BufferedImage[] standartanim = { Sprite.getSprite(1, 0, src_anim) };
 
 	// These are animation states
-	private static Animation anim = new Animation(anim1, 12);
+	private static Animation anim = new Animation(anim1, 0.3);
 	// private static Animation walkRight = new Animation(walkingRight, 10);
-	private static Animation standart_anim = new Animation(standartanim, 10);
+	private static Animation standart_anim = new Animation(standartanim, 1);
 
 	// This is the actual animation
 	public Animation animation = standart_anim;
 
 	public Player(int x, int y) {
 		super(x, y);
+		
+		animation = anim;
+		animation.start();
 	}
 
 	@Override
@@ -80,13 +83,12 @@ public class Player extends application.Entity {
 
 	@Override
 	public void onAnimate(double time, double dtime) {
-		animation.update();
+		animation.update(time, dtime);
 		img = SwingFXUtils.toFXImage(animation.getSprite(), null);
 	}
 
 	@Override
 	public void move(double dtime) {
-		animation = anim;
-		animation.start();
+		
 	}
 }
