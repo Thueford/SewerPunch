@@ -17,7 +17,7 @@ public class Sound {
 		audioClip = new AudioClip(new File(src).toURI().toString());
 		audioClip.setCycleCount(1);
 		this.setPriority(0);
-		this.setVolume(0.7);
+		this.setVolume(0.3);
 	}
 
 	public double getVolume() {
@@ -55,14 +55,14 @@ public class Sound {
 	 * startet das spielen des sounds
 	 */
 	public void startSound() {
-		audioClip.play();
+		if(!audioClip.isPlaying()) audioClip.play();
 	}
 
 	/**
 	 * stoppt das spielen des sounds
 	 */
 	public void stopSound() {
-		audioClip.stop();
+		if(audioClip.isPlaying()) audioClip.stop();
 	}
 	
 	public boolean isPlaying() {

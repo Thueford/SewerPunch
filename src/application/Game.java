@@ -32,7 +32,7 @@ public class Game {
 	public double bots = 50;
 	
 	private Sound atmosphere;
-	private Sound soundtrack;
+	public Sound soundtrack;
 	private Sound emp;
 	
 	/**
@@ -207,7 +207,7 @@ public class Game {
 		atmosphere.setVolume(0.3);
 		atmosphere.setPriority(100);
 		soundtrack = loader.LoadSound("soundtrack.wav");
-		soundtrack.setVolume(0.3);
+		soundtrack.setVolume(0.7);
 		soundtrack.setPriority(95);
 		emp = loader.LoadSound("emp.wav");
 		// renderer.render();
