@@ -186,6 +186,8 @@ public class Game {
 	public void init() {
 		// test
 		Main.game.addEntity(new Player(4, 7));
+		Main.game.addEntity(new darstellung.Background(0,0));
+		Main.game.addEntity(new darstellung.Background(0, -11));
 		// renderer.render();
 		// entities.get(0).sndSpawn.startSound();
 	}
