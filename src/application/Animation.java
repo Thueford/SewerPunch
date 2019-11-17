@@ -7,17 +7,17 @@ import java.util.List;
 public class Animation {
 
 	private int frameCount; // Counts ticks for change
-	private long frameDelay; // frame delay 1-12 (You will have to play around with this)
+	private double frameDelay; // frame delay 1-12 (You will have to play around with this)
 	private int currentFrame; // animations current frame
 	private int animationDirection; // animation direction (i.e counting forward or backward)
 	private int totalFrames; // total amount of frames for your animation
-	private int lastframetime;
+	private double lastFrameTime = 0;
 
 	private boolean stopped; // has animations stopped
 
 	private List<Frame> frames = new ArrayList<Frame>(); // Arraylist of frames
 
-	public Animation(BufferedImage[] frames, int frameDelay) {
+	public Animation(BufferedImage[] frames, double frameDelay) {
 		this.frameDelay = frameDelay;
 		this.stopped = true;
 
@@ -26,10 +26,10 @@ public class Animation {
 		}
 
 		this.frameCount = 0;
-		this.frameDelay = frameDelay;
 		this.currentFrame = 0;
 		this.animationDirection = 1;
 		this.totalFrames = this.frames.size();
+		
 
 	}
 
@@ -64,7 +64,7 @@ public class Animation {
 		this.currentFrame = 0;
 	}
 
-	private void addFrame(BufferedImage frame, int duration) {
+	private void addFrame(BufferedImage frame, double duration) {
 		if (duration <= 0) {
 			System.err.println("Invalid duration: " + duration);
 			throw new RuntimeException("Invalid duration: " + duration);
@@ -81,14 +81,9 @@ public class Animation {
 	public void update(double time, double dtime) {
 
 		if (!stopped) {
-			
-			
-			
-			
-			
 			frameCount++;
 
-			if (frameCount > frameDelay*dtime) {
+			if (time - lastFrameTime > frameDelay) {
 				frameCount = 0;
 				currentFrame += animationDirection;
 
@@ -97,6 +92,7 @@ public class Animation {
 				} else if (currentFrame < 0) {
 					currentFrame = totalFrames - 1;
 				}
+				lastFrameTime = time;
 			}
 			//*/
 

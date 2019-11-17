@@ -36,9 +36,9 @@ public class Player extends application.Entity {
 	private static BufferedImage[] standartanim = { Sprite.getSprite(1, 0, src_anim) };
 
 	// These are animation states
-	private static Animation anim = new Animation(anim1, 12);
+	private static Animation anim = new Animation(anim1, 0.3);
 	// private static Animation walkRight = new Animation(walkingRight, 10);
-	private static Animation standart_anim = new Animation(standartanim, 10);
+	private static Animation standart_anim = new Animation(standartanim, 1);
 
 	// This is the actual animation
 	public Animation animation = standart_anim;

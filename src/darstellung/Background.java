@@ -23,7 +23,7 @@ public class Background extends Entity{
 
 	@Override
 	public void LoadAssets() {
-		this.img = Main.game.loader.LoadImage(src_img[Main.game.ran.nextInt(src_img.length+1)]);
+		this.img = Main.game.loader.LoadImage(src_img[Main.game.ran.nextInt(src_img.length)]);
 	}
 
 	@Override
