@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Random;
 
 import darstellung.Loader;
+import darstellung.Ressource;
 import entities.Haribo;
 import entities.Player;
 import sounds.Sound;
@@ -30,6 +31,7 @@ public class Game {
 	public final int resource = 50;
 	public Gameloop loop;
 	public Random ran = new Random();
+	public Ressource bots = new Ressource();
 	
 	private Sound atmosphere;
 	public Sound soundtrack;
@@ -224,6 +226,8 @@ public class Game {
 		alert = loader.LoadSound("alert.wav");
 		//alert.setSpeed(8);
 		// entities.get(0).sndSpawn.startSound();
+		
+		bots.setRes(50);
 		
 		Main.game.addEntity(new entities.Battery(-1.0, 4.5, resource));
 	}
