@@ -174,6 +174,9 @@ public class Game {
 				a.dead = true;
 				a.die();
 			}
+			if ((a.y > 10 ) && (a instanceof entities.Haribo || a instanceof entities.Garbage)){
+				Main.game.removeEntity(a);
+			}
 			
 			if(a.collided && !coll) {
 				a.onUncollide();
@@ -242,7 +245,7 @@ public class Game {
 		if(empReady) {
 			emp.startSound();
 			this.killAllEntities();
-			empReady = false;
+			//empReady = false;
 		}
 	}
 
@@ -253,7 +256,7 @@ public class Game {
 			if(tmp.get(i) instanceof entities.Haribo) {
 				tmp.get(i).dead=true;
 				tmp.get(i).die();
-				Main.game.removeEntity(tmp.get(i));
+				//
 			}
 		}
 	}

@@ -34,9 +34,9 @@ public class Spawner {
 		System.out.print("spawn ");
 		int r = (int) (Math.random() * 100);
 		if(r>10) {
-			Main.game.addEntity(new Haribo(feld, 1));
+			Main.game.addEntity(new Haribo(feld, -2));
 		} else {
-			Main.game.addEntity(new Garbage(feld, 1));
+			Main.game.addEntity(new Garbage(feld, -2));
 		}
 		// Main.game.entities.get(Main.game.entities.size()-1).sndSpawn.startSound();
 	}
