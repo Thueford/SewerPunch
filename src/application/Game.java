@@ -23,6 +23,7 @@ public class Game {
 	public final Renderer renderer;
 	public Loader loader;
 	private final List<Entity> entities = new ArrayList<Entity>();
+	private static final Rectangle[] border = {new Rectangle(0,0,50,720), new Rectangle(670,0,60,720)};
 	public final int resource = 50;
 	public Gameloop loop;
 	public Random ran = new Random();
@@ -90,16 +91,31 @@ public class Game {
 			
 			System.out.println("\n");
 
-			if (wavestate == 10) { // 10 means last Wave of Stage - spawns big Wave, resets wavestate, increments
-									// wave
+			if(wavestate >= 10) {
+				switch(wavestate) { 
+					
+					case 10 : {
+						//AlertSound();
+						wavestate++;	
+					}
+					case 11 : {
+						System.out.println("Ult wave");
+						spawner.spawnWave(1 + (int)(wave * 0.5 ));
+						wavestate++;
+						return;
+					}
+					case 12 : {
+						for(Entity obj: getEntities()) {
+							if(obj instanceof entities.Haribo) return;
+							wave++;
+							wavestate = 0;
+							return;							
+						}
+					}
+				}
+			}	
 
-				System.out.println("Ult wave");
-				spawner.spawnWave(1 + (int)(wave * 0.5 ));
-				wave++;
-				wavestate = 0;
-
-				return;
-			}
+			
 			// in a 0.7 Chance spawns 2^wave*wavestate single enemys, otherwise spawns a wave
 			if ((int) (Math.random() * 10) <= 7) {
 				System.out.println("single spawns");
@@ -128,7 +144,7 @@ public class Game {
 	 * collision detection between all entities
 	 */
 	public void collide() {
-
+		
 		for (Entity a : Main.game.getEntities()) {
 			for (Entity b : Main.game.getEntities()) {
 				if(a != b && a.getCollidable() && b.getCollidable() && a.collides(b)) {
@@ -136,7 +152,13 @@ public class Game {
 					b.onCollide(a);
 				}
 			}
-			// TODO: border collision
+			
+			for (Rectangle b : border) {
+				if(a.collides(b) && a instanceof entities.Haribo) {
+					a.dead=true;
+					a.die();
+				}
+			}
 		}
 	}
 
@@ -170,6 +192,7 @@ public class Game {
 	
 	public void killAllEntities() {
 		for(int i = 0; i<this.entities.size();i++) {
+			this.entities.get(i).dead=true;
 			this.entities.get(i).die();
 		}
 	}
