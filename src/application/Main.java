@@ -18,12 +18,10 @@ public class Main extends Application {
 	public static final int WIDTH = 720, HEIGHT = 720;
 	public static Stage primaryStage;
 	public static Game game;
-	public static URI rootPath;
 
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			rootPath = getRoot();
 			Main.primaryStage = primaryStage;
 
 			final BorderPane root = new MainMenu();
@@ -47,9 +45,4 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
-	
-	private URI getRoot() throws IOException, URISyntaxException {
-	    URL u = getClass().getProtectionDomain().getCodeSource().getLocation();
-	    return new File(u.toURI()).getParentFile().toURI();
-	  }
 }

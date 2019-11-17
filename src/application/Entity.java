@@ -31,6 +31,8 @@ public abstract class Entity extends Rectangle {
 	public abstract Vector getInitSpeed();
 
 	public abstract Vector getInitSize();
+	
+	public abstract boolean getCollidable();
 
 	/**
 	 * Called once on game load Load all relevat assets
