@@ -75,6 +75,7 @@ public class Keyboard {
 						
 					case ENTER:
 						// fill ressources
+						Main.game.bots.setRes(50);
 						checked = true;
 						
 						break;
