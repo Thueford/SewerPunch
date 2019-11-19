@@ -1,11 +1,11 @@
 package application;
 
-import java.util.List;
-
 import entities.Entity;
 import helper.Rectangle;
 import helper.Vector;
 import javafx.scene.canvas.GraphicsContext;
+
+import java.util.List;
 
 /**
  * @author afeilke1

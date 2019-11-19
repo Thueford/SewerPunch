@@ -1,22 +1,20 @@
 package application;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
 import display.Ressource;
 import entities.Entity;
 import entities.Player;
 import helper.Keyboard;
 import helper.Loader;
 import helper.Sound;
-import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
 /**
  * @author docheron
@@ -80,7 +78,6 @@ public class Game {
 
 	public final Renderer renderer;
 
-	public Loader loader;
 	private final List<Entity> entities = new ArrayList<>();
 	// private static final Rectangle[] border = { new Rectangle(0, 0, 50, 720), new
 	// Rectangle(670, 0, 60, 720) };
@@ -102,24 +99,20 @@ public class Game {
 	 */
 	public Game() {
 		renderer = new Renderer();
+	}
 
-		URL res;
-		try {
-			res = getClass().getResource("/");
-			loader = new Loader(new URL(res, "../res/img/"), new URL(res, "../res/snd/"));
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-			loader = null;
-			Platform.exit();
+	public void addEntity(Entity e)
+	{
+		synchronized (this.entities) {
+			this.entities.add(e);
 		}
 	}
 
-	public Entity addEntity(Entity e) {
-		synchronized (entities) {
-			entities.add(e);
-			// System.out.println("Entity added");
+	public void addEntities(Entity ...entities)
+	{
+		synchronized (this.entities) {
+			this.entities.addAll(Arrays.asList(entities));
 		}
-		return e;
 	}
 
 	// biochemischer emp
@@ -136,14 +129,12 @@ public class Game {
 	 */
 	public void collide() {
 		List<Entity> allEntities = Main.game.getEntities();
-//		System.out.println(allEntities.toString());
+
 		for (Entity a : allEntities) {
 			if (!a.dead) {
 				boolean coll = false;
 				for (Entity b : allEntities) {
 					if (a != b && a.isCollidable() && b.isCollidable() && a.collides(b)) {
-
-//					System.out.println(a.collides(b) + b.toString());
 						a.collided = true;
 						a.onCollide(b);
 						coll = true;
@@ -157,12 +148,10 @@ public class Game {
 				}
 				if ((a.y > 10) && (a instanceof entities.Haribo || a instanceof entities.Garbage)) {
 					Main.game.removeEntity(a);
-				}
-				if ((a.y >= 9) && (a instanceof entities.Haribo || a instanceof entities.Garbage) && !a.isDead()) {
-					// Platform.runLater( () -> new MainMenu() );
+					// if(!a.isDead()) Platform.runLater( () -> new MainMenu() );
 				}
 
-				if (a.collided && !coll) {
+				if (!coll && a.collided) {
 					a.onUncollide();
 					a.collided = false;
 				}
@@ -171,32 +160,25 @@ public class Game {
 	}
 
 	public List<Entity> getEntities() {
-
-		List<Entity> tmp = new ArrayList<>();
-
 		synchronized (entities) {
-			tmp.addAll(entities);
+			return new ArrayList<>(entities);
 		}
-		return tmp;
 	}
 
 	public void init() {
 		// test
-		for (int i = 0; i < 9; i++) {
+		for (int i = 0; i < 9; i++)
 			Main.game.addEntity(new Player(i, 9));
-		}
-		Main.game.addEntity(new entities.Background(-1, 0));
-		Main.game.addEntity(new entities.Background(-1, -10));
 
-		atmosphere = loader.LoadSound("atmosphere.wav");
-		atmosphere.setVolume(0.3);
-		atmosphere.setPriority(100);
-		soundtrack = loader.LoadSound("soundtrack.wav");
-		soundtrack.setVolume(0.7);
-		soundtrack.setPriority(95);
-		emp = loader.LoadSound("emp.wav");
-		fillsnd = loader.LoadSound("refill.wav");
-		alert = loader.LoadSound("alert.wav");
+		Main.game.addEntities(
+			new entities.Background(-Renderer.OFFSET.x, 0),
+			new entities.Background(-Renderer.OFFSET.x, -10));
+
+		atmosphere = Loader.LoadSound("atmosphere.wav", 0.3, 100);
+		soundtrack = Loader.LoadSound("soundtrack.wav", 0.7, 95);
+		emp = Loader.LoadSound("emp.wav");
+		fillsnd = Loader.LoadSound("refill.wav");
+		alert = Loader.LoadSound("alert.wav");
 		// alert.setSpeed(8);
 		// entities.get(0).sndSpawn.startSound();
 
@@ -223,22 +205,16 @@ public class Game {
 		// SoundHandler.play(Soundlist);
 		bots.showRes();
 
-		if (!atmosphere.isPlaying()) {
-			atmosphere.startSound();
-		}
-		if (!soundtrack.isPlaying()) {
-			soundtrack.startSound();
-		}
+		if (!atmosphere.isPlaying()) atmosphere.startSound();
+		if (!soundtrack.isPlaying()) soundtrack.startSound();
 	}
 
 	/**
 	 * move all entities
 	 */
 	public void move(double dtime) {
-		for (Entity obj : Main.game.getEntities()) {
+		for (Entity obj : Main.game.getEntities())
 			obj.move(dtime);
-
-		}
 	}
 
 	public void Over() {
@@ -246,8 +222,8 @@ public class Game {
 	}
 
 	public void removeEntity(Entity e) {
-		synchronized (entities) {
-			entities.remove(e);
+		synchronized (this.entities) {
+			this.entities.remove(e);
 		}
 	}
 

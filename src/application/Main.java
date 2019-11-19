@@ -1,6 +1,7 @@
 package application;
 
 import display.MainMenu;
+import helper.Loader;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
@@ -24,6 +25,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
+			Loader.init(this.getClass());
 			Main.primaryStage = primaryStage;
 			Main.primaryStage.setResizable(false);
 

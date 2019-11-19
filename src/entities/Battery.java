@@ -2,6 +2,7 @@ package entities;
 
 import application.Fistmanagement;
 import application.Main;
+import helper.Loader;
 import helper.Vector;
 import javafx.scene.image.Image;
 
@@ -61,7 +62,7 @@ public class Battery extends Entity {
 
 	private void LoadImages() {
 		for (int i = 0; i < src_img.length; i++) {
-			images[i] = Main.game.loader.LoadImage(src_img[i]);
+			images[i] = Loader.LoadImage(src_img[i]);
 		}
 	}
 
@@ -77,7 +78,7 @@ public class Battery extends Entity {
 
 	public void update() {
 		try {
-			this.img = Main.game.loader.LoadImage(
+			this.img = Loader.LoadImage(
 					src_img[(int) ((src_img.length - 1) * Main.game.bots.getRes() / Fistmanagement.resource_max)]);
 		} catch (ArrayIndexOutOfBoundsException e) {
 			// System.err.println(e.getMessage());

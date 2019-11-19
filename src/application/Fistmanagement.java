@@ -4,6 +4,7 @@ import display.Ressource;
 import entities.Entity;
 import entities.FistL;
 import entities.FistR;
+import helper.Loader;
 import helper.Sound;
 import helper.Vector;
 
@@ -52,7 +53,7 @@ public class Fistmanagement {
 
 		if (occupied[y] || resource.getRes() <= 10) {
 			if (imp_action == null) {
-				imp_action = Main.game.loader.LoadSound("impossibleaction.wav");
+				imp_action = Loader.LoadSound("impossibleaction.wav");
 			}
 			imp_action.startSound();
 			return;

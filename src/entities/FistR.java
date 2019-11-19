@@ -2,6 +2,7 @@ package entities;
 
 import application.Fistmanagement;
 import application.Main;
+import helper.Loader;
 import helper.Vector;
 
 public class FistR extends entities.Entity {
@@ -57,9 +58,9 @@ public class FistR extends entities.Entity {
 
 	@Override
 	public void LoadAssets() {
-		this.img = Main.game.loader.LoadImage(src_img);
-		this.sndSpawn = Main.game.loader.LoadSound(src_sndSpawn[Main.game.ran.nextInt(src_sndSpawn.length)]);
-		this.sndDie = Main.game.loader.LoadSound(src_sndDie[Main.game.ran.nextInt(src_sndDie.length)]);
+		this.img = Loader.LoadImage(src_img);
+		this.sndSpawn = Loader.LoadSound(src_sndSpawn[Main.game.ran.nextInt(src_sndSpawn.length)]);
+		this.sndDie = Loader.LoadSound(src_sndDie[Main.game.ran.nextInt(src_sndDie.length)]);
 	}
 
 	@Override

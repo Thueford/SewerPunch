@@ -1,7 +1,11 @@
 package entities;
 
 import application.Main;
+import application.Renderer;
+import helper.Loader;
 import helper.Vector;
+
+import static application.Renderer.OFFSET;
 
 public class Background extends Entity {
 	private static final String[] src_img = { "bg1.png", "bg2.png", "bg3.png", "bg4.png" };
@@ -10,11 +14,11 @@ public class Background extends Entity {
 	private static final int HP_init = 1;
 	private static final int drawingOrder = -100;
 	private static final Vector speed_init = new Vector(0, 0.5);
-	private static final Vector size_init = new Vector(13, 12);
+	private static final Vector size_init = Renderer.GRID_SIZE.copy().add(OFFSET.xy()).add(OFFSET.wh());
 
 	private static final boolean collidable = false;
 
-	public Background(int x, int y) {
+	public Background(double x, double y) {
 		super(x, y);
 	}
 
@@ -45,7 +49,7 @@ public class Background extends Entity {
 
 	@Override
 	public void LoadAssets() {
-		this.img = Main.game.loader.LoadImage(src_img[Main.game.ran.nextInt(src_img.length)]);
+		this.img = Loader.LoadImage(src_img[Main.game.ran.nextInt(src_img.length)]);
 	}
 
 	@Override

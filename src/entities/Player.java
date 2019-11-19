@@ -1,12 +1,13 @@
 package entities;
 
-import java.awt.image.BufferedImage;
-
 import application.Main;
 import helper.Animation;
+import helper.Loader;
 import helper.Sprite;
 import helper.Vector;
 import javafx.embed.swing.SwingFXUtils;
+
+import java.awt.image.BufferedImage;
 
 public class Player extends entities.Entity {
 	private static final String src_img = "Hauptfigur_V3.1.png";
@@ -74,8 +75,8 @@ public class Player extends entities.Entity {
 
 	@Override
 	public void LoadAssets() {
-		this.img = Main.game.loader.LoadImage(src_img);
-		this.sndDie = Main.game.loader.LoadSound(src_sndDie[Main.game.ran.nextInt(src_sndDie.length)]);
+		this.img = Loader.LoadImage(src_img);
+		this.sndDie = Loader.LoadSound(src_sndDie[Main.game.ran.nextInt(src_sndDie.length)]);
 	}
 
 	@Override

@@ -81,4 +81,14 @@ public class Rectangle {
 	public String toString() {
 		return "Rectangle(" + x + "," + y + "," + width + "," + height + ")";
 	}
+
+    public Vector xy()
+    {
+    	return new Vector(x, y);
+    }
+
+	public Vector wh()
+	{
+		return new Vector(width, height);
+	}
 }

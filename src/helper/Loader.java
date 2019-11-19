@@ -1,15 +1,18 @@
 package helper;
 
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.imageio.ImageIO;
-
 import javafx.application.Platform;
 import javafx.scene.image.Image;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author afeilke1
@@ -27,18 +30,29 @@ public class Loader {
 	/**
 	 * base path for image resources
 	 */
-	private static URL res_img, res_snd;
+	private static Path res_img, res_snd;
 
-	public Loader(URL res_img, URL res_snd) {
-		Loader.res_img = res_img;
-		Loader.res_snd = res_snd;
+	public static void init(Class main) {
+		try {
+			Path res = Paths.get(main.getResource("/").toURI());
+
+			while(!Files.isDirectory(res.resolve("res")))
+				res = res.getParent();
+
+			res_img = res.resolve("res/img/");
+			res_snd = res.resolve("res/snd/");
+		}
+		catch (URISyntaxException e) {
+			e.printStackTrace();
+			Platform.exit();
+		}
 	}
 
-	public BufferedImage LoadBufferedImage(String src) {
+	public static BufferedImage LoadBufferedImage(String src) {
 		BufferedImage img = bufferedImages.get(src);
 		if (img == null) {
 			try {
-				img = ImageIO.read(new URL(res_img, src).openStream());
+				img = ImageIO.read(res_img.resolve(src).toFile());
 			} catch (IOException e) {
 				e.printStackTrace();
 				Platform.exit();
@@ -53,13 +67,12 @@ public class Loader {
 	 * 
 	 * @param src image source path
 	 * @return javafx Image
-	 * @throws IOException
 	 */
-	public Image LoadImage(String src) {
+	public static Image LoadImage(String src) {
 		Image img = images.get(src);
 		if (img == null) {
 			try {
-				img = new Image(new URL(res_img, src).openStream());
+				img = new Image(new FileInputStream(res_img.resolve(src).toFile()));
 			} catch (IOException e) {
 				e.printStackTrace();
 				Platform.exit();
@@ -69,17 +82,27 @@ public class Loader {
 		return img;
 	}
 
-	public Sound LoadSound(String src) {
+	public static Sound LoadSound(String src) {
 		Sound snd = sounds.get(src);
 		if (snd == null) {
-			try {
-				snd = new Sound(new URL(res_snd, src).getPath());
-			} catch (IOException e) {
-				e.printStackTrace();
-				Platform.exit();
-			}
+			snd = new Sound(res_snd.resolve(src).toString());
 			sounds.put(src, snd);
 		}
+		return snd;
+	}
+
+	public static Sound LoadSound(String src, double volume)
+	{
+		Sound snd = LoadSound(src);
+		snd.setVolume(volume);
+		return snd;
+	}
+
+	public static Sound LoadSound(String src, double volume, int priority)
+	{
+		Sound snd = LoadSound(src);
+		snd.setVolume(volume);
+		snd.setPriority(priority);
 		return snd;
 	}
 }

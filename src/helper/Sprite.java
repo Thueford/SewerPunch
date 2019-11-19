@@ -2,8 +2,6 @@ package helper;
 
 import java.awt.image.BufferedImage;
 
-import application.Main;
-
 /**
  * @author gkruschw
  *
@@ -11,7 +9,7 @@ import application.Main;
 public class Sprite {
 
 	public static BufferedImage getSprite(int xGrid, int yGrid, String file) {
-		BufferedImage spriteSheet = Main.game.loader.LoadBufferedImage(file);
+		BufferedImage spriteSheet = Loader.LoadBufferedImage(file);
 		Vector size = new Vector(60, 72);
 
 		int p = file.lastIndexOf("_strip");

@@ -1,12 +1,13 @@
 package entities;
 
-import java.awt.image.BufferedImage;
-
 import application.Main;
 import helper.Animation;
+import helper.Loader;
 import helper.Sprite;
 import helper.Vector;
 import javafx.embed.swing.SwingFXUtils;
+
+import java.awt.image.BufferedImage;
 
 public class Haribo extends entities.Entity {
 
@@ -83,11 +84,11 @@ public class Haribo extends entities.Entity {
 
 	@Override
 	public void LoadAssets() {
-		this.img = Main.game.loader.LoadImage(src_img);
-		this.sndSpawn = Main.game.loader.LoadSound(src_sndSpawn[Main.game.ran.nextInt(src_sndSpawn.length)]);
+		this.img = Loader.LoadImage(src_img);
+		this.sndSpawn = Loader.LoadSound(src_sndSpawn[Main.game.ran.nextInt(src_sndSpawn.length)]);
 		this.sndSpawn.setVolume(0.3);
-		this.sndDie = Main.game.loader.LoadSound(src_sndDie[Main.game.ran.nextInt(src_sndDie.length)]);
-		this.sndHit = Main.game.loader.LoadSound(src_sndHit[Main.game.ran.nextInt(src_sndHit.length)]);
+		this.sndDie = Loader.LoadSound(src_sndDie[Main.game.ran.nextInt(src_sndDie.length)]);
+		this.sndHit = Loader.LoadSound(src_sndHit[Main.game.ran.nextInt(src_sndHit.length)]);
 	}
 
 	public void onAnimate(double time, double dtime) {

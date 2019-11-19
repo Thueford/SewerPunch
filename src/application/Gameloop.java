@@ -23,7 +23,7 @@ public class Gameloop extends Thread {
 	}
 
 	public void pause() {
-		pause = pause ? false : true;
+		pause = !pause;
 	}
 
 	public void run() {
