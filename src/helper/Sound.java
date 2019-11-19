@@ -4,6 +4,10 @@ import java.io.File;
 
 import javafx.scene.media.AudioClip;
 
+/**
+ * @author lwutke
+ *
+ */
 public class Sound {
 	private double volume = 1; // 0.0 .. 1.0
 	private double speed = 1; // 0.125 .. 8

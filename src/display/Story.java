@@ -8,6 +8,10 @@ import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.BorderPane;
 
+/**
+ * @author docheron
+ *
+ */
 public class Story {
 
 	private Label textarea;

@@ -5,6 +5,10 @@ import helper.Sound;
 import helper.Vector;
 import javafx.scene.image.Image;
 
+/**
+ * @author afeilke1
+ *
+ */
 public abstract class Entity extends Rectangle {
 
 	// game vars

@@ -2,6 +2,10 @@ package helper;
 
 import java.awt.image.BufferedImage;
 
+/**
+ * @author gkruschw
+ *
+ */
 public class Frame {
 
 	private BufferedImage frame;

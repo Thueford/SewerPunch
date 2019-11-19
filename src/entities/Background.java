@@ -1,7 +1,6 @@
-package display;
+package entities;
 
 import application.Main;
-import entities.Entity;
 import helper.Vector;
 
 public class Background extends Entity {

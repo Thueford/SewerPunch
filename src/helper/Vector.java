@@ -1,5 +1,9 @@
 package helper;
 
+/**
+ * @author afeilke1
+ *
+ */
 public class Vector {
 	public double x;
 	public double y;

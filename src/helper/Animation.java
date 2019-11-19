@@ -4,6 +4,10 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author gkruschw
+ *
+ */
 public class Animation {
 
 	private int frameCount; // Counts ticks for change

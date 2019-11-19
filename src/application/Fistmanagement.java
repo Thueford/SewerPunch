@@ -7,6 +7,10 @@ import entities.FistR;
 import helper.Sound;
 import helper.Vector;
 
+/**
+ * @author docheron
+ *
+ */
 public class Fistmanagement {
 
 	public static Ressource resource = Main.game.bots;

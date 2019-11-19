@@ -1,5 +1,9 @@
 package helper;
 
+/**
+ * @author afeilke1
+ *
+ */
 public class Rectangle {
 	// prüft ob wenigstens ein eckpunkt von 2 Rechtecken sich entspricht
 	public static boolean equal(Rectangle r1, Rectangle r2) {

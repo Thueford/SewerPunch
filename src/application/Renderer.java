@@ -9,6 +9,7 @@ import javafx.scene.canvas.GraphicsContext;
 
 /**
  * @author afeilke1
+ * 
  */
 public class Renderer {
 

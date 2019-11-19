@@ -186,8 +186,8 @@ public class Game {
 		for (int i = 0; i < 9; i++) {
 			Main.game.addEntity(new Player(i, 9));
 		}
-		Main.game.addEntity(new display.Background(-1, 0));
-		Main.game.addEntity(new display.Background(-1, -10));
+		Main.game.addEntity(new entities.Background(-1, 0));
+		Main.game.addEntity(new entities.Background(-1, -10));
 
 		atmosphere = loader.LoadSound("atmosphere.wav");
 		atmosphere.setVolume(0.3);

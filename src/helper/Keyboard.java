@@ -6,6 +6,10 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 
+/**
+ * @author gkruschw
+ *
+ */
 public class Keyboard {
 	// rows...
 	int[] r1 = { 25, 26, 27, 28, 29, 30, 31, 32, 33, 24 };

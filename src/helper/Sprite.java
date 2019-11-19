@@ -4,6 +4,10 @@ import java.awt.image.BufferedImage;
 
 import application.Main;
 
+/**
+ * @author gkruschw
+ *
+ */
 public class Sprite {
 
 	public static BufferedImage getSprite(int xGrid, int yGrid, String file) {

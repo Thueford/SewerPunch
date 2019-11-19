@@ -3,6 +3,10 @@ package application;
 import entities.Garbage;
 import entities.Haribo;
 
+/**
+ * @author lwutke
+ *
+ */
 public class Spawner {
 	// wahrscheinlichkeiten für spawn in feldern
 	private double[] arr = new double[10];
