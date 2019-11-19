@@ -1,8 +1,8 @@
-package application;
+package helper;
 
 import java.awt.image.BufferedImage;
 
-import helper.Vector;
+import application.Main;
 
 public class Sprite {
 

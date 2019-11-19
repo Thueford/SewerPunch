@@ -1,6 +1,6 @@
 package application;
 
-import darstellung.Ressource;
+import display.Ressource;
 import entities.Entity;
 import entities.FistL;
 import entities.FistR;

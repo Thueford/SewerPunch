@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import darstellung.Ressource;
+import display.Ressource;
 import entities.Entity;
 import entities.Player;
 import helper.Keyboard;
@@ -19,6 +19,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
 
 /**
+ * @author docheron
  * Builds a new Scene, starts the Gameloop, maybe stores some variables, idk
  *
  */
@@ -185,8 +186,8 @@ public class Game {
 		for (int i = 0; i < 9; i++) {
 			Main.game.addEntity(new Player(i, 9));
 		}
-		Main.game.addEntity(new darstellung.Background(-1, 0));
-		Main.game.addEntity(new darstellung.Background(-1, -10));
+		Main.game.addEntity(new display.Background(-1, 0));
+		Main.game.addEntity(new display.Background(-1, -10));
 
 		atmosphere = loader.LoadSound("atmosphere.wav");
 		atmosphere.setVolume(0.3);

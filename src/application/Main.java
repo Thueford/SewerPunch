@@ -1,6 +1,6 @@
 package application;
 
-import darstellung.MainMenu;
+import display.MainMenu;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;

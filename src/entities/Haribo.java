@@ -3,8 +3,8 @@ package entities;
 import java.awt.image.BufferedImage;
 
 import application.Main;
-import application.Sprite;
 import helper.Animation;
+import helper.Sprite;
 import helper.Vector;
 import javafx.embed.swing.SwingFXUtils;
 
