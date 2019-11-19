@@ -71,7 +71,8 @@ public class Garbage extends application.Entity{
 
 	@Override
 	public void onDie() {
-		
+		collidable = false;
+		Main.game.removeEntity(this);
 	}
 
 }

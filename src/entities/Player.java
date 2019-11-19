@@ -95,10 +95,11 @@ public class Player extends application.Entity {
 	
 	@Override
 	public void onCollide(Entity e) {
-		super.onCollide(e);
+//		super.onCollide(e);
 		if (e instanceof Haribo || e instanceof Garbage) {
 			this.stopWalking();
 			reduceHP(1);
-		}
+			Main.game.loop.terminate();
+			}
 	}
 }

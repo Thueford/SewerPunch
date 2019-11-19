@@ -1,5 +1,7 @@
 package application;
 
+import java.rmi.registry.Registry;
+
 public class Rectangle {
 	// lass die getter so wie sie sind!
 	public double x, y, width, height;
@@ -70,7 +72,11 @@ public class Rectangle {
 		return r1.x == r2.x && r1.y == r2.y && r1.width == r2.width && r1.height == r2.height;
 	}
 
+//	public boolean collides(Rectangle r) {
+//		return x < r.x + r.width && x + width > r.x && y < r.y + r.height && y + height > r.y;
+//	}
+	
 	public boolean collides(Rectangle r) {
-		return x < r.x + r.width && x + width < r.x && y < r.y + r.height && y + height < r.y;
+		return (x < r.x + r.width && x > r.x - width) && (y < r.y + r.height && y > r.y - height);
 	}
 }

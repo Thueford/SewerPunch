@@ -124,7 +124,6 @@ public class Haribo extends application.Entity {
 	@Override
 	public void onCollide(Entity e) {
 //		super.onCollide(e);
-		System.out.println("Collide called");
 		if (e instanceof entities.FistL || e instanceof entities.FistR) {
 			System.out.println("Haribo mit Faust kollidiert");
 			sndHit.startSound();

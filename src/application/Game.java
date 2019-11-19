@@ -112,10 +112,10 @@ public class Game {
 
 				case 10: {
 					alert.startSound();
-//					while (alert.isPlaying()) {}
 					wavestate++;
 				}
 				case 11: {
+					if (alert.isPlaying()) break;
 					spawner.spawnWave(1 + (int) (wave * 0.5));
 					wavestate++;
 					return;
@@ -130,7 +130,7 @@ public class Game {
 					}
 				}
 				}
-			}
+			} else {
 
 			// in a 0.7 Chance spawns 2^wave*wavestate single enemys, otherwise spawns a
 			// wave
@@ -141,6 +141,7 @@ public class Game {
 				spawner.spawnWave(1 + (int) (wave * 0.25));
 			}
 			wavestate++;
+			}
 		}
 
 	}
@@ -223,8 +224,9 @@ public class Game {
 
 	public void init() {
 		// test
-		Main.game.addEntity(new Player(4, 9));
-		
+		for (int i = 0; i < 9; i++) {
+		Main.game.addEntity(new Player(i, 9));
+		}
 		Main.game.addEntity(new darstellung.Background(-1, 0));
 		Main.game.addEntity(new darstellung.Background(-1, -10));
 		
