@@ -123,13 +123,15 @@ public class Haribo extends application.Entity {
 
 	@Override
 	public void onCollide(Entity e) {
-		super.onCollide(e);
-		if (e instanceof FistL || e instanceof FistR) {
+//		super.onCollide(e);
+		System.out.println("Collide called");
+		if (e instanceof entities.FistL || e instanceof entities.FistR) {
+			System.out.println("Haribo mit Faust kollidiert");
 			sndHit.startSound();
 			this.stopWalking();
 			this.speed.x = e.speed.x;
 			this.speed.y = 0;
-			reduceHP(1);
+			this.reduceHP(1);
 		}
 	}
 
@@ -142,6 +144,7 @@ public class Haribo extends application.Entity {
 	public void onDie() {
 		this.sndDie.startSound();
 		animation = die_anim;
+		collidable = false;
 		this.speed.x = 0;
 		this.speed.y = 0.5;
 	}

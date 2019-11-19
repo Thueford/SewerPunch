@@ -160,13 +160,17 @@ public class Game {
 	 * collision detection between all entities
 	 */
 	public void collide() {
-
-		for (Entity a : Main.game.getEntities()) {
+		List<Entity> allEntities = Main.game.getEntities();
+//		System.out.println(allEntities.toString());
+		for (Entity a : allEntities) {
+			if (a.dead == false) {
 			boolean coll = false;
-			for (Entity b : Main.game.getEntities()) {
+			for (Entity b : allEntities) {
 				if (a != b && a.isCollidable() && b.isCollidable() && a.collides(b)) {
+
+//					System.out.println(a.collides(b) + b.toString());
 					a.collided = true;
-					if(!a.collided) a.onCollide(b);
+					a.onCollide(b);
 					coll = true;
 				}
 			}
@@ -183,7 +187,7 @@ public class Game {
 			if(a.collided && !coll) {
 				a.onUncollide();
 				a.collided = false;
-			}
+			}}
 		}
 	}
 

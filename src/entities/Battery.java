@@ -20,10 +20,10 @@ public class Battery extends Entity {
 	private static final double bots = 50;
 
 	private static final int HP_init = 9999999;
-	private static final int drawingOrder = -99;
+	private static final int drawingOrder = 99;
 
 	private static final Vector speed_init = new Vector(0, 0);
-	private static final Vector size_init = new Vector(1, 2);
+	private static final Vector size_init = new Vector(0.4, 1);
 
 	public Battery(double x, double y, double fill) {
 		super(x, y);

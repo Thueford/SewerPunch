@@ -74,6 +74,14 @@ public class FistR extends application.Entity {
 
 	}
 
+//	@Override
+//	public void onCollide(Entity e) {
+//		if (e instanceof Haribo) {
+//			e.reduceHP(1);
+//			System.out.println("Collision!");
+//		}
+//	}	
+	
 	@Override
 	public void onCollide(Entity e) {
 		if (e instanceof Haribo) {

@@ -40,6 +40,7 @@ public abstract class Entity extends Rectangle {
 	/**
 	 * Called once on game load Load all relevat assets
 	 */
+	
 	public abstract void LoadAssets();
 
 	public Vector getSpeed() {
@@ -78,7 +79,7 @@ public abstract class Entity extends Rectangle {
 	 */
 	public void reduceHP(int damage) {
 		this.HP -= damage;
-		if (damage <= 0)
+		if (HP <= 0)
 			this.die();
 	}
 
