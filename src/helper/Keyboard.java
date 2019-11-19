@@ -1,8 +1,10 @@
-package application;
+package helper;
 
+import application.Fistmanagement;
+import application.Main;
 import javafx.event.EventHandler;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyEvent;
 
 public class Keyboard {
 	// rows...
@@ -32,7 +34,7 @@ public class Keyboard {
 				int[] point = { 99, 99 };
 				for (int y = 0; y < 4; y++) {
 					for (int x = 0; x < 10; x++) {
-						
+
 						if (field[y][x] == event.getCode().ordinal()) {
 							point[0] = x;
 							point[1] = y;
@@ -49,73 +51,70 @@ public class Keyboard {
 						checked = true;
 						Fistmanagement.changeSide(0);
 						break;
-						
+
 					case TAB:
 						point[0] = 9;
 						point[1] = 1;
 						checked = true;
 						Fistmanagement.changeSide(1);
 						break;
-						
+
 					case CAPS:
 						point[0] = 9;
 						point[1] = 2;
 						checked = true;
 						Fistmanagement.changeSide(2);
 						break;
-						
+
 					case SHIFT:
 						point[0] = 9;
 						point[1] = 3;
 						checked = true;
 						Fistmanagement.changeSide(3);
 						break;
-						
+
 					case ENTER:
 						// fill ressources
 						Main.game.bots.genRes(50);
 						checked = true;
 						break;
-						
+
 					case SPACE:
 						// pause
 						Main.game.loop.pause();
 						checked = true;
 						break;
-						
+
 					case CONTROL:
 						// strg
 						Main.game.bcemp();
 						checked = true;
 						break;
-						
 
 					default:
 						// fill ressources idk do nothing
-						//System.out.println("default");
+						// System.out.println("default");
 						checked = true;
 					}
-					return; //when no fist-key was pressed, return
+					return; // when no fist-key was pressed, return
 				}
 
-				 
 				// System.out.println(point[1]);
 				Vector p = new Vector(point[0], point[1]);
 				if (point[0] != 99 && point[1] != 99) {
 					Fistmanagement.fistOut(point[1], point[0]);
-					
-					
+
 				}
 			}
 		});
-		
-		scene.setOnKeyReleased(k ->{
-			
+
+		scene.setOnKeyReleased(k -> {
+
 			boolean checked = false;
 			int[] point = { 99, 99 };
 			for (int y = 0; y < 4; y++) {
 				for (int x = 0; x < 10; x++) {
-					
+
 					if (field[y][x] == k.getCode().ordinal()) {
 						point[0] = x;
 						point[1] = y;
@@ -123,13 +122,14 @@ public class Keyboard {
 					}
 				}
 			}
-				
-			if(!checked) return;
+
+			if (!checked)
+				return;
 			System.out.println(k.getCode().ordinal());
 			Fistmanagement.fistBack(point[1]);
-			
+
 		});
-		
+
 	}
 
 }

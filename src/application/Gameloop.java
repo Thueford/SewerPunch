@@ -1,12 +1,13 @@
 package application;
 
 import application.Game.SpawnManagement;
+import helper.Timer;
 import javafx.application.Platform;
-import entities.Player;
 
 public class Gameloop extends Thread {
 
-	private boolean run = true; public boolean pause = false;
+	private boolean run = true;
+	public boolean pause = false;
 	private Timer globalT, paintT; // the two different timer-Objects
 	private long fps = 60; // wait is temp-variable , framelenght determines length of one frame
 	private double lastSpawnTime = 0, lastRenderTime = 0;
@@ -21,12 +22,16 @@ public class Gameloop extends Thread {
 		spmanager = Main.game.new SpawnManagement();
 	}
 
+	public void pause() {
+		pause = pause ? false : true;
+	}
+
 	public void run() {
 
 		System.out.println("Thread gestartet");
 		globalT = new Timer();
 		paintT = new Timer();
-		
+
 		globalT.step();
 		paintT.step();
 		globalT.step();
@@ -35,7 +40,7 @@ public class Gameloop extends Thread {
 		while (run) {
 
 			if (pause) {
-				//Platform.runLater(() -> Main.game.soundtrack.stopSound() );
+				// Platform.runLater(() -> Main.game.soundtrack.stopSound() );
 				continue;
 			}
 
@@ -45,7 +50,7 @@ public class Gameloop extends Thread {
 			Main.game.move(globalT.d_sec());
 
 			// every 2 seconds frames, a new Spawn is initialized
-			if (globalT.sec() - lastSpawnTime >= 2) { 
+			if (globalT.sec() - lastSpawnTime >= 2) {
 				spmanager.spawn();
 				lastSpawnTime = globalT.sec();
 			}
@@ -59,9 +64,8 @@ public class Gameloop extends Thread {
 			// apply framerate by time diff to lastRenderTime
 			if (fps * (globalT.sec() - lastRenderTime) >= 1) {
 				paintT.toc();
-				Platform.runLater(() -> Main.game.MainThreadFunctions(
-						paintT.sec(), paintT.d_sec()));
-				
+				Platform.runLater(() -> Main.game.MainThreadFunctions(paintT.sec(), paintT.d_sec()));
+
 				paintT.tic();
 				lastRenderTime = globalT.sec();
 			}
@@ -71,10 +75,6 @@ public class Gameloop extends Thread {
 
 	public void terminate() {
 		run = false;
-	}
-
-	public void pause() {
-		pause = pause ? false : true;
 	}
 
 }

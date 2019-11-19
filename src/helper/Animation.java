@@ -1,4 +1,4 @@
-package application;
+package helper;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -29,8 +29,35 @@ public class Animation {
 		this.currentFrame = 0;
 		this.animationDirection = 1;
 		this.totalFrames = this.frames.size();
-		
 
+	}
+
+	private void addFrame(BufferedImage frame, double duration) {
+		if (duration <= 0) {
+			System.err.println("Invalid duration: " + duration);
+			throw new RuntimeException("Invalid duration: " + duration);
+		}
+
+		frames.add(new Frame(frame, duration));
+		currentFrame = 0;
+	}
+
+	public BufferedImage getSprite() {
+		return frames.get(currentFrame).getFrame();
+	}
+
+	public void reset() {
+		this.stopped = true;
+		this.frameCount = 0;
+		this.currentFrame = 0;
+	}
+
+	public void restart() {
+		if (frames.size() == 0)
+			return;
+
+		stopped = false;
+		currentFrame = 0;
 	}
 
 	public void start() {
@@ -50,34 +77,6 @@ public class Animation {
 		stopped = true;
 	}
 
-	public void restart() {
-		if (frames.size() == 0)
-			return;
-
-		stopped = false;
-		currentFrame = 0;
-	}
-
-	public void reset() {
-		this.stopped = true;
-		this.frameCount = 0;
-		this.currentFrame = 0;
-	}
-
-	private void addFrame(BufferedImage frame, double duration) {
-		if (duration <= 0) {
-			System.err.println("Invalid duration: " + duration);
-			throw new RuntimeException("Invalid duration: " + duration);
-		}
-
-		frames.add(new Frame(frame, duration));
-		currentFrame = 0;
-	}
-
-	public BufferedImage getSprite() {
-		return frames.get(currentFrame).getFrame();
-	}
-
 	public void update(double time, double dtime) {
 
 		if (!stopped) {
@@ -94,7 +93,7 @@ public class Animation {
 				}
 				lastFrameTime = time;
 			}
-			//*/
+			// */
 
 		}
 

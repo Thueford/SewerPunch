@@ -10,6 +10,10 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 
+/**
+ * @author docheron
+ *
+ */
 public class MainMenu extends BorderPane {
 
 	/**
@@ -20,30 +24,9 @@ public class MainMenu extends BorderPane {
 		this.setBottom(bottomButtons());
 		this.setCenter(ButtonList());
 		this.getStylesheets().add(getClass().getResource("mainmenu.css").toExternalForm());
-		
 
 		Scene scene = new Scene(this, Main.WIDTH, Main.HEIGHT);
 		Main.changeScene(scene);
-	}
-
-	/**
-	 * Returns an VBox Object with all the buttons needed for main menu
-	 * functionality
-	 * 
-	 * @return VBox
-	 */
-	private VBox ButtonList() {
-		VBox liste = new VBox();
-		Button start = new Button("Start");
-		Button verlassen = new Button("Ende");
-
-		
-		start.setOnAction(e -> new Story());
-		verlassen.setOnAction(e -> Platform.exit());
-
-		liste.getChildren().addAll(start, verlassen);
-
-		return liste;
 	}
 
 	/**
@@ -66,6 +49,25 @@ public class MainMenu extends BorderPane {
 		unten.getChildren().addAll(agb, expander, impressum);
 		return unten;
 
+	}
+
+	/**
+	 * Returns an VBox Object with all the buttons needed for main menu
+	 * functionality
+	 * 
+	 * @return VBox
+	 */
+	private VBox ButtonList() {
+		VBox liste = new VBox();
+		Button start = new Button("Start");
+		Button verlassen = new Button("Ende");
+
+		start.setOnAction(e -> new Story());
+		verlassen.setOnAction(e -> Platform.exit());
+
+		liste.getChildren().addAll(start, verlassen);
+
+		return liste;
 	}
 
 }

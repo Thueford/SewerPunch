@@ -1,7 +1,6 @@
-package darstellung;
+package helper;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
@@ -11,7 +10,6 @@ import javax.imageio.ImageIO;
 
 import javafx.application.Platform;
 import javafx.scene.image.Image;
-import sounds.Sound;
 
 /**
  * @author afeilke1
@@ -36,12 +34,26 @@ public class Loader {
 		Loader.res_snd = res_snd;
 	}
 
+	public BufferedImage LoadBufferedImage(String src) {
+		BufferedImage img = bufferedImages.get(src);
+		if (img == null) {
+			try {
+				img = ImageIO.read(new URL(res_img, src).openStream());
+			} catch (IOException e) {
+				e.printStackTrace();
+				Platform.exit();
+			}
+			bufferedImages.put(src, img);
+		}
+		return img;
+	}
+
 	/**
 	 * load an image
 	 * 
 	 * @param src image source path
 	 * @return javafx Image
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	public Image LoadImage(String src) {
 		Image img = images.get(src);
@@ -69,19 +81,5 @@ public class Loader {
 			sounds.put(src, snd);
 		}
 		return snd;
-	}
-
-	public BufferedImage LoadBufferedImage(String src) {
-		BufferedImage img = bufferedImages.get(src);
-		if (img == null) {
-			try {
-				img = ImageIO.read(new URL(res_img, src).openStream());
-			} catch (IOException e) {
-				e.printStackTrace();
-				Platform.exit();
-			}
-			bufferedImages.put(src, img);
-		}
-		return img;
 	}
 }

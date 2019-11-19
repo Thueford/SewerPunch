@@ -1,6 +1,7 @@
 package application;
 
-import entities.*;
+import entities.Garbage;
+import entities.Haribo;
 
 public class Spawner {
 	// wahrscheinlichkeiten für spawn in feldern
@@ -9,35 +10,6 @@ public class Spawner {
 	// konstruktor
 	public Spawner() {
 		this.resetSpawnStuff();
-	}
-
-	// spawnt numOfEnemy an gegnern, hoffentlich gleichmäßig verteilt
-	public void spawnNotWave(int numOfEnemy) {
-		for (int i = 0; i < numOfEnemy; i++) {
-
-			spawn(getField());
-		}
-	}
-
-	// spawnt eine welle, vermutlich gleichmäßig verteilt
-	public void spawnWave(int numOfWave) {
-		// ändere rechnung sonst laggs
-		int numOfEnemy = 5 * numOfWave;
-		for (int i = 0; i < numOfEnemy; i++) {
-			spawn(getField());
-		}
-	}
-
-	// erzeugt instanzen der klasse Entity/Haribo
-	// feld ist die x Koordinate
-	public void spawn(int feld) {
-		int r = (int) (Math.random() * 100);
-		if(r>10) {
-			Main.game.addEntity(new Haribo(feld, -2));
-		} else {
-			Main.game.addEntity(new Garbage(feld, -2));
-		}
-		// Main.game.entities.get(Main.game.entities.size()-1).sndSpawn.startSound();
 	}
 
 	/**
@@ -80,6 +52,35 @@ public class Spawner {
 	public void resetSpawnStuff() {
 		for (int i = 0; i < 10; i++) {
 			arr[i] = 10;
+		}
+	}
+
+	// erzeugt instanzen der klasse Entity/Haribo
+	// feld ist die x Koordinate
+	public void spawn(int feld) {
+		int r = (int) (Math.random() * 100);
+		if (r > 10) {
+			Main.game.addEntity(new Haribo(feld, -2));
+		} else {
+			Main.game.addEntity(new Garbage(feld, -2));
+		}
+		// Main.game.entities.get(Main.game.entities.size()-1).sndSpawn.startSound();
+	}
+
+	// spawnt numOfEnemy an gegnern, hoffentlich gleichmäßig verteilt
+	public void spawnNotWave(int numOfEnemy) {
+		for (int i = 0; i < numOfEnemy; i++) {
+
+			spawn(getField());
+		}
+	}
+
+	// spawnt eine welle, vermutlich gleichmäßig verteilt
+	public void spawnWave(int numOfWave) {
+		// ändere rechnung sonst laggs
+		int numOfEnemy = 5 * numOfWave;
+		for (int i = 0; i < numOfEnemy; i++) {
+			spawn(getField());
 		}
 	}
 }

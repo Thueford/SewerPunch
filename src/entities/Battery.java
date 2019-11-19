@@ -1,10 +1,8 @@
 package entities;
 
-import application.Entity;
 import application.Fistmanagement;
 import application.Main;
-import application.Vector;
-import darstellung.Ressource;
+import helper.Vector;
 import javafx.scene.image.Image;
 
 public class Battery extends Entity {
@@ -15,15 +13,15 @@ public class Battery extends Entity {
 			"battery/Batterie_V3f8_.png", "battery/Batterie_V3f9_.png", "battery/Batterie_V3f10_.png",
 			"battery/Batterie_V3f11_.png", "battery/Batterie_V3f12_.png", "battery/Batterie_V3f13_.png",
 			"battery/Batterie_V3f14_.png", "battery/Batterie_V3f15_.png" };
-	private Image[] images = new Image[src_img.length + 10];
-	private double fill;
 	private static final double bots = 50;
-
 	private static final int HP_init = 9999999;
 	private static final int drawingOrder = 99;
 
 	private static final Vector speed_init = new Vector(0, 0);
 	private static final Vector size_init = new Vector(0.4, 1);
+
+	private Image[] images = new Image[src_img.length + 10];
+	private double fill;
 
 	public Battery(double x, double y, double fill) {
 		super(x, y);
@@ -32,13 +30,13 @@ public class Battery extends Entity {
 	}
 
 	@Override
-	public int getInitHP() {
-		return HP_init;
+	public int getDrawingOrder() {
+		return drawingOrder;
 	}
 
 	@Override
-	public Vector getInitSpeed() {
-		return speed_init;
+	public int getInitHP() {
+		return HP_init;
 	}
 
 	@Override
@@ -47,20 +45,26 @@ public class Battery extends Entity {
 	}
 
 	@Override
-	public boolean isCollidable() {
-		return false;
+	public Vector getInitSpeed() {
+		return speed_init;
 	}
 
 	@Override
-	public int getDrawingOrder() {
-		return drawingOrder;
+	public boolean isCollidable() {
+		return false;
 	}
 
 	@Override
 	public void LoadAssets() {
 
 	}
-	
+
+	private void LoadImages() {
+		for (int i = 0; i < src_img.length; i++) {
+			images[i] = Main.game.loader.LoadImage(src_img[i]);
+		}
+	}
+
 	@Override
 	public void move(double dtime) {
 		update();
@@ -71,18 +75,12 @@ public class Battery extends Entity {
 		super.onAnimate(time, dtime);
 	}
 
-	private void LoadImages() {
-		for (int i = 0; i < src_img.length; i++) {
-			images[i] = Main.game.loader.LoadImage(src_img[i]);
-		}
-	}
-
 	public void update() {
 		try {
-			this.img = Main.game.loader
-					.LoadImage(src_img[(int) ((src_img.length - 1) * Main.game.bots.getRes() / Fistmanagement.resource_max)]);
+			this.img = Main.game.loader.LoadImage(
+					src_img[(int) ((src_img.length - 1) * Main.game.bots.getRes() / Fistmanagement.resource_max)]);
 		} catch (ArrayIndexOutOfBoundsException e) {
-			//System.err.println(e.getMessage());
+			// System.err.println(e.getMessage());
 		}
 	}
 

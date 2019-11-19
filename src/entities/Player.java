@@ -2,35 +2,29 @@ package entities;
 
 import java.awt.image.BufferedImage;
 
-import application.Animation;
-import application.Entity;
 import application.Main;
-import application.Vector;
 import application.Sprite;
+import helper.Animation;
+import helper.Vector;
 import javafx.embed.swing.SwingFXUtils;
 
-public class Player extends application.Entity {
+public class Player extends entities.Entity {
 	private static final String src_img = "Hauptfigur_V3.1.png";
 	private static final String src_dieanim = "";
 	private static final String[] src_sndDie = { "gameover.wav" };
-	
 
 	private static final int HP_init = 1;
 	private static final int drawingOrder = 0;
 
 	private static final Vector speed_init = new Vector(0, 0);
 	private static final Vector size_init = new Vector(1, 1);
-	
-	private boolean collidable = true;
 
 	private static String src_anim = "AnimationSpriteSheet_strip3x1.png";
 
-	// Images for each animation
-
 	// Gets the upper left images of my sprite sheet
-	private static BufferedImage[] anim1 = { 
-			Sprite.getSprite(0, 0, src_anim), 
-			Sprite.getSprite(2, 0, src_anim) };
+	private static BufferedImage[] anim1 = { Sprite.getSprite(0, 0, src_anim), Sprite.getSprite(2, 0, src_anim) };
+
+	// Images for each animation
 
 	// private static BufferedImage[] walkingRight = {Sprite.getSprite(0, 2),
 	// Sprite.getSprite(2, 2)};
@@ -38,28 +32,24 @@ public class Player extends application.Entity {
 
 	// These are animation states
 	private static Animation anim = new Animation(anim1, 0.3);
+
 	// private static Animation walkRight = new Animation(walkingRight, 10);
 	private static Animation standart_anim = new Animation(standartanim, 1);
+	private boolean collidable = true;
 
 	// This is the actual animation
 	public Animation animation = standart_anim;
 
 	public Player(int x, int y) {
 		super(x, y);
-		
+
 		animation = anim;
 		animation.start();
 	}
 
 	@Override
-	public void LoadAssets() {
-		this.img = Main.game.loader.LoadImage(src_img);
-		this.sndDie = Main.game.loader.LoadSound(src_sndDie[Main.game.ran.nextInt(src_sndDie.length)]);
-	}
-	
-	@Override
-	public boolean isCollidable() {
-		return collidable;
+	public int getDrawingOrder() {
+		return drawingOrder;
 	}
 
 	@Override
@@ -68,18 +58,29 @@ public class Player extends application.Entity {
 	}
 
 	@Override
+	public Vector getInitSize() {
+		return size_init.copy();
+	}
+
+	@Override
 	public Vector getInitSpeed() {
 		return speed_init.copy();
 	}
 
 	@Override
-	public Vector getInitSize() {
-		return size_init.copy();
+	public boolean isCollidable() {
+		return collidable;
 	}
-	
+
 	@Override
-	public int getDrawingOrder() {
-		return drawingOrder;
+	public void LoadAssets() {
+		this.img = Main.game.loader.LoadImage(src_img);
+		this.sndDie = Main.game.loader.LoadSound(src_sndDie[Main.game.ran.nextInt(src_sndDie.length)]);
+	}
+
+	@Override
+	public void move(double dtime) {
+
 	}
 
 	@Override
@@ -88,11 +89,6 @@ public class Player extends application.Entity {
 		img = SwingFXUtils.toFXImage(animation.getSprite(), null);
 	}
 
-	@Override
-	public void move(double dtime) {
-		
-	}
-	
 	@Override
 	public void onCollide(Entity e) {
 //		super.onCollide(e);
