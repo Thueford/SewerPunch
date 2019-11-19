@@ -239,8 +239,8 @@ public class Game {
 		renderer.setContext(ctx);
 
 		scene = new Scene(root, Main.WIDTH, Main.HEIGHT);
-		new Keyboard(scene);
 		Main.changeScene(scene);
+		Keyboard.initScene(scene);
 
 		loop = new Gameloop();
 

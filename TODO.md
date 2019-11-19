@@ -6,6 +6,8 @@
 
 
 ## high priority
+- **BUG: ** FistManagement isn't resetted between games
+- make fist management non-static
 
 
 ## medium priority

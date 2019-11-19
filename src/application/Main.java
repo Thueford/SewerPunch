@@ -1,6 +1,7 @@
 package application;
 
 import display.MainMenu;
+import helper.Keyboard;
 import helper.Loader;
 import helper.Sound;
 import javafx.application.Application;
@@ -47,6 +48,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			Loader.init(this.getClass());
+
 			Main.primaryStage = primaryStage;
 			Main.primaryStage.setResizable(false);
 

@@ -10,22 +10,16 @@ import javafx.scene.Scene;
  */
 public class Keyboard {
 	// rows...
-	int[] r1 = { 25, 26, 27, 28, 29, 30, 31, 32, 33, 24 };
-	int[] r2 = { 52, 58, 40, 53, 55, 61, 56, 44, 50, 51 };
-	int[] r3 = { 36, 54, 39, 41, 42, 43, 45, 46, 47, 187 };
-	int[] r4 = { 60, 59, 38, 57, 37, 49, 48, 20, 22, 21 };
-	final int cr1 = 143;
-	final int cr2 = 2;
-	final int cr3 = 9;
-	final int cr4 = 5;
-	final int enter = 0;
-	final int pause = 10; // 10 for ESC and 11 for SPACE
-	final int strg = 6;
-	int[] defaultKeys = {};
-	int[][] field = { r1, r2, r3, r4 };
-	// int [] Keys = {cr1, cr2, cr3, cr4, enter, pause};
+	private static final int[] r1 = {25, 26, 27, 28, 29, 30, 31, 32, 33, 24 };
+	private static final int[] r2 = {52, 58, 40, 53, 55, 61, 56, 44, 50, 51 };
+	private static final int[] r3 = {36, 54, 39, 41, 42, 43, 45, 46, 47, 187 };
+	private static final int[] r4 = {60, 59, 38, 57, 37, 49, 48, 20, 22, 21 };
+	private static final int cr1 = 143, cr2 = 2, cr3 = 9, cr4 = 5, enter = 0, strg = 6;
+	private static final int[] defaultKeys = {};
+	private static final int[][] field = {r1, r2, r3, r4 };
+	// private static final int [] Keys = {cr1, cr2, cr3, cr4, enter, pause};
 
-	public Keyboard(Scene scene) {
+	public static void initScene(Scene scene) {
 
 		scene.setOnKeyPressed(event ->
 		{
@@ -104,7 +98,6 @@ public class Keyboard {
 			Vector p = new Vector(point[0], point[1]);
 			if (point[0] != 99 && point[1] != 99) {
 				Fistmanagement.fistOut(point[1], point[0]);
-
 			}
 		});
 
