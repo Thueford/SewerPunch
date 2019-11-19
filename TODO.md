@@ -16,4 +16,5 @@
 
 - Hit-Lag (Jakob)
 - Screen-Shake (Jakob)
-- show game over screen (???)
+- show game over screen (Alex)
+- fix ArrayIndexOutOfBoundsException of Story (Game is not crashing) (Alex)
