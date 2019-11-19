@@ -46,7 +46,7 @@ public class Story {
 	}
 
 	private void startGame() {
-		Main.game.start();
+		Main.startGame();
 	}
 
 	private void step() {

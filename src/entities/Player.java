@@ -1,6 +1,8 @@
 package entities;
 
+import application.Game;
 import application.Main;
+import display.MainMenu;
 import helper.Animation;
 import helper.Loader;
 import helper.Sprite;
@@ -98,5 +100,11 @@ public class Player extends entities.Entity {
 			reduceHP(1);
 			Main.game.loop.terminate();
 		}
+	}
+
+	@Override
+	public void onDie()
+	{
+		Main.game.Over();
 	}
 }

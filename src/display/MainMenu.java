@@ -12,6 +12,8 @@ import javafx.scene.layout.*;
  */
 public class MainMenu extends BorderPane {
 
+    public Scene scene;
+
     /**
      * A Borderpane, designed to be the MainMenu, linked to a stylesheet
      */
@@ -24,7 +26,12 @@ public class MainMenu extends BorderPane {
         	Loader.LoadImage("Titelbildschirm_V1.png"), BackgroundRepeat.NO_REPEAT,
 			BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
 
-        Scene scene = new Scene(this, Main.WIDTH, Main.HEIGHT);
+        this.scene = new Scene(this, Main.WIDTH, Main.HEIGHT);
+        Main.changeScene(this.scene);
+    }
+
+    public void show()
+    {
         Main.changeScene(scene);
     }
 

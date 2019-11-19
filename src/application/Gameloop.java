@@ -9,7 +9,7 @@ public class Gameloop extends Thread {
 	private boolean run = true;
 	public boolean pause = false;
 	private Timer globalT, paintT; // the two different timer-Objects
-	private long fps = 60; // wait is temp-variable , framelenght determines length of one frame
+	private long fps = 60; // wait is temp-variable , framelength determines length of one frame
 	private double lastSpawnTime = 0, lastRenderTime = 0;
 
 	SpawnManagement spmanager;

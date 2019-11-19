@@ -23,6 +23,8 @@ import java.util.Random;
  */
 public class Game {
 
+	public Scene scene;
+
 	public class SpawnManagement {
 
 		private int wave = 1, wavestate = 0; // wave increases
@@ -88,8 +90,6 @@ public class Game {
 	public Ressource bots = new Ressource();
 
 	private boolean empReady;
-	private Sound atmosphere;
-	public Sound soundtrack;
 	private Sound emp;
 	public Sound fillsnd;
 	private Sound alert;
@@ -147,7 +147,7 @@ public class Game {
 					a.die();
 				}
 				if ((a.y > 10) && (a instanceof entities.Haribo || a instanceof entities.Garbage)) {
-					Main.game.removeEntity(a);
+					removeEntity(a);
 					// if(!a.isDead()) Platform.runLater( () -> new MainMenu() );
 				}
 
@@ -168,14 +168,12 @@ public class Game {
 	public void init() {
 		// test
 		for (int i = 0; i < 9; i++)
-			Main.game.addEntity(new Player(i, 9));
+			addEntity(new Player(i, 9));
 
-		Main.game.addEntities(
+		addEntities(
 			new entities.Background(-Renderer.OFFSET.x, 0),
 			new entities.Background(-Renderer.OFFSET.x, -10));
 
-		atmosphere = Loader.LoadSound("atmosphere.wav", 0.3, 100);
-		soundtrack = Loader.LoadSound("soundtrack.wav", 0.7, 95);
 		emp = Loader.LoadSound("emp.wav");
 		fillsnd = Loader.LoadSound("refill.wav");
 		alert = Loader.LoadSound("alert.wav");
@@ -205,8 +203,8 @@ public class Game {
 		// SoundHandler.play(Soundlist);
 		bots.showRes();
 
-		if (!atmosphere.isPlaying()) atmosphere.startSound();
-		if (!soundtrack.isPlaying()) soundtrack.startSound();
+		if (!Main.atmosphere.isPlaying()) Main.atmosphere.startSound();
+		if (!Main.soundtrack.isPlaying()) Main.soundtrack.startSound();
 	}
 
 	/**
@@ -218,7 +216,7 @@ public class Game {
 	}
 
 	public void Over() {
-		// TODO show game over screen
+		Main.mainMenu.show();
 	}
 
 	public void removeEntity(Entity e) {
@@ -240,10 +238,9 @@ public class Game {
 
 		renderer.setContext(ctx);
 
-		Scene scene = new Scene(root, Main.WIDTH, Main.HEIGHT);
+		scene = new Scene(root, Main.WIDTH, Main.HEIGHT);
 		new Keyboard(scene);
-		Main.primaryStage.setScene(scene);
-		Main.primaryStage.show();
+		Main.changeScene(scene);
 
 		loop = new Gameloop();
 

@@ -2,6 +2,7 @@ package application;
 
 import display.MainMenu;
 import helper.Loader;
+import helper.Sound;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
@@ -12,14 +13,34 @@ public class Main extends Application {
 	public static final int WIDTH = 720, HEIGHT = 720;
 	public static Stage primaryStage;
 	public static Game game;
+	public static MainMenu mainMenu;
+	public static Sound atmosphere;
+	public static Sound soundtrack;
 
 	public static void changeScene(Scene scene) {
-		Main.primaryStage.setScene(scene);
-		Main.primaryStage.show();
+		Platform.runLater(()->
+		{
+			if(scene == mainMenu.scene) {
+				if(!atmosphere.isPlaying()) atmosphere.startSound();
+				if(soundtrack.isPlaying()) soundtrack.stopSound();
+			}
+			if(scene == game.scene) {
+				if(!atmosphere.isPlaying()) atmosphere.startSound();
+				if(!soundtrack.isPlaying()) soundtrack.stopSound();
+			}
+			primaryStage.setScene(scene);
+			primaryStage.show();
+		});
 	}
 
 	public static void main(String[] args) {
 		launch(args);
+	}
+
+	public static void startGame()
+	{
+		game = new Game();
+		game.start();
 	}
 
 	@Override
@@ -33,9 +54,12 @@ public class Main extends Application {
 				Platform.exit();
 				Main.game.loop.terminate();
 			});
-			Main.game = new Game();
 
-			new MainMenu();
+			Main.atmosphere = Loader.LoadSound("atmosphere.wav", 0.3, 100);
+			Main.soundtrack = Loader.LoadSound("soundtrack.wav", 0.7, 95);
+
+			Main.game = new Game();
+			Main.mainMenu = new MainMenu();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
