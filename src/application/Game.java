@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Random;
 
 import display.Ressource;
-import entities.Battery;
 import entities.Entity;
 import entities.Player;
 import helper.Keyboard;
@@ -82,7 +81,7 @@ public class Game {
 	public final Renderer renderer;
 
 	public Loader loader;
-	private final List<Entity> entities = new ArrayList<Entity>();
+	private final List<Entity> entities = new ArrayList<>();
 	// private static final Rectangle[] border = { new Rectangle(0, 0, 50, 720), new
 	// Rectangle(670, 0, 60, 720) };
 	public final int resource = 50;
@@ -104,7 +103,7 @@ public class Game {
 	public Game() {
 		renderer = new Renderer();
 
-		URL res = null;
+		URL res;
 		try {
 			res = getClass().getResource("/");
 			loader = new Loader(new URL(res, "../res/img/"), new URL(res, "../res/snd/"));
@@ -139,7 +138,7 @@ public class Game {
 		List<Entity> allEntities = Main.game.getEntities();
 //		System.out.println(allEntities.toString());
 		for (Entity a : allEntities) {
-			if (a.dead == false) {
+			if (!a.dead) {
 				boolean coll = false;
 				for (Entity b : allEntities) {
 					if (a != b && a.isCollidable() && b.isCollidable() && a.collides(b)) {
@@ -173,11 +172,10 @@ public class Game {
 
 	public List<Entity> getEntities() {
 
-		List<Entity> tmp = new ArrayList<Entity>();
+		List<Entity> tmp = new ArrayList<>();
 
 		synchronized (entities) {
-			for (Entity e : entities)
-				tmp.add(e);
+			tmp.addAll(entities);
 		}
 		return tmp;
 	}
@@ -209,10 +207,12 @@ public class Game {
 	public void killAllEntities() {
 
 		List<Entity> tmp = this.getEntities();
-		for (int i = 0; i < tmp.size(); i++) {
-			if (tmp.get(i) instanceof entities.Haribo) {
-				tmp.get(i).dead = true;
-				tmp.get(i).die();
+		for (Entity entity : tmp)
+		{
+			if (entity instanceof entities.Haribo)
+			{
+				entity.dead = true;
+				entity.die();
 
 			}
 		}
@@ -245,11 +245,10 @@ public class Game {
 		// TODO show game over screen
 	}
 
-	public Entity removeEntity(Entity e) {
+	public void removeEntity(Entity e) {
 		synchronized (entities) {
 			entities.remove(e);
 		}
-		return e;
 	}
 
 	/**
@@ -259,13 +258,13 @@ public class Game {
 
 		Pane root = new Pane();
 
-		final Canvas canvas = new Canvas(Main.HEIGHT, Main.WIDTH);
+		final Canvas canvas = new Canvas(Main.WIDTH, Main.HEIGHT);
 		final GraphicsContext ctx = canvas.getGraphicsContext2D();
 		root.getChildren().add(canvas);
 
 		renderer.setContext(ctx);
 
-		Scene scene = new Scene(root, Main.HEIGHT, Main.WIDTH);
+		Scene scene = new Scene(root, Main.WIDTH, Main.HEIGHT);
 		new Keyboard(scene);
 		Main.primaryStage.setScene(scene);
 		Main.primaryStage.show();

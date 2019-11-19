@@ -38,7 +38,7 @@ public class Player extends entities.Entity {
 	private boolean collidable = true;
 
 	// This is the actual animation
-	public Animation animation = standart_anim;
+	public Animation animation;
 
 	public Player(int x, int y) {
 		super(x, y);

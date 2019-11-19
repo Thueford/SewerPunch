@@ -19,7 +19,7 @@ public class FistR extends entities.Entity {
 
 	private static final int drawingOrder = 0;
 	// variables for fist movement control
-	private static int range;
+	private int range;
 
 	private boolean collidable = true;
 
@@ -94,10 +94,5 @@ public class FistR extends entities.Entity {
 		Fistmanagement.fists[(int) this.y - 5] = null;
 		Fistmanagement.occupied[(int) this.y - 5] = false;
 		Main.game.removeEntity(this);
-	}
-
-	@Override
-	public void onUncollide() {
-
 	}
 }

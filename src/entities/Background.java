@@ -58,11 +58,6 @@ public class Background extends Entity {
 	}
 
 	@Override
-	public void onCollide(Entity e) {
-
-	}
-
-	@Override
 	public void onDie() {
 
 	}

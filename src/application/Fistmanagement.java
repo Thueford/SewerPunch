@@ -31,7 +31,7 @@ public class Fistmanagement {
 		if (occupied[line]) {
 			return;
 		}
-		fistfromleft[line] = fistfromleft[line] ? false : true;
+		fistfromleft[line] = !fistfromleft[line];
 	}
 
 	public static void fistBack(int y) {
@@ -74,7 +74,7 @@ public class Fistmanagement {
 	}
 
 	public static void occupied(int line) {
-		occupied[line] = occupied[line] ? false : true;
+		occupied[line] = !occupied[line];
 		System.out.println(occupied[line]);
 	}
 }

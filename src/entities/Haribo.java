@@ -44,7 +44,7 @@ public class Haribo extends entities.Entity {
 	private Animation standart_anim = new Animation(standartanim, 1);
 	private Animation die_anim = new Animation(anim_die, anim_speed);
 	// This is the actual animation
-	public Animation animation = standart_anim;
+	public Animation animation;
 
 	public Haribo(int x, int y) {
 		super(x, y);

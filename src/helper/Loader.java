@@ -20,9 +20,9 @@ public class Loader {
 	/**
 	 * stores loaded images for reusing
 	 */
-	private static Map<String, Image> images = new HashMap<String, Image>();
-	private static Map<String, BufferedImage> bufferedImages = new HashMap<String, BufferedImage>();
-	private static Map<String, Sound> sounds = new HashMap<String, Sound>();
+	private static Map<String, Image> images = new HashMap<>();
+	private static Map<String, BufferedImage> bufferedImages = new HashMap<>();
+	private static Map<String, Sound> sounds = new HashMap<>();
 
 	/**
 	 * base path for image resources

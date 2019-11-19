@@ -1,2 +1,11 @@
+
+# output directories
 bin/
+out/
+
+# binaries
 *.class
+
+# ide project files
+.idea/
+*.iml

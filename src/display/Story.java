@@ -51,9 +51,9 @@ public class Story {
 
 	private void step() {
 		// adds 1 to 3 characters to the textarea from current story-String
-		String tmp = "";
+		StringBuilder tmp = new StringBuilder();
 		for (int i = 0; i <= (Math.random() * 10) % 4 && counter < story[index].length(); i++, counter++) {
-			tmp = tmp + story[index].charAt(counter);
+			tmp.append(story[index].charAt(counter));
 		}
 		textarea.setText(textarea.getText() + tmp);
 		// if counter exceeds the length of the story, test if there are more strings

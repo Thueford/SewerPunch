@@ -37,7 +37,7 @@ public class Spawner {
 		}
 
 		// save field-value in tmp and clear field
-		Double tmp = arr[feld];
+		double tmp = arr[feld];
 		arr[feld] = 0;
 
 		// evenly distribute former value of field to all fields, including field

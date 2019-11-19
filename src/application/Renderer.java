@@ -64,9 +64,7 @@ public class Renderer {
 		
 		// get and sort entity list
 		List<Entity> tmp = Main.game.getEntities();
-		tmp.sort((Entity a, Entity b) -> {
-			return a.getDrawingOrder() > b.getDrawingOrder() ? 1 : -1;
-		});
+		tmp.sort((Entity a, Entity b) -> a.getDrawingOrder() > b.getDrawingOrder() ? 1 : -1);
 		
 		// draw entities
 		for (Entity e : tmp) {

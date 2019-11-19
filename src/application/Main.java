@@ -29,10 +29,7 @@ public class Main extends Application {
 
 			Main.primaryStage.setOnCloseRequest(e -> {
 				Platform.exit();
-				try {
-					Main.game.loop.terminate();
-				} catch (Exception err) {
-				}
+				Main.game.loop.terminate();
 			});
 			Main.game = new Game();
 
