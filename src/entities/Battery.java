@@ -18,7 +18,7 @@ public class Battery extends Entity {
 	private static final int drawingOrder = 99;
 
 	private static final Vector speed_init = new Vector(0, 0);
-	private static final Vector size_init = new Vector(0.4, 1);
+	private static final Vector size_init = new Vector(1, 1);
 
 	private Image[] images = new Image[src_img.length + 10];
 	private double fill;

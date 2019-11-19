@@ -16,7 +16,7 @@ public class Renderer {
 	/**
 	 * rendering offset in grid coordinates
 	 */
-	public static final Rectangle OFFSET = new Rectangle(1, 0.5, 1, 0.5);
+	public static final Rectangle OFFSET = new Rectangle(1, 0, 1, 0);
 	
 	/**
 	 * default sizes
@@ -67,21 +67,21 @@ public class Renderer {
 		tmp.sort((Entity a, Entity b) -> {
 			return a.getDrawingOrder() > b.getDrawingOrder() ? 1 : -1;
 		});
-
-		// draw reference grid on background
-		for (int x = 0; x <= 10; x++) {
-			ctx.strokeRect(xCoordToPixel(x), yCoordToPixel(0), 0, yCoordToPixel(10) - yCoordToPixel(0));
-			ctx.strokeRect(xCoordToPixel(0), yCoordToPixel(x), xCoordToPixel(10) - xCoordToPixel(0), 0);
-		}
 		
 		// draw entities
 		for (Entity e : tmp) {
 			if (e.visible) {
 				e.onAnimate(time, dtime);
-				ctx.drawImage(e.img, xCoordToPixel(e.x), yCoordToPixel(e.y), xCoordToPixel(e.width),
-						yCoordToPixel(e.height));
+				ctx.drawImage(e.img, xCoordToPixel(e.x), yCoordToPixel(e.y), xCoordToPixel(e.width) - xCoordToPixel(0),
+						yCoordToPixel(e.height) - yCoordToPixel(0));
 			}
 		}
+		/*
+		// draw reference grid on background
+		for (int x = 0; x <= 10; x++) {
+			ctx.strokeRect(xCoordToPixel(x), yCoordToPixel(0), 0, yCoordToPixel(10) - yCoordToPixel(0));
+			ctx.strokeRect(xCoordToPixel(0), yCoordToPixel(x), xCoordToPixel(10) - xCoordToPixel(0), 0);
+		}*/
 	}
 
 	/**

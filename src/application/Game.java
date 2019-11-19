@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Random;
 
 import display.Ressource;
+import entities.Battery;
 import entities.Entity;
 import entities.Player;
 import helper.Keyboard;
@@ -203,8 +204,6 @@ public class Game {
 
 		bots.setRes(50);
 		empReady = true;
-
-		Main.game.addEntity(new entities.Battery(-1.0, 4.5, resource));
 	}
 
 	public void killAllEntities() {
