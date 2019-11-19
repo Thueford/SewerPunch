@@ -1,6 +1,7 @@
 package darstellung;
 
 import application.Entity;
+import application.Fistmanagement;
 import application.Main;
 
 public class Ressource {
@@ -29,14 +30,14 @@ public class Ressource {
 	
 	public void showRes () {
 		
-		res = res < 0?0: res>50 ? 50:res;
+		res = res < 0 ? 0 : res > Fistmanagement.resource_max ? 50 : res;
 		
 		for (Entity obj : Main.game.getEntities()) {
 			if (obj instanceof entities.Battery) {
 				Main.game.removeEntity(obj);
 			}
 		}
-		Main.game.addEntity(new entities.Battery(1, 1, res));
+		Main.game.addEntity(new entities.Battery(0, 0, res));
 
 	}
 }

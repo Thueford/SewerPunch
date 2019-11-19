@@ -59,7 +59,7 @@ public class Player extends application.Entity {
 	
 	@Override
 	public boolean isCollidable() {
-		return this.collidable;
+		return collidable;
 	}
 
 	@Override
@@ -100,6 +100,6 @@ public class Player extends application.Entity {
 			this.stopWalking();
 			reduceHP(1);
 			Main.game.loop.terminate();
-			}
+		}
 	}
 }

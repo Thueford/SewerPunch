@@ -11,6 +11,7 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.stage.Stage;
 import javafx.scene.layout.BorderPane;
 
 public class Main extends Application {
@@ -23,22 +24,17 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			Main.primaryStage = primaryStage;
+			Main.primaryStage.setResizable(false);
 
-			final BorderPane root = new MainMenu();
-			final Scene scene = new Scene(root, WIDTH, HEIGHT);
-			primaryStage.setScene(scene);
-			primaryStage.setResizable(false);
-
-			primaryStage.setOnCloseRequest(e -> {
+			Main.primaryStage.setOnCloseRequest(e -> {
 				Platform.exit();
 				try {
-					game.loop.terminate();
-				} catch (Exception err) {
-				}
+					Main.game.loop.terminate();
+				} catch (Exception err) {}		
 			});
-			primaryStage.show();
-			
 			Main.game = new Game();
+			
+			new MainMenu();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -46,5 +42,10 @@ public class Main extends Application {
 
 	public static void main(String[] args) {
 		launch(args);
+	}
+
+	public static void changeScene(Scene scene) {
+		Main.primaryStage.setScene(scene);
+		Main.primaryStage.show();
 	}
 }

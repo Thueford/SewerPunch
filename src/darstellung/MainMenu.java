@@ -1,6 +1,8 @@
 package darstellung;
 
+import application.Main;
 import javafx.application.Platform;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -18,7 +20,10 @@ public class MainMenu extends BorderPane {
 		this.setBottom(bottomButtons());
 		this.setCenter(ButtonList());
 		this.getStylesheets().add(getClass().getResource("mainmenu.css").toExternalForm());
+		
 
+		Scene scene = new Scene(this, Main.WIDTH, Main.HEIGHT);
+		Main.changeScene(scene);
 	}
 
 	/**
