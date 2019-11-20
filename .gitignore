@@ -9,3 +9,7 @@ out/
 # ide project files
 .idea/
 *.iml
+
+.project
+.classpath
+.settings
