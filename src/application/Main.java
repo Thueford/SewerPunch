@@ -54,7 +54,8 @@ public class Main extends Application {
 
 			Main.primaryStage.setOnCloseRequest(e -> {
 				Platform.exit();
-				Main.game.loop.terminate();
+				if (Main.game.loop != null)
+						Main.game.loop.terminate();
 			});
 
 			Main.atmosphere = Loader.LoadSound("atmosphere.wav", 0.3, 100);

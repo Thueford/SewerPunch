@@ -1,5 +1,6 @@
 package application;
 
+import display.GameOverMenu;
 import display.Ressource;
 import entities.Entity;
 import entities.Player;
@@ -216,7 +217,7 @@ public class Game {
 	}
 
 	public void Over() {
-		Main.mainMenu.show();
+		new GameOverMenu().show();
 	}
 
 	public void removeEntity(Entity e) {
