@@ -118,7 +118,7 @@ public class Haribo extends entities.Entity {
 		this.speed.x = 0;
 		this.speed.y = 0.5;
 	}
-
+	
 	@Override
 	public void onMove() {
 		super.onMove();
@@ -126,10 +126,13 @@ public class Haribo extends entities.Entity {
 		if (this.y > 9) {
 			Main.game.loop.terminate();
 			Main.game.Over();
+			System.out.println("Game over");
 		}
 		
-		if (this.x > 10 || this.y > 10)
+		if (this.x > 10 || this.y > 10) {
 			Main.game.removeEntity(this);
+			System.out.println("Haribo terminiert");
+		}
 	}
 
 	@Override

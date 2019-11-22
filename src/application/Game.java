@@ -210,8 +210,9 @@ public class Game {
 	 * move all entities
 	 */
 	public void move(double dtime) {
-		for (Entity obj : Main.game.getEntities())
+		for (Entity obj : Main.game.getEntities()) {
 			obj.move(dtime);
+			obj.onMove();}
 	}
 
 	public void Over() {
