@@ -122,7 +122,12 @@ public class Haribo extends entities.Entity {
 	@Override
 	public void onMove() {
 		super.onMove();
-
+		
+		if (this.y > 9) {
+			Main.game.loop.terminate();
+			Main.game.Over();
+		}
+		
 		if (this.x > 10 || this.y > 10)
 			Main.game.removeEntity(this);
 	}

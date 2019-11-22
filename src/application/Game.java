@@ -167,8 +167,7 @@ public class Game {
 
 	public void init() {
 		// test
-		for (int i = 0; i < 9; i++)
-			addEntity(new Player(i, 9));
+		addEntity(new Player(4, 9));
 
 		addEntities(
 			new entities.Background(-Renderer.OFFSET.x, 0),
