@@ -86,6 +86,7 @@ public class Game {
 	// Rectangle(670, 0, 60, 720) };
 	public final int resource = 50;
 	public Gameloop loop;
+	public GameOverMenu gameOverMenu;
 	public Random ran = new Random();
 
 	public Ressource bots = new Ressource();
@@ -203,8 +204,8 @@ public class Game {
 		// SoundHandler.play(Soundlist);
 		bots.showRes();
 
-		if (!Main.atmosphere.isPlaying()) Main.atmosphere.startSound();
-		if (!Main.soundtrack.isPlaying()) Main.soundtrack.startSound();
+//		if (!Main.atmosphere.isPlaying()) Main.atmosphere.startSound();
+//		if (!Main.soundtrack.isPlaying()) Main.soundtrack.startSound();
 	}
 
 	/**
@@ -217,7 +218,8 @@ public class Game {
 	}
 
 	public void Over() {
-		new GameOverMenu().show();
+		gameOverMenu = new GameOverMenu();
+		gameOverMenu.show();
 	}
 
 	public void removeEntity(Entity e) {

@@ -1,6 +1,7 @@
 package display;
 
 import application.Main;
+
 import helper.Loader;
 import javafx.application.Platform;
 import javafx.scene.Scene;

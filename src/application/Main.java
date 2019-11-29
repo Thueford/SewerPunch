@@ -1,6 +1,7 @@
 package application;
 
 import display.MainMenu;
+import display.GameOverMenu;
 import helper.Keyboard;
 import helper.Loader;
 import helper.Sound;
@@ -14,6 +15,7 @@ public class Main extends Application {
 	public static final int WIDTH = 720, HEIGHT = 720;
 	public static Stage primaryStage;
 	public static Game game;
+	public static GameOverMenu gameOver;
 	public static MainMenu mainMenu;
 	public static Sound atmosphere;
 	public static Sound soundtrack;
@@ -22,10 +24,19 @@ public class Main extends Application {
 		Platform.runLater(()->
 		{
 			if(scene == mainMenu.scene) {
+				System.out.println("Hauptmenu");
 				if(!atmosphere.isPlaying()) atmosphere.startSound();
 				if(soundtrack.isPlaying()) soundtrack.stopSound();
 			}
+			if(Main.game.gameOverMenu != null && scene == Main.game.gameOverMenu.scene) {
+				System.out.println("GameOver Screen");
+				if(!atmosphere.isPlaying()) atmosphere.startSound();
+				if(soundtrack.isPlaying()) {
+					soundtrack.stopSound();
+				}
+			}
 			if(scene == game.scene) {
+				System.out.println("Ingame");
 				if(!atmosphere.isPlaying()) atmosphere.startSound();
 				if(!soundtrack.isPlaying()) soundtrack.stopSound();
 			}
