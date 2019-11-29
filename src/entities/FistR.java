@@ -67,13 +67,13 @@ public class FistR extends entities.Entity {
 	@Override
 	public void move(double dtime) {
 		// if on target tile 'range', dont move, unless speed is inverted
-		if (this.getX() >= range && this.getSpeed().x > 0) {
-			if (Main.game.bots.getRes() < conResCost * dtime) {
+		if (this.getX() <= range && this.getSpeed().x < 0) {
+			if (Main.game.bots.getRes() < (20 - Math.abs(range)) / 10 * conResCost * dtime) {
 				this.die();
-			} else Main.game.bots.reduceRes((conResCost * dtime));
+			} else Main.game.bots.reduceRes((20 - Math.abs(range)) / 10 * conResCost * dtime);
 			return;
 		}
-		if (this.getX() > 10)
+		if (this.getX() >= 10)
 			this.onDie();
 		super.move(dtime);
 

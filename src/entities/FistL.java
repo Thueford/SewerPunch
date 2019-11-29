@@ -68,9 +68,9 @@ public class FistL extends entities.Entity {
 	public void move(double dtime) {
 		// if on target tile 'range', dont move, unless speed is inverted
 		if (this.getX() >= range && this.getSpeed().x > 0) {
-			if (Main.game.bots.getRes() < conResCost * dtime) {
+			if (Main.game.bots.getRes() < (20 + range) / 10 * conResCost * dtime) {
 				this.die();
-			} else Main.game.bots.reduceRes((conResCost * dtime));
+			} else Main.game.bots.reduceRes((20 + range) / 10 * conResCost * dtime);
 			return;
 		}
 		if (this.getX() <= -10)
