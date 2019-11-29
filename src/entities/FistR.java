@@ -12,7 +12,7 @@ public class FistR extends entities.Entity {
 
 	private static final String[] src_sndSpawn = { "faustangriff1.wav", "faustangriff2.wav", "faustangriff3.wav", };
 	private static final String[] src_sndDie = { "faustdie.wav" };
-	private static final String[] src_sndweg = { "faustweg1.wav", "faustweg2.wav", "faustweg3.wav" };
+	private static final String[] src_sndWeg = { "faustweg1.wav", "faustweg2.wav", "faustweg3.wav" };
 
 	private static final int HP_init = 100;
 	private static final Vector speed_init = new Vector(-50, 0);
@@ -61,6 +61,7 @@ public class FistR extends entities.Entity {
 		this.img = Loader.LoadImage(src_img);
 		this.sndSpawn = Loader.LoadSound(src_sndSpawn[Main.game.ran.nextInt(src_sndSpawn.length)]);
 		this.sndDie = Loader.LoadSound(src_sndDie[Main.game.ran.nextInt(src_sndDie.length)]);
+		this.sndWeg = Loader.LoadSound(src_sndWeg[Main.game.ran.nextInt(src_sndWeg.length)]);
 	}
 
 	@Override

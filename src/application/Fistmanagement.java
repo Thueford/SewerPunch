@@ -16,6 +16,7 @@ public class Fistmanagement {
 
 	public static Ressource resource = Main.game.bots;
 	private static Sound imp_action;
+//	private static final String[] src_sndWeg = { "faustweg1.wav", "faustweg2.wav", "faustweg3.wav" };
 
 	private static boolean[] fistfromleft = new boolean[] { true, true, true, true }; // determines, if fist spawns from
 																						// left or not
@@ -47,6 +48,7 @@ public class Fistmanagement {
 			fists[y].speed.set(new Vector(10, 0));
 			resource.genRes(10);
 		}
+		fists[y].sndWeg.startSound();
 	}
 
 	public static void fistOut(int y, int x) { // y = line of fist, x = range of fist
@@ -72,6 +74,7 @@ public class Fistmanagement {
 			fists[y] = f;
 			occupied[y] = true; // set line occupied
 		}
+		fists[y].sndSpawn.startSound();
 	}
 
 	public static void occupied(int line) {

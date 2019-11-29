@@ -18,7 +18,7 @@ public abstract class Entity extends Rectangle {
 
 	// assets
 	public Image img;
-	public Sound sndSpawn, sndDie, sndHit;
+	public Sound sndSpawn, sndDie, sndHit, sndWeg;
 	public double deadTimer;
 
 	public Entity(double x, double y) {
