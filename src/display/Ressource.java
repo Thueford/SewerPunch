@@ -12,8 +12,13 @@ public class Ressource {
 	}
 
 	public void genRes(double add) {
-		Main.game.fillsnd.startSound();
-		res += add;
+		if (res + add > 50) {
+			res = 50;
+			return;
+		} else {
+			res += add;
+//			Main.game.fillsnd.startSound();
+		}		
 	}
 
 	public double getRes() {
@@ -21,6 +26,7 @@ public class Ressource {
 	}
 
 	public void reduceRes(double red) {
+		
 		res -= red;
 	}
 

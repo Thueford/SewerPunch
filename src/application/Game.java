@@ -202,6 +202,7 @@ public class Game {
 	public void MainThreadFunctions(double time, double dtime) {
 		Main.game.renderer.render(time, dtime);
 		// SoundHandler.play(Soundlist);
+		bots.genRes(0.3);
 		bots.showRes();
 
 //		if (!Main.atmosphere.isPlaying()) Main.atmosphere.startSound();

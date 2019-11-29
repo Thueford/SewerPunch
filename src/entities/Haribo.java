@@ -124,9 +124,10 @@ public class Haribo extends entities.Entity {
 		super.onMove();
 		
 		if (this.y > 9) {
+			if (this.dead == false) {
 			Main.game.loop.terminate();
 			Main.game.Over();
-			System.out.println("Game over");
+			System.out.println("Game over");}
 		}
 		
 		if (this.x > 10 || this.y > 10) {

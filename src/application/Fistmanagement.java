@@ -43,10 +43,10 @@ public class Fistmanagement {
 
 		if (fistfromleft[y]) {
 			fists[y].speed.set(new Vector(-10, 0));
-			resource.genRes(10);
+//			resource.genRes(10);
 		} else {
 			fists[y].speed.set(new Vector(10, 0));
-			resource.genRes(10);
+//			resource.genRes(10);
 		}
 		fists[y].sndWeg.startSound();
 	}
@@ -61,7 +61,7 @@ public class Fistmanagement {
 			return;
 		}
 
-		resource.reduceRes(fistfromleft[y] ? x : 10 - x); // determines cost of action
+		resource.reduceRes(fistfromleft[y] ? x : 20 - (2*x)); // determines cost of action
 
 		if (fistfromleft[y]) {
 			FistL f = new FistL(-9, 5 + y, x - 9);
