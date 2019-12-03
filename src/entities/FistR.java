@@ -70,6 +70,7 @@ public class FistR extends entities.Entity {
 		if (this.getX() <= range && this.getSpeed().x < 0) {
 			if (Main.game.bots.getRes() < (20 - Math.abs(range)) / 10 * conResCost * dtime) {
 				this.die();
+				this.sndDie.startSound();
 			} else Main.game.bots.reduceRes((20 - Math.abs(range)) / 10 * conResCost * dtime);
 			return;
 		}
